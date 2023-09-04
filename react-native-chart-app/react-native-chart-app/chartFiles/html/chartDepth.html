@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie8" lang="en-gb"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9" lang="en-gb"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en-gb">
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.®js"></script>
+<![endif]-->
+
+<head>
+
+    <style>
+        .error_input {
+            border: 1px solid red;
+        }
+        .description{
+        }
+        .level2 {
+            font-size: 12px;
+        }
+        .item{
+        }
+
+    </style>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap & Addons-->
+    <link href="../css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../css/libs/x-chart-lib.css" rel="stylesheet" type="text/css">
+    <link href="../css/x-chart.css" rel="stylesheet" type="text/css">
+    <link href="../css/chart_dark.css" rel="stylesheet" type="text/css">
+    <link href="../fonts/icons.css" rel="stylesheet" type="text/css">
+    <!--<link href="../libs/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" type="text/css">-->
+
+    <!--<link href="../css/trade-summary/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">-->
+
+    <!-- Infinit Base -->
+    <!--<link href="../css/chart_dark.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="../css/jquery.minicolors.css" rel="stylesheet" type="text/css">-->
+    <link href="../css/jquery.loadmask.css" rel="stylesheet" type="text/css">
+
+    <!--<link rel="stylesheet" href="../libs/jquery/jquery-ui.css">-->
+
+
+
+    <title>Chart</title>
+
+</head>
+<body>
+<div style="display: none" id="symbol_search_container">
+    <input type="text" id="txtBaseSymbol" placeholder="Enter Symbol" class="text_area">
+    <input type="hidden" id="txtBaseSymbolDesc"/>
+    <input type="hidden" id="txtBaseSymbolDp"/>
+    <input type="hidden" id="txtBaseSymbolType"/>
+
+    <input type="button" value="Reload Chart" id="reloadChart" class="def_button"/>
+
+
+</div>
+
+<!--<input type="button" id="performanceCheck" value="performance">-->
+
+<!--Chart Container-->
+<div id="mainchart" style="height:100%;width:100%"></div>
+<div id="depth" style="height:100px;"></div>
+<!--<div id="depth-navigator" class="inf-chart" style="height:50px;"></div>-->
+
+
+
+<!--Common Libs-->
+<!--[if lt IE 9]>
+<!--<script src="../libs/bootstrap/js/respond.src.js" type="text/javascript"></script>-->
+<!--<script src="../libs/jquery/jquery-1.9.1.js" type="text/javascript"></script>-->
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<script src="../libs/jquery/jquery.js" type="text/javascript"></script>-->
+<!--<![endif]-->
+
+<!--<script src="../libs/json/jquery.json-2.4.min.js"></script>-->
+<!--<script src="../libs/jquery/jquery.localize.min.js"></script>-->
+<!--<script src="../libs/bootstrap/js/bootstrap.js"></script>-->
+<!--<script src="../libs/jquery/jquery.minicolors.js" type="text/javascript"></script>-->
+
+<!--HighChart-->
+<script src="../js/libs/x-chart-lib.js" type="text/javascript"></script>
+<!--<script src="../libs/highcharts/highcharts-more.js" type="text/javascript"></script>-->
+<script src="../js/libs/highcharts/annotations.js" type="text/javascript"></script>
+<script src="../js/libs/highcharts/boost.src.js" type="text/javascript"></script>
+<script src="../js/libs/jquery/jquery.loadmask.js" type="text/javascript"></script>
+
+<!--<script src="../js/portal/x-chart-basic.js" type="text/javascript"></script>-->
+<!--<script src="../js/portal/x-chart-adv.js" type="text/javascript"></script>-->
+<!--<script src="../build/js/x-chart-trade.js" type="text/javascript"></script>-->
+<!--<script type="text/javascript" src="../libs/canvg/rgbcolor.js"></script>-->
+<!--<script type="text/javascript" src="../libs/canvg/StackBlur.js"></script>-->
+<!--<script type="text/javascript" src="../libs/canvg/canvg.js"></script>-->
+
+<!--Chart-->
+<script src="../theme/js/dark-unica.js" type="text/javascript"></script> <!--TODO :: load according to the user theme -->
+<!--<script src="../theme/theme-light.js" type="text/javascript"></script> &lt;!&ndash;TODO :: load according to the user theme &ndash;&gt;-->
+<script src="../js/chart.highstock.extend.js"></script>
+<script src="../js/chart.util.js"></script>
+<script src="../js/chart.config.js"></script>
+<script src="../js/chart.MouseWheelController.js"></script>
+<script src="../js/chart.core.js"></script>
+<script src="../js/chart.data.manager.js"></script>
+<script src="../js/chart.data.manager.webfg.js"></script>
+<script src="../js/chart.manager.js"></script>
+<script src="../js/chart.structure.manager.js"></script>
+<script src="../js/chart.lang.manager.js"></script>
+<script src="../js/chart.indicator.js"></script>
+<script src="../js/chart.toolbar.js"></script>
+<script src="../js/chartModule.js"></script>
+<script src="../js/chart.drawingUtils.js"></script>
+<script src="../js/chart.drawings.js"></script>
+<script src="../js/chart.trader.js" type="text/javascript"></script>
+<script src="../js/chart.trader.data.manager.js" type="text/javascript"></script>
+<script src="../js/chart.trader.drawingUtils.js" type="text/javascript"></script>
+<script src="../js/trade.service.js" type="text/javascript"></script>
+<script src="../js/chart.depth.js" type="text/javascript"></script>
+<script src="../js/chart.scalableAxis.js" type="text/javascript"></script>
+<script src="../js/chart.indicator.advanced.js" type="text/javascript"></script>
+<script src="../js/chart.indicator.drawingUtils.js" type="text/javascript"></script>
+<!--<script src="../con.js" type="text/javascript"></script>
+<script src="../js/chartModule.js"></script>-->
+<!--<script src="../libs/highcharts/highcharts-watermark.js"></script>-->
+<!-- jquery auto suggest only for testing-->
+
+<!--<script src="../libs/jquery/jquery-ui.min.js" type="text/javascript"></script>-->
+<script src="../js/jqueryAutoComplete.js"></script>
+
+
+
+<!--KeyCloak related js-->
+<!--<script src="https://security-xinfinit.rhcloud.com/auth/js/keycloak.js"></script>-->
+<!--<script src="../js/keycloakAdaptor.js"></script>-->
+
+
+
+</body>
+</html>

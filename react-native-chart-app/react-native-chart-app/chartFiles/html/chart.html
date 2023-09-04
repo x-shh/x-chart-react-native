@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie8" lang="en-gb"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9" lang="en-gb"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en-gb">
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.®js"></script>
+<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        .error_input {
+            border: 1px solid red;
+        }
+        .level2 {
+            font-size: 12px;
+        }
+        svg:hover{
+            fill: red !important;
+        }
+    </style>
+
+    <!-- Bootstrap & Addons-->
+    <!-- <link href="https://code.highcharts.com/css/highcharts.css" rel="stylesheet" type="text/css"> -->
+
+    <link href="../css/vendors/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../css/libs/x-chart-lib.css" rel="stylesheet" type="text/css">
+    <link href="../css/jquery.loadmask.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../css/jquery.mainColorPanel.css" rel="stylesheet" type="text/css"> -->
+    <!-- crypto-chart -->
+    <!--<link href="/rest/web/css?id=Vh7f6ayS0Xf-HHljLEH5CAtpNZ2rsb7q" rel="stylesheet" type="text/css">-->
+    <!--&lt;!&ndash; crypto-chart-dark &ndash;&gt;-->
+    <!--<link href="/rest/web/css?id=QZ5T5UCnIpabXmgKRA7o4bXVjw3FXFOT" rel="stylesheet" type="text/css">-->
+    <!--&lt;!&ndash; icons &ndash;&gt;-->
+
+
+    <link href="../css/dev-strucure.css" rel="stylesheet" type="text/css" /> 
+    <link  href="../css/dev-theme.css" rel="stylesheet" type="text/css" />
+    <link href="../css/dev-desktop-srtucture.css" rel="stylesheet" type="text/css" />
+    <link  href="../css/dev-desktop-theme.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/dev-chart.css" rel="stylesheet" type="text/css" />
+
+    <link href="/rest/web/css?id=DsZmfPHjI8TZGBXd6w8yzbXVjw3FXFOT" rel="stylesheet" type="text/css">
+    <link href="../css/reset/reset.css" rel="stylesheet" type="text/css">
+    <link href="../css/icons/icons.css" rel="stylesheet" type="text/css">
+    
+    <!-- <link href="../css/default/structure.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="../css/default/theme.css" rel="stylesheet" type="text/css"> -->
+    
+    
+    <title>Chart</title>
+
+</head>
+<body app-theme="light">
+<div style="display: none" id="symbol_search_container">
+    <input type="text" id="txtBaseSymbol" placeholder="Enter Symbol" class="text_area">
+    <input type="hidden" id="txtBaseSymbolDesc"/>
+    <input type="hidden" id="txtBaseSymbolDp"/>
+    <input type="hidden" id="txtBaseSymbolType"/>
+
+    <input type="button" value="Reload Chart" id="reloadChart" class="def_button"/>
+
+
+</div>
+
+<!--<input type="button" id="performanceCheck" value="performance">-->
+
+<!--Chart Container-->
+<div id="mainchart" style="height:100%;width:100%"></div>
+<!--<div id="depth" style="height:100px;"></div>-->
+<!--<div id="depth-navigator" class="inf-chart" style="height:50px;"></div>-->
+
+
+
+<!--Common Libs-->
+<!--[if lt IE 9]>
+<!--<script src="../libs/bootstrap/js/respond.src.js" type="text/javascript"></script>-->
+<!--<script src="../libs/jquery/jquery-1.9.1.js" type="text/javascript"></script>-->
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<script src="../libs/jquery/jquery.js" type="text/javascript"></script>-->
+<!--<![endif]-->
+
+<!--<script src="../libs/json/jquery.json-2.4.min.js"></script>-->
+<!--<script src="../libs/jquery/jquery.localize.min.js"></script>-->
+<!--<script src="../libs/bootstrap/js/bootstrap.js"></script>-->
+<!--<script src="../libs/jquery/jquery.minicolors.js" type="text/javascript"></script>-->
+
+<!--HighChart-->
+<script src="../js/libs/x-chart-lib.js" type="text/javascript"></script>
+<!--<script src="../libs/highcharts/highcharts-more.js" type="text/javascript"></script>-->
+<!-- <script src="../js/libs/highcharts/boost.src.js" type="text/javascript"></script> -->
+<script src="../js/libs/jquery/jquery.loadmask.js" type="text/javascript"></script>
+<script src="../js/libs/jquery/jquery.mainColorPanel.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<!--<script src="../js/portal/x-chart-basic.js" type="text/javascript"></script>-->
+<!--<script src="../js/portal/x-chart-adv.js" type="text/javascript"></script>-->
+<!--<script src="../build/js/x-chart-trade.js" type="text/javascript"></script>-->
+<!--<script type="text/javascript" src="../libs/canvg/rgbcolor.js"></script>-->
+<!--<script type="text/javascript" src="../libs/canvg/StackBlur.js"></script>-->
+<!--<script type="text/javascript" src="../libs/canvg/canvg.js"></script>-->
+
+<!--Chart-->
+<script src="../js/chart.theme.manager.js"></script>
+<script src="../js/chart.favouriteColor.manager.js"></script>
+<script src="../theme/js/dark-unica.js" type="text/javascript"></script> <!--TODO :: load according to the user theme -->
+<!--<script src="../theme/theme-light.js" type="text/javascript"></script> &lt;!&ndash;TODO :: load according to the user theme &ndash;&gt;-->
+<script src="../js/chart.highstock.extend.js"></script>
+<script src="../js/chart.util.js"></script>
+<script src="../js/chart.data.manager.js"></script>
+<script src="../js/dataProviders/chart.provider.js"></script>
+<script src="../js/dataProviders/chart.mock.provider.js"></script>
+<script src="../js/dataProviders/chart.webfg.provider.js"></script>
+<script src="../js/dataProviders/chart.xinfinit.provider.js"></script>
+<script src="../js/chart.config.js"></script>
+<script src="../js/chart.MouseWheelController.js"></script>
+<script src="../js/chart.core.js"></script>
+<!--<script src="../js/chart.data.manager.js"></script>-->
+<!--<script src="../js/chart.data.manager.webfg.js"></script>-->
+<script src="../js/chart.manager.js"></script>
+<script src="../js/chart.structure.manager.js"></script>
+<script src="../js/chart.lang.manager.js"></script>
+<script src="../js/chart.toolbar.js"></script>
+<script src="../js/chartModule.js"></script>
+<script src="../js/chart.scalableAxis.js" type="text/javascript"></script>
+<script src="../js/chart.globalSettingsManager.js"></script>
+
+<!-- depth -->
+<script src="../js/depth/chart.depth.manager.js" type="text/javascript"></script>
+<script src="../js/depth/chart.depth.js" type="text/javascript"></script>
+
+<!-- drawings -->
+<script src="../js/drawings/chart.drawingUtils.js"></script>
+<script src="../js/drawings/chart.drawingSettings.js"></script>
+<script src="../js/drawings/chart.drawings.js"></script>
+<script src="../js/drawings/chart.drawingObject.js"></script>
+<script src="../js/drawings/chart.drawing.manager.js"></script>
+<script src="../js/drawings/chart.drawing.mobile.manager.js"></script>
+<script src="../js/drawings/chart.drawing.structure.manager.js" type="text/javascript"></script>
+<script src="../js/drawings/dataProviders/chart.drawing.mock.provider.js" type="text/javascript"></script>
+<script src="../js/drawings/impl/chart.drawing.andrewsPitchfork.js"></script>
+<script src="../js/drawings/impl/chart.drawing.downArrow.js"></script>
+<script src="../js/drawings/impl/chart.drawing.ellipse.js"></script>
+<script src="../js/drawings/impl/chart.drawing.polylineDrawing.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fib3PointPriceProjection.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fib3PointPriceProjectionGenericDrawing.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fibArcs.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fibFans.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fibRetracements.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fibVerRetracements.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fib3PointTimeProjection.js"></script>
+<script src="../js/drawings/impl/chart.drawing.abcdPattern.js"></script>
+<script src="../js/drawings/impl/chart.drawing.elliotWaveDrawing.js"></script>
+<script src="../js/drawings/impl/chart.drawing.elliotTriangleWave.js"></script>
+<script src="../js/drawings/impl/chart.drawing.elliotImpulseWave.js"></script>
+<script src="../js/drawings/impl/chart.drawing.elliotCorrectiveWave.js"></script>
+<script src="../js/drawings/impl/chart.drawing.elliotCorrectiveDoubleWave.js"></script>
+<script src="../js/drawings/impl/chart.drawing.elliotCorrectiveTripleWave.js"></script>
+<script src="../js/drawings/impl/chart.drawing.highLowLabels.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fib2PointTimeProjection.js"></script>
+<script src="../js/drawings/impl/chart.drawing.timestampMarker.js"></script>
+<!-- <script src="../js/drawings/impl/chart.fib3PointPriceProjectionHLH.js"></script>
+<script src="../js/drawings/impl/chart.drawing.fib3PointPriceProjectionLHL.js"></script> -->
+<script src="../js/drawings/impl/chart.drawing.horizontalLine.js"></script>
+<script src="../js/drawings/impl/chart.drawing.shortLine.js"></script>
+<script src="../js/drawings/impl/chart.drawing.longLine.js"></script>
+<script src="../js/drawings/impl/chart.drawing.horizontalRay.js"></script>
+<script src="../js/drawings/impl/chart.drawing.label.js"></script>
+<script src="../js/drawings/impl/chart.drawing.line.js"></script>
+<script src="../js/drawings/impl/chart.drawing.brush.js"></script>
+<script src="../js/drawings/impl/chart.drawing.rectangle.js"></script>
+<script src="../js/drawings/impl/chart.drawing.regressionChannel.js"></script>
+<script src="../js/drawings/impl/chart.drawing.regressionLine.js"></script>
+<script src="../js/drawings/impl/chart.drawing.trendChannel.js"></script>
+<script src="../js/drawings/impl/chart.drawing.upArrow.js"></script>
+<script src="../js/drawings/impl/chart.drawing.verticalLine.js"></script>
+<script src="../js/drawings/impl/chart.drawing.positions.js"></script>
+<script src="../js/drawings/impl/chart.drawing.volumeProfile.js"></script>
+<script src="../js/drawings/impl/chart.drawing.arrow.js"></script>
+<script src="../js/drawings/chart.drawing.commands.wrappers.js"></script>
+<script src="../js/drawings/impl/chart.drawing.ray.js"></script>
+<script src="../js/drawings/impl/chart.drawing.extendedLine.js"></script>
+<script src="../js/drawings/impl/chart.drawing.lineArrow.js"></script>
+
+
+<!-- indicators -->
+<script src="../js/indicators/chart.indicator.js"></script>
+<script src="../js/indicators/chart.indicator.advanced.js"></script>
+<script src="../js/indicators/impl/chart.indicator.volume.js"></script>
+<script src="../js/indicators/impl/chart.indicator.volumePanel.js"></script>
+<script src="../js/indicators/impl/chart.indicator.bollingerBand.js"></script>
+<script src="../js/indicators/impl/chart.indicator.bollingerBandWidth.js"></script>
+<script src="../js/indicators/impl/chart.indicator.commodityChannelIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.macd.js"></script>
+<script src="../js/indicators/impl/chart.indicator.macdForest.js"></script>
+<script src="../js/indicators/impl/chart.indicator.accumulationDistLine.js"></script>
+<script src="../js/indicators/impl/chart.indicator.momentum.js"></script>
+<script src="../js/indicators/impl/chart.indicator.movTrip.js"></script>
+<script src="../js/indicators/impl/chart.indicator.ema.js"></script>
+<script src="../js/indicators/impl/chart.indicator.movr.js"></script>
+<script src="../js/indicators/impl/chart.indicator.trima.js"></script>
+<script src="../js/indicators/impl/chart.indicator.gmma.js"></script>
+<script src="../js/indicators/impl/chart.indicator.gmmaOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.rsi.js"></script>
+<script src="../js/indicators/impl/chart.indicator.rsic.js"></script>
+<script src="../js/indicators/impl/chart.indicator.srsi.js"></script>
+<script src="../js/indicators/impl/chart.indicator.aroon.js"></script>
+<script src="../js/indicators/impl/chart.indicator.averageDirectionIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.trueRange.js"></script>
+<script src="../js/indicators/impl/chart.indicator.averageTrueRange.js"></script>
+<script src="../js/indicators/impl/chart.indicator.directionalMovement.js"></script>
+<script src="../js/indicators/impl/chart.indicator.directionalMovementIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.directionalMovementPlus.js"></script>
+<script src="../js/indicators/impl/chart.indicator.directionalMovementMinus.js"></script>
+<script src="../js/indicators/impl/chart.indicator.onBalanceVolume.js"></script>
+<script src="../js/indicators/impl/chart.indicator.rateOfChange.js"></script>
+<script src="../js/indicators/impl/chart.indicator.simpleMovingAverage.js"></script>
+<script src="../js/indicators/impl/chart.indicator.envelopes.js"></script>
+<script src="../js/indicators/impl/chart.indicator.ultimateOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.williamsPR.js"></script>
+<script src="../js/indicators/impl/chart.indicator.moneyFlowIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.chaikinOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.fastStochasticOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.slowStochasticOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.fullStochasticOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.aroonUpDown.js"></script>
+<script src="../js/indicators/impl/chart.indicator.weightedMovingAverage.js"></script>
+<script src="../js/indicators/impl/chart.indicator.sar.js"></script>
+<script src="../js/indicators/impl/chart.indicator.historicalVolatility.js"></script>
+<script src="../js/indicators/impl/chart.indicator.standardDeviation.js"></script>
+<script src="../js/indicators/impl/chart.indicator.highestHigh.js"></script>
+<script src="../js/indicators/impl/chart.indicator.lowestLow.js"></script>
+<script src="../js/indicators/impl/chart.indicator.ichimokuKinkoHyo.js"></script>
+<script src="../js/indicators/impl/chart.indicator.volumeMovingAverage.js"></script>
+<script src="../js/indicators/impl/chart.indicator.trix.js"></script>
+<script src="../js/indicators/impl/chart.indicator.chaikinMoneyFlow.js"></script>
+<script src="../js/indicators/impl/chart.indicator.negativeVolumeIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.positiveVolumeIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.verticalHorizontalFilter.js"></script>
+<script src="../js/indicators/impl/chart.indicator.stochasticMomentum.js"></script>
+<script src="../js/indicators/impl/chart.indicator.movingAverageMomentum.js"></script>
+<script src="../js/indicators/impl/chart.indicator.awesomeOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.accelerationDecelerationOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.coppockCurve.js"></script>
+<script src="../js/indicators/impl/chart.indicator.knowSureThing.js"></script>
+<script src="../js/indicators/impl/chart.indicator.trueStrengthIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.vortex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.medianPrice.js"></script>
+<script src="../js/indicators/impl/chart.indicator.massIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.movingAverageCentered.js"></script>
+<script src="../js/indicators/impl/chart.indicator.bidAsk.js"></script>
+<script src="../js/indicators/impl/chart.indicator.elliotWaveOscillator.js"></script>
+<script src="../js/indicators/impl/chart.indicator.relativeStrengthLevy.js"></script>
+<script src="../js/indicators/impl/chart.indicator.keltner.js"></script>
+<script src="../js/indicators/impl/chart.indicator.macdCrossSignal.js"></script>
+<script src="../js/indicators/impl/chart.indicator.macdCrossOverZeroSignal.js"></script>
+<script src="../js/indicators/impl/chart.indicator.bearishEngulfing.js"></script>
+<script src="../js/indicators/impl/chart.indicator.bullishEngulfing.js"></script>
+<script src="../js/indicators/impl/chart.indicator.bidAskHistory.js"></script>
+<script src="../js/indicators/impl/chart.indicator.spread.js"></script>
+<script src="../js/indicators/impl/chart.indicator.customWeightIndex.js"></script>
+<script src="../js/indicators/impl/chart.indicator.harmonicPattern.js"></script>
+<script src="../js/indicators/impl/chart.indicator.highLowRegressionChannel.js"></script>
+<script src="../js/indicators/impl/chart.indicator.darkCloud.js"></script>
+<script src="../js/indicators/impl/chart.indicator.days.js"></script>
+<script src="../js/indicators/impl/chart.indicator.mondays.js"></script>
+<script src="../js/indicators/impl/chart.indicator.zigzag.js"></script>
+<script src="../js/indicators/impl/chart.indicator.sessionTimeBreaks.js"></script>
+<script src="../js/indicators/impl/chart.indicator.breakoutFinder.js"></script>
+<script src="../js/indicators/impl/chart.indicator.benchmarkChart.js"></script>
+<script src="../js/indicators/chart.indicator.manager.js"></script>
+<script src="../js/indicators/chart.indicator.structure.manager.js" type="text/javascript"></script>
+<script src="../js/indicators/drawings/chart.indicator.drawingUtils.js"></script>
+<script src="../js/indicators/drawings/impl/chart.indicator.drawings.harmonicPattern.js"></script>
+<script src="../js/indicators/drawings/impl/chart.indicator.drawings.highLowRegressionChannel.js"></script>
+<script src="../js/indicators/drawings/impl/chart.indicator.drawings.arrowhead.js"></script>
+<script src="../js/indicators/chart.indicator.commands.wrappers.js"></script>
+
+<!-- trade -->
+<script src="../js/trade/chart.trader.js" type="text/javascript"></script>
+<script src="../js/trade/chart.trade.manager.js" type="text/javascript"></script>
+<script src="../js/trade/chart.trade.structure.manager.js" type="text/javascript"></script>
+<script src="../js/trade/chart.trade.data.manager.js" type="text/javascript"></script>
+<script src="../js/trade/dataProviders/chart.trade.mock.provider.js"></script>
+<script src="../js/trade/dataProviders/chart.trade.xinfinit.provider.js"></script>
+<script src="../js/trade/drawings/chart.trade.drawingUtils.js" type="text/javascript"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.tradingLine.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.tradingLabel.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.holdingLine.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.limitOrder.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.upperLimit.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.lowerLimit.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.breakEvenLine.js"></script>
+<script src="../js/trade/drawings/impl/chart.trade.drawing.algoLine.js"></script>
+
+<!-- alert -->
+<script src="../js/alert/dataProviders/chart.alert.mock.provider.js"></script>
+<script src="../js/alert/chart.alert.manager.js"></script>
+<!-- <script src="../js/alert/drawings/chart.alert.drawingUtils.js"></script> -->
+<script src="../js/alert/drawings/impl/chart.alert.drawing.line.js"></script>
+
+<!-- highcharts -->
+<script src="../js/libs/highcharts/highcharts-watermark.js"  type="text/javascript"></script>
+<script src="../js/libs/highcharts/annotations.js" type="text/javascript"></script>
+
+<!-- commands -->
+<script src="../js/commands/chart.commands.js" type="text/javascript"></script>
+<script src="../js/commands/chart.commands.wrappers.js" type="text/javascript"></script>
+<script src="../js/commands/chart.commands.manager.js" type="text/javascript"></script>
+
+<!-- context menu -->
+<script src="../js/contextmenu/chart.contextmenu.manager.js" type="text/javascript"></script>
+<script src="../js/contextmenu/chart.contextmenu.structure.manager.js" type="text/javascript"></script>
+
+<!-- templates -->
+<script src="../js/templates/dataProviders/chart.templates.mock.provider.js"></script>
+<script src="../js/templates/chart.templates.manager.js" type="text/javascript"></script>
+
+<!-- intraday chart -->
+<script src="../js/intradayChart/chart.intradayChart.js" type="text/javascript"></script>
+<script src="../js/intradayChart/chart.intradayChart.manager.js" type="text/javascript"></script>
+
+<!-- jquery auto suggest only for testing-->
+
+<!--<script src="../libs/jquery/jquery-ui.min.js" type="text/javascript"></script>-->
+<script src="../js/jqueryAutoComplete.js"></script>
+
+
+
+<!--KeyCloak related js-->
+<!--<script src="https://security-xinfinit.rhcloud.com/auth/js/keycloak.js"></script>-->
+<!--<script src="../js/keycloakAdaptor.js"></script>-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,2379 @@
+@-webkit-keyframes loadanim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loadanim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.inf-chart {
+  position: relative;
+}
+.inf-chart p, .inf-chart label {
+  margin: 0;
+}
+.inf-chart a {
+  text-decoration: none;
+}
+.inf-chart ul {
+  padding: 0;
+}
+.inf-chart ul > li {
+  list-style: none;
+}
+.inf-chart .navbar-default {
+  min-height: 0;
+  margin: 0;
+}
+.inf-chart .navbar-default .navbar-nav > li {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.inf-chart .navbar-default .navbar-nav > li + li {
+  margin-left: 1px;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown li a {
+  padding: 3px 10px;
+}
+.inf-chart .navbar-default .navbar-nav > li a {
+  padding: 8px 12px;
+  height: 32px;
+}
+.inf-chart .navbar-default .navbar-nav > li[data-inf-ctrl=comparison] > .dropdown-menu > li:first-child {
+  height: 35px;
+}
+.inf-chart .navbar-default .navbar-nav.interval > li, .inf-chart .navbar-default .navbar-nav.period > li {
+  min-width: 30px;
+  text-align: center;
+}
+.inf-chart .navbar-default .navbar-nav.interval .dropdown-menu, .inf-chart .navbar-default .navbar-nav.period .dropdown-menu {
+  left: -1px;
+  right: auto;
+}
+.inf-chart .navbar-default .navbar-nav.interval.upper-toolbar-horizontal, .inf-chart .navbar-default .navbar-nav.period.upper-toolbar-horizontal {
+  width: 100%;
+}
+.inf-chart .navbar-default .navbar-nav.interval.upper-toolbar-horizontal .dropdown > a, .inf-chart .navbar-default .navbar-nav.period.upper-toolbar-horizontal .dropdown > a {
+  display: none;
+}
+.inf-chart .navbar-default .navbar-nav.interval.upper-toolbar-horizontal li.dropdown, .inf-chart .navbar-default .navbar-nav.period.upper-toolbar-horizontal li.dropdown {
+  width: 100%;
+}
+.inf-chart .navbar-default .navbar-nav.interval.upper-toolbar-horizontal li.dropdown > .dropdown-menu, .inf-chart .navbar-default .navbar-nav.period.upper-toolbar-horizontal li.dropdown > .dropdown-menu {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings:before, .inf-chart .navbar-default .navbar-nav.chart-settings:after {
+  display: none;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li[inf-ctrl=file] {
+  margin-left: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico {
+  height: 32px;
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 27px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=undo] {
+  margin-left: 1px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=reset] > a {
+  display: flex;
+  align-items: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=reset] > a i {
+  margin-right: 5px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu {
+  margin-left: 0;
+  left: 0;
+  right: auto;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li {
+  margin-bottom: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li a {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li + li {
+  margin-top: 1px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu.ch_ul {
+  overflow-y: visible;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu.ch_ul > li {
+  width: 30px;
+  height: 30px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu.ch_ul > li + li {
+  margin-top: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu .symbol-search-dropdown {
+  margin-left: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options {
+  margin-right: 1px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu {
+  min-width: 165px;
+  max-height: none;
+  width: 310px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu li {
+  height: 30px;
+}
+.compact-toolbar.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu li {
+  height: auto;
+  min-height: 30px;
+}
+
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu li a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 15px;
+  height: 30px;
+  width: 100%;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu li .caret {
+  position: absolute;
+  right: 5px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu li.just_ico {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.compact-toolbar.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu li.just_ico {
+  display: block;
+}
+
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .icon, .inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .fa {
+  width: 20px;
+  height: 20px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown:hover .dropdown-menu {
+  display: grid;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu {
+  display: none;
+  top: -1px;
+  left: 134px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu a:after {
+  display: none;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul {
+  width: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul li {
+  width: auto;
+  height: 30px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul li .icon, .inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul li .fa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul li a {
+  padding: 6px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul li a .icon {
+  width: 12px;
+  height: 12px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.charttype {
+  grid-template-columns: repeat(10, auto);
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.print-type {
+  grid-template-columns: repeat(4, auto);
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.book-vol-options {
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 1px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.book-vol-options > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.icon-list {
+  min-width: 25px;
+  left: 164px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.icon-list li a {
+  padding: 5px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.icon-list li a .icon {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .ch_ul {
+  width: 152px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .ch_ul li {
+  margin-right: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .ch_ul li .icon {
+  margin-right: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.interval-dropdown {
+  width: 65px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.interval-dropdown a.dropdown-toggle {
+  padding: 2px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.interval-dropdown a.dropdown-toggle span:first-child {
+  width: calc(100% - 10px);
+  text-align: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown .dropdown-toggle .icon {
+  margin-top: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask {
+  padding: 0 5px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask .bid-text {
+  margin-right: 3px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content {
+  height: 23px;
+  width: 41.5px;
+  display: none;
+  margin: 2px 0 0 3px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content + .btn-content {
+  margin-left: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content:focus {
+  outline: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content .bs-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content.btn-buy .bs-text .fa-arrow-left {
+  transform: rotate(135deg);
+  margin-right: 5px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content.btn-sell .bs-text .fa-arrow-right {
+  transform: rotate(135deg);
+  margin-right: 5px;
+}
+.inf-chart .navbar-default .navbar-collapse {
+  margin: 0;
+}
+.inf-chart .navbar-default .navbar-collapse .interval, .inf-chart .navbar-default .navbar-collapse .period {
+  margin-top: 2px;
+}
+.inf-chart .navbar-default .defaultNavbar2 {
+  padding: 0;
+}
+.inf-chart .navbar-default .defaultNavbar2 .chart-settings > li.dropdown a.dropdown-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.inf-chart .navbar-default .defaultNavbar2 .chart-settings > li.dropdown.inf-options, .inf-chart .navbar-default .defaultNavbar2 .chart-settings > li.dropdown.compact-show {
+  display: none;
+}
+.inf-chart .dropdown-menu {
+  padding: 0;
+}
+.inf-chart .dropdown-menu input[type=text] {
+  width: calc(100% - 10px);
+  margin: 5px;
+  padding: 5px;
+  height: 25px;
+  outline: 0;
+}
+.inf-chart .dropdown-menu .icon {
+  margin-top: 0;
+}
+.inf-chart .dropdown-menu > li {
+  cursor: pointer;
+}
+.inf-chart .dropdown-menu > li > a {
+  padding: 0;
+}
+.inf-chart .chart-drawing li.dropdown ul.dropdown-menu li {
+  width: 100%;
+  height: 36px;
+  cursor: pointer;
+}
+.inf-chart .chart-drawing li.dropdown ul.dropdown-menu li a {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 20px 1fr 20px;
+  padding: 0 10px;
+  grid-column-gap: 10px;
+}
+.inf-chart .chart-drawing > li > a {
+  height: 36px;
+  width: 25px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .chart-drawing > li > a .icon:before {
+  display: flex;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu {
+  min-width: 0;
+  margin-left: 26px;
+  overflow-y: visible;
+  width: max-content;
+  top: 0;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu li {
+  margin-top: 0;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu li a .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.inf-chart .chart_holder {
+  float: left;
+}
+.inf-chart .chart_holder .mainchart_chart, .inf-chart .chart_holder .order-book-volume-chart {
+  float: left;
+}
+.inf-chart .order-book-volume-tooltip-wrapper {
+  padding: 10px;
+  min-width: 370px;
+}
+.inf-chart .order-book-volume-tooltip-wrapper .tooltip-main-val {
+  padding: 0 5px;
+}
+.inf-chart .order-book-volume-tooltip-wrapper h3, .inf-chart .order-book-volume-tooltip-wrapper h4, .inf-chart .order-book-volume-tooltip-wrapper p {
+  margin: 0;
+}
+.inf-chart .order-book-volume-tooltip-wrapper h3 span {
+  display: block;
+}
+.inf-chart .order-book-volume-tooltip-wrapper ul {
+  padding: 0;
+  margin: 0;
+}
+.inf-chart .order-book-volume-tooltip-wrapper ul li {
+  list-style-type: none;
+  padding: 5px;
+  width: 50%;
+  float: left;
+}
+.inf-chart div[inf-container=drawing_settings] .drawing_popup .drawing_popup_header {
+  padding: 8px;
+}
+.inf-chart div[inf-container=drawing_settings] .drawing_popup .drawing_popup_row {
+  padding: 10px;
+}
+.inf-chart .chart-buy-sell-button {
+  float: right;
+  height: 22px;
+  margin-top: 1px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content {
+  display: grid;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-2 {
+  grid-template-columns: 140px 140px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-3 {
+  grid-template-columns: 140px 85px 140px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 {
+  grid-template-columns: 35px 120px 85px 120px 35px;
+}
+.hide-trend-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 {
+  grid-template-columns: 1fr;
+}
+.hide-trend-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-algo-buy, .hide-trend-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-algo-sell {
+  display: none;
+}
+.hide-trend-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-sell {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+
+.show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 {
+  grid-template-columns: 25px 110px 110px 25px;
+  position: relative;
+  z-index: 1;
+}
+.show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .size-content {
+  display: none;
+}
+.show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-content .bs-value {
+  min-width: 0;
+  padding: 0 5px;
+}
+.compact-trade-buttons.show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-content .bs-value {
+  display: none;
+}
+
+.compact-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 {
+  grid-template-columns: 35px auto auto 35px;
+}
+
+.compact-more-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 {
+  position: absolute;
+  right: 0;
+  top: 27px;
+}
+
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-algo-sell {
+  order: 1;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-sell {
+  order: 2;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .size-content {
+  order: 3;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-buy {
+  order: 4;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-algo-buy {
+  order: 5;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .btn-algo-sell .tiny-text, .inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .btn-algo-buy .tiny-text {
+  margin: 0;
+  text-transform: uppercase;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .btn-algo-sell {
+  margin-right: 1px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .btn-algo-buy {
+  margin-left: 1px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content {
+  order: 2;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content .title {
+  left: 0;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content .form-control {
+  height: 18px;
+  padding: 2px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content.edit-size .title {
+  display: none;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .btn-buy {
+  order: 3;
+}
+.inf-chart .chart-buy-sell-button .btn-content {
+  height: 22px;
+  outline: none;
+}
+.inf-chart .chart-buy-sell-button .btn-content .bs-value {
+  text-align: center;
+  padding: 0 10px 0 10px;
+  float: right;
+  min-width: 70px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.inf-chart .chart-buy-sell-button .btn-content .bs-text {
+  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.inf-chart .chart-buy-sell-button .btn-content .bs-text .fa {
+  margin-top: -2px;
+}
+.inf-chart .chart-buy-sell-button .btn-sell .bs-value {
+  float: right;
+  text-align: left;
+}
+.inf-chart .chart-buy-sell-button .btn-sell .bs-text {
+  float: left;
+}
+.inf-chart .chart-buy-sell-button .btn-sell .bs-text .fa-arrow-right {
+  transform: rotate(135deg);
+  margin-right: 5px;
+  margin-top: -1px;
+}
+.inf-chart .chart-buy-sell-button .btn-buy .bs-value {
+  float: left;
+  text-align: right;
+}
+.inf-chart .chart-buy-sell-button .btn-buy .bs-text {
+  flex-direction: row-reverse;
+  float: right;
+}
+.inf-chart .chart-buy-sell-button .btn-buy .bs-text .fa-arrow-left {
+  transform: rotate(135deg);
+  margin-left: 5px;
+}
+.inf-chart .chart-buy-sell-button button {
+  float: left;
+  padding: 0;
+}
+.inf-chart .chart_container .chart-section {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu, .inf-chart .chart-settings .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul li {
+  cursor: pointer;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.charttype, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.gridtype, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.crosshair-type, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.print-type, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.book-vol, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.charttype, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.gridtype, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.crosshair-type, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.print-type, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.book-vol {
+  display: grid;
+  grid-gap: 1px;
+  min-width: 0;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.charttype li, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.gridtype li, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.crosshair-type li, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.print-type li, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.book-vol li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.charttype li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.gridtype li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.crosshair-type li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.print-type li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.book-vol li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.charttype, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.charttype {
+  grid-template-columns: repeat(5, auto);
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.gridtype, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.gridtype {
+  grid-template-columns: repeat(4, auto);
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.crosshair-type, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.print-type, .inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.book-vol, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.crosshair-type, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.print-type, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.book-vol {
+  grid-template-columns: repeat(2, auto);
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul .dropdown-text, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul .dropdown-text {
+  display: none;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown {
+  grid-template-columns: none;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown li, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown li {
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 10px;
+  padding: 0 10px;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown .dropdown-text, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown .dropdown-text {
+  display: flex;
+}
+.inf-chart .chart-drawing .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown .adv-chart-tooltip::before, .inf-chart .chart-settings .dropdown:hover .dropdown-menu.ch_ul.vertical-dropdown .adv-chart-tooltip::before {
+  display: none;
+}
+.inf-chart .chart-option-y-axis-reset-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.inf-chart .chart-option-y-axis-reset-wrapper .axis-reset-container {
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.inf-chart .chart-option-y-axis-reset-wrapper .axis-reset-container .axis-reset-icon {
+  text-align: center;
+  cursor: pointer;
+  margin-right: 2px;
+}
+.inf-chart .chart-option-y-axis-reset-wrapper .axis-reset-container .axis-reset-icon img {
+  width: 23px;
+  height: 23px;
+  padding: 3px;
+}
+.inf-chart .chart-option-y-axis-reset-wrapper .axis-reset-container .axis-reset-icon:last-child {
+  margin-right: 0;
+}
+.inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu {
+  position: static;
+  margin-left: 0;
+}
+.inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu li.ui-menu-item .ui-menu-item-wrapper {
+  padding: 3px 10px;
+}
+.inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu li.ui-menu-item .ui-menu-item-wrapper .symbol-type {
+  min-width: 100px;
+}
+.inf-chart .navbar {
+  left: 0;
+  top: 0;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header {
+  margin-top: 1px;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper {
+  float: left;
+  height: 25px;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask {
+  display: grid;
+  height: 100%;
+  vertical-align: middle;
+  grid-auto-flow: column;
+  align-items: center;
+  padding: 2px 6px;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.just_ico.show-right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.dropdown.inf-options {
+  display: block;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.compact-hide {
+  display: none;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li a {
+  text-transform: uppercase;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li a > span:first-child {
+  padding: 1px 7px;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li a > span:last-child {
+  padding: 1px 7px;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li a > span:last-child .text-label {
+  display: inline-block;
+  width: 25px;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li a .text-icon .fa {
+  transform: rotate(-45deg);
+}
+.inf-chart .dropdown-menu.indicators-dropdown {
+  overflow-y: hidden;
+  width: 300px;
+}
+.inf-chart .dropdown-menu.indicators-dropdown > li a {
+  white-space: normal;
+}
+.inf-chart .dropdown-menu.indicators-dropdown > li.indicator-search-box {
+  height: 35px;
+}
+.inf-chart .dropdown-menu.indicators-dropdown > li.indicator-list {
+  overflow-y: auto;
+  height: 100%;
+}
+.inf-chart .chart-option-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 41px;
+}
+.inf-chart .chart-option-wrapper .box-main {
+  display: flex;
+  align-items: flex-start;
+  padding: 4px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.inf-chart .chart-option-wrapper .box-main + .box-main {
+  margin: 0 5px;
+}
+.inf-chart .chart-option-wrapper .box-main .box.symbol-content {
+  display: flex;
+}
+.inf-chart .chart-option-wrapper .box-main .box.symbol-content .lbl-time {
+  display: flex;
+  justify-content: space-between;
+}
+.inf-chart .chart-option-wrapper .box-main .box.symbol-content .item-color {
+  height: 8px;
+  width: 8px;
+  margin-right: 5px;
+  margin-top: 1px;
+}
+.inf-chart .chart-option-wrapper .box-main .legend-item-wrapper {
+  margin: 0;
+}
+.inf-chart .chart-option-wrapper .box-main .legend-item-wrapper .legend-items {
+  min-width: 186px;
+}
+.inf-chart .chart-option-wrapper .box-main .popup-options {
+  display: none;
+}
+.inf-chart .chart-option-wrapper .box-main:hover .popup-options {
+  display: block;
+  position: absolute;
+}
+.inf-chart .chart-option-wrapper .box-main.legend-base-symbol .legend-base-symbol-basic-data {
+  display: flex;
+}
+.inf-chart .chart-option-wrapper .box-main.legend-base-symbol .legend-base-symbol-basic-data .box .main-symbol-name + .value {
+  margin-top: 10px;
+}
+.inf-chart .chart-option-wrapper .box-main.legend-base-symbol .legend-base-symbol-basic-data .box .value + .value {
+  margin-top: 10px;
+}
+.inf-chart .chart-option-wrapper .main-symbol-name {
+  margin: 1px 0;
+}
+.inf-chart .chart-option-wrapper .value {
+  width: 110px;
+}
+.inf-chart .chart-option-wrapper .value .lbl {
+  text-transform: uppercase;
+  display: inline-block;
+  width: 10px;
+  margin-right: 5px;
+}
+.inf-chart .chart-option-wrapper .refresh-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper {
+  position: relative;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items {
+  display: flex;
+  padding: 10px;
+  margin: 1px 0 0;
+  cursor: pointer;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .item-color {
+  width: 3px;
+  height: 13px;
+  margin-right: 5px;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .tooltip-items-container {
+  display: flex;
+  min-width: 200px;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .tooltip-items-container .value {
+  margin-left: 5px;
+  width: auto;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .box + .box .value {
+  margin-left: 10px;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .popup-options {
+  display: none;
+  position: absolute;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper:hover .popup-options {
+  display: block;
+}
+.inf-chart .chart-option-wrapper .popup-options {
+  top: 0;
+  right: 0;
+}
+.inf-chart .chart-option-wrapper .popup-options ul {
+  margin: 0;
+}
+.inf-chart .chart-option-wrapper .popup-options ul li.btn-group .btn {
+  padding: 4.5px 9.5px;
+}
+.inf-chart .chart-option-wrapper .symbol-select {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 3px;
+  position: relative;
+}
+.inf-chart .chart-option-wrapper .symbol-select.comparison-legend-wrapper {
+  padding-right: 10px;
+  margin-right: 5px;
+  width: 190px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .selected-symbol {
+  margin-bottom: 0;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .btn {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown {
+  position: static;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown .dropdown-menu {
+  width: calc(100% + 2px);
+  left: auto;
+  right: -1px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown .dropdown-menu li a {
+  padding: 0;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown .dropdown-menu li .symbol-select {
+  display: flex;
+  justify-content: flex-end;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown .dropdown-menu li .symbol-select .selected-symbol {
+  margin-right: auto;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown-menu {
+  z-index: 1;
+  width: 194px;
+  margin-right: -2px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown-menu .symbol-option-btn-wrap {
+  padding: 0 7px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .symbol-option-btn-wrap {
+  display: flex;
+  margin-left: auto;
+}
+.inf-chart .chart-option-wrapper .comparison-indicator-legends {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 0;
+}
+.inf-chart .chart-option-wrapper .comparison-indicator-legends.indicators-legends {
+  margin-top: 1px;
+  margin-left: 1px;
+}
+.inf-chart .chart-option-wrapper .comparison-indicator-legends.indicators-legends .legend-item-wrapper {
+  min-width: 71px;
+}
+.inf-chart .chart-option-wrapper .box-main-comparison-legends-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.inf-chart .chart-option-wrapper.legend-value-hide .comparison-legends .value {
+  display: none;
+}
+.inf-chart .chart-option-wrapper.compact-legend .box-main-comparison-legends-wrapper {
+  flex-wrap: wrap;
+}
+.inf-chart .chart-option-wrapper.compact-legend .comparison-legends {
+  margin-top: 1px;
+  margin-left: 1px;
+}
+.inf-chart .chart-option-wrapper.hide-tooltip .value {
+  display: none;
+}
+.inf-chart .chart-option-wrapper.hide-tooltip .legend-item-wrapper .legend-items {
+  min-width: 0;
+}
+.inf-chart .chart-option-wrapper.hide-tooltip .box-main.legend-base-symbol {
+  min-width: 0;
+}
+.inf-chart .chart-option-wrapper.hide-tooltip .bid-last-L-ask-last-H {
+  display: none;
+}
+.inf-chart .chart-option-wrapper.hide-tooltip .tooltip-items-container {
+  min-width: 0 !important;
+}
+.inf-chart .bid-last-L-ask-last-H {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.inf-chart .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px 5px;
+}
+.inf-chart .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper .box {
+  width: 10px;
+  height: 10px;
+}
+.inf-chart .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper p {
+  padding: 0 5px;
+}
+.inf-chart .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper p.value span {
+  padding: 0 5px;
+}
+.inf-chart .chart-left-toolbar {
+  width: 25px;
+}
+.inf-chart .chart-left-toolbar + .chartwrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right {
+  flex-direction: row;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper {
+  min-width: 0;
+  width: 100%;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper .tooltip-main-val {
+  padding: 0;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper .values {
+  margin-top: 10px;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper .values ul {
+  display: flex;
+  flex-direction: column;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper .values ul li {
+  padding: 0;
+  width: 100%;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper .values ul li + li {
+  margin: 0 0 0 0;
+  padding-top: 5px;
+}
+.inf-chart .chartwrapper .line-weight-space {
+  padding-right: 3px;
+}
+.inf-chart .chartwrapper .toggle-on-off {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  padding: 2px;
+  transition: 0.5s;
+}
+.inf-chart .chartwrapper .toggle-on-off .on-off-slider {
+  position: absolute;
+  width: 50%;
+  height: 17px;
+  transition: 0.5s;
+}
+.inf-chart .chartwrapper .toggle-on-off.on .on-off-slider {
+  right: 2px;
+}
+.inf-chart .chartwrapper .toggle-on-off.off .on-off-slider {
+  right: calc(50% - 2px);
+}
+.inf-chart .chartwrapper .toggle-on-off p {
+  width: 100%;
+  text-align: center;
+}
+.inf-chart .chartwrapper .selection-btn {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(33.33%, 1fr));
+  margin: 3px -5px 0 -5px;
+}
+.inf-chart .chartwrapper .radio-button-wrapper {
+  padding: 0 5px;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder input {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  margin-top: 0;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder .radio-custom-holder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder .radio-custom-holder .radio-label {
+  text-align: center;
+  height: 25px;
+}
+.inf-chart .highcharts-button-box {
+  width: 18px;
+  height: 19px;
+}
+.inf-chart .label-input-container input[type=text] {
+  height: 22px;
+}
+.inf-chart .adv-chart-tooltip {
+  position: relative;
+}
+.inf-chart .adv-chart-tooltip:hover:before {
+  content: attr(adv-chart-tooltip);
+  position: absolute;
+  padding: 3px 8px;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+  text-align: center;
+}
+.inf-chart .adv-chart-tooltip:hover:after {
+  content: "";
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+}
+.inf-chart .adv-chart-tooltip.right:hover:before, .inf-chart .adv-chart-tooltip.right:hover:after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.inf-chart .adv-chart-tooltip.right:hover:before {
+  left: 100%;
+  margin-left: 7px;
+}
+.inf-chart .adv-chart-tooltip.right:hover:after {
+  right: -7px;
+}
+.inf-chart .adv-chart-tooltip.left:hover:before {
+  right: 100%;
+  margin-right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.inf-chart .adv-chart-tooltip.left:hover:after {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+}
+.inf-chart .adv-chart-tooltip.top:hover:before, .inf-chart .adv-chart-tooltip.top-left:hover:before, .inf-chart .adv-chart-tooltip.top-right:hover:before {
+  bottom: 100%;
+  margin-bottom: 6px;
+}
+.inf-chart .adv-chart-tooltip.top:hover:after, .inf-chart .adv-chart-tooltip.top-left:hover:after, .inf-chart .adv-chart-tooltip.top-right:hover:after {
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(270deg);
+}
+.inf-chart .adv-chart-tooltip.top:hover:before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.inf-chart .adv-chart-tooltip.top-right:hover:before {
+  left: 0;
+}
+.inf-chart .adv-chart-tooltip.top-left:hover:before {
+  right: 0;
+}
+.inf-chart .adv-chart-tooltip.bottom:hover:before, .inf-chart .adv-chart-tooltip.bottom-left:hover:before, .inf-chart .adv-chart-tooltip.bottom-right:hover:before {
+  top: 100%;
+  margin-top: 6px;
+}
+.inf-chart .adv-chart-tooltip.bottom:hover:after, .inf-chart .adv-chart-tooltip.bottom-left:hover:after, .inf-chart .adv-chart-tooltip.bottom-right:hover:after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  margin-top: -1px;
+}
+.inf-chart .adv-chart-tooltip.bottom:hover:before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.inf-chart .adv-chart-tooltip.bottom-right:hover:before {
+  left: 0;
+}
+.inf-chart .adv-chart-tooltip.bottom-left:hover:before {
+  right: 0;
+}
+.inf-chart .active-drawing .vertical-line, .inf-chart .active-drawing .horizontal-line {
+  stroke: #0781FB;
+}
+.inf-chart .active-drawing .drawing-line-axis-lbl rect {
+  fill: #0781FB;
+  stroke: #0781FB;
+}
+.inf-chart .active-drawing.line-drawing .selection-marker {
+  stroke: #0781FB;
+}
+.inf-chart li.symbol-search-dropdown-wrapper {
+  height: 100%;
+}
+.inf-chart li.symbol-search-dropdown-wrapper .symbol-search-dropdown > li .ui-menu-item-wrapper {
+  height: 30px;
+}
+.inf-chart .chart-right-panel {
+  min-width: 240px;
+  position: relative;
+  overflow: hidden;
+}
+.inf-chart .chart-right-panel .right-panel-close {
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .chart-right-panel .nav-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  margin: 0;
+  padding: 10px;
+  grid-gap: 10px;
+}
+.inf-chart .chart-right-panel .nav-tabs:before, .inf-chart .chart-right-panel .nav-tabs:after {
+  content: none;
+}
+.inf-chart .chart-right-panel .nav-tabs > li {
+  margin: 0;
+}
+.inf-chart .chart-right-panel .nav-tabs > li a {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+}
+.inf-chart .chart-right-panel .nav-tabs > li a .rp-tab-name {
+  display: none;
+}
+.inf-chart .chart-right-panel .nav-tabs > li.active a {
+  width: auto;
+  padding: 0 12px;
+}
+.inf-chart .chart-right-panel .nav-tabs > li.active a .rp-tab-name {
+  display: block;
+}
+.inf-chart .chart-right-panel .nav-tabs > li.active a .mw-f-icon {
+  display: none;
+}
+.inf-chart .chart-right-panel .tab-content {
+  height: calc(100% - 52px);
+}
+.inf-chart .chart-right-panel .tab-content > .tab-pane {
+  height: 100%;
+}
+.inf-chart .panel-group, .inf-chart .settings-modal {
+  margin: 0;
+  height: fit-content;
+  overflow: auto;
+}
+.inf-chart .panel-group .panel + .panel, .inf-chart .settings-modal .panel + .panel {
+  margin: 0;
+}
+.inf-chart .panel-group .panel-heading, .inf-chart .settings-modal .panel-heading {
+  padding: 0;
+}
+.inf-chart .panel-group .panel-heading .panel-title a, .inf-chart .settings-modal .panel-heading .panel-title a {
+  min-height: 32px;
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: auto 30px;
+  align-items: center;
+}
+.inf-chart .panel-group .panel-heading .panel-title a .title-contents, .inf-chart .settings-modal .panel-heading .panel-title a .title-contents {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inf-chart .panel-group .panel-heading .panel-title a .fa-caret-down, .inf-chart .settings-modal .panel-heading .panel-title a .fa-caret-down {
+  margin-left: auto;
+}
+.inf-chart .panel-group .panel-heading .panel-title .panel-item-controllers, .inf-chart .settings-modal .panel-heading .panel-title .panel-item-controllers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inf-chart .panel-group .panel-heading.panel-main-heading, .inf-chart .settings-modal .panel-heading.panel-main-heading {
+  height: 32px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.inf-chart .panel-group .panel-body, .inf-chart .settings-modal .panel-body {
+  padding: 0;
+}
+.inf-chart .panel-group .body-section, .inf-chart .settings-modal .body-section {
+  padding: 10px;
+}
+.inf-chart .panel-group .body-section .body-section, .inf-chart .settings-modal .body-section .body-section {
+  padding: 0;
+}
+.inf-chart .panel-group .body-section .btn-default, .inf-chart .settings-modal .body-section .btn-default {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .panel-group .item-label, .inf-chart .panel-group .sub-item-label, .inf-chart .panel-group .section-heading, .inf-chart .settings-modal .item-label, .inf-chart .settings-modal .sub-item-label, .inf-chart .settings-modal .section-heading {
+  padding-bottom: 10px;
+}
+.inf-chart .panel-group .item-label, .inf-chart .settings-modal .item-label {
+  display: flex;
+  align-items: center;
+}
+.inf-chart .panel-group .item-label input[type=checkbox], .inf-chart .panel-group .item-label input[type=radio], .inf-chart .settings-modal .item-label input[type=checkbox], .inf-chart .settings-modal .item-label input[type=radio] {
+  margin: 0 5px 0 0;
+}
+.inf-chart .panel-group .item-label .fib-levels-input, .inf-chart .settings-modal .item-label .fib-levels-input {
+  max-width: 60px;
+  text-align: center;
+}
+.inf-chart .panel-group .item-body .selection-types, .inf-chart .settings-modal .item-body .selection-types {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  grid-column-gap: 15px;
+  grid-row-gap: 10px;
+}
+.inf-chart .panel-group .item-body .selection-types > li a, .inf-chart .settings-modal .item-body .selection-types > li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+.inf-chart .panel-group .item-body .form-control, .inf-chart .panel-group .item-body .symbol-search-input, .inf-chart .settings-modal .item-body .form-control, .inf-chart .settings-modal .item-body .symbol-search-input {
+  height: 30px;
+}
+.inf-chart .panel-group .item-body .dropdown-toggle, .inf-chart .settings-modal .item-body .dropdown-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+}
+.inf-chart .panel-group .item-body .dropdown-toggle .caret, .inf-chart .settings-modal .item-body .dropdown-toggle .caret {
+  width: 10px;
+  height: 14px;
+}
+.inf-chart .panel-group .item-body .dropdown-menu, .inf-chart .settings-modal .item-body .dropdown-menu {
+  width: 100%;
+}
+.inf-chart .panel-group .item-body .dropdown-menu > li a, .inf-chart .settings-modal .item-body .dropdown-menu > li a {
+  padding: 3px 10px;
+  white-space: normal;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.inf-chart .panel-group .item-body .toggle-on-off, .inf-chart .settings-modal .item-body .toggle-on-off {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  padding: 2px;
+  transition: 0.5s;
+  height: 30px;
+}
+.inf-chart .panel-group .item-body .toggle-on-off p, .inf-chart .settings-modal .item-body .toggle-on-off p {
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  transition: 0.5s;
+}
+.inf-chart .panel-group .item-body .toggle-on-off .on-off-slider, .inf-chart .settings-modal .item-body .toggle-on-off .on-off-slider {
+  position: absolute;
+  width: calc(50% + 2px);
+  height: 30px;
+  top: -1px;
+  transition: 0.5s;
+}
+.inf-chart .panel-group .item-body .toggle-on-off.on .on-off-slider, .inf-chart .settings-modal .item-body .toggle-on-off.on .on-off-slider {
+  right: 50%;
+}
+.inf-chart .panel-group .item-body .toggle-on-off.off .on-off-slider, .inf-chart .settings-modal .item-body .toggle-on-off.off .on-off-slider {
+  right: -1px;
+}
+.inf-chart .panel-group .sub-section-row, .inf-chart .panel-group .section-row, .inf-chart .settings-modal .sub-section-row, .inf-chart .settings-modal .section-row {
+  display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 10px;
+}
+.inf-chart .panel-group .sub-section-row.two-col-row, .inf-chart .panel-group .section-row.two-col-row, .inf-chart .settings-modal .sub-section-row.two-col-row, .inf-chart .settings-modal .section-row.two-col-row {
+  grid-template-columns: repeat(2, 1fr);
+}
+.inf-chart .panel-group .sub-section-row.three-col-row, .inf-chart .panel-group .section-row.three-col-row, .inf-chart .settings-modal .sub-section-row.three-col-row, .inf-chart .settings-modal .section-row.three-col-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+.inf-chart .panel-group .section-row + .section-row, .inf-chart .settings-modal .section-row + .section-row {
+  padding-top: 10px;
+}
+.inf-chart .panel-group .sub-section-row, .inf-chart .settings-modal .sub-section-row {
+  padding-top: 10px;
+}
+.inf-chart .panel-group .fib-section, .inf-chart .panel-group .setting-section, .inf-chart .settings-modal .fib-section, .inf-chart .settings-modal .setting-section {
+  column-gap: 10px;
+}
+.inf-chart .panel-group .fib-section .row-item, .inf-chart .panel-group .setting-section .row-item, .inf-chart .settings-modal .fib-section .row-item, .inf-chart .settings-modal .setting-section .row-item {
+  padding: 5px;
+}
+.inf-chart .panel-group .fib-options-wrapper, .inf-chart .settings-modal .fib-options-wrapper {
+  display: grid;
+  column-gap: 2px;
+  grid-auto-flow: column;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color, .inf-chart .settings-modal .fib-options-wrapper .change-color {
+  position: relative;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color .color-inner-box, .inf-chart .settings-modal .fib-options-wrapper .change-color .color-inner-box {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color .color-inner-box .ico-ang-dash, .inf-chart .settings-modal .fib-options-wrapper .change-color .color-inner-box .ico-ang-dash {
+  transform: rotate(-22deg);
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color.font-color .minicolors-swatch-color, .inf-chart .panel-group .fib-options-wrapper .change-color.font-color .minicolors-swatch-color:before, .inf-chart .settings-modal .fib-options-wrapper .change-color.font-color .minicolors-swatch-color, .inf-chart .settings-modal .fib-options-wrapper .change-color.font-color .minicolors-swatch-color:before {
+  display: block;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color.font-color .minicolors-swatch-color:before, .inf-chart .settings-modal .fib-options-wrapper .change-color.font-color .minicolors-swatch-color:before {
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.inf-chart .panel-group .fib-options-wrapper .line-weights.dropdown .dropdown-menu, .inf-chart .settings-modal .fib-options-wrapper .line-weights.dropdown .dropdown-menu {
+  grid-template-columns: repeat(3, 30px);
+}
+.inf-chart .panel-group .fib-options-wrapper .font-size.dropdown .dropdown-menu, .inf-chart .settings-modal .fib-options-wrapper .font-size.dropdown .dropdown-menu {
+  grid-template-columns: repeat(5, 30px);
+}
+.inf-chart .panel-group .fib-options-wrapper .has-btn .btn, .inf-chart .settings-modal .fib-options-wrapper .has-btn .btn {
+  height: 25px;
+  padding: 0 10px;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-toggle, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-toggle {
+  gap: 5px;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-toggle .caret, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-toggle .caret {
+  width: 0;
+  height: 0;
+  margin-left: auto;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-menu, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-menu {
+  min-width: 50px;
+  left: auto;
+  width: auto;
+  right: 0;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-menu > li + li, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-menu > li + li {
+  margin-top: 0;
+  margin-left: 1px;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-menu > li a, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-menu > li a {
+  height: 26px;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .line-weight-space, .inf-chart .panel-group .fib-options-wrapper .dropdown .weight-line, .inf-chart .settings-modal .fib-options-wrapper .dropdown .line-weight-space, .inf-chart .settings-modal .fib-options-wrapper .dropdown .weight-line {
+  letter-spacing: -1.5px;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown.open .dropdown-menu, .inf-chart .settings-modal .fib-options-wrapper .dropdown.open .dropdown-menu {
+  display: grid;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown.open .dropdown-menu--list, .inf-chart .settings-modal .fib-options-wrapper .dropdown.open .dropdown-menu--list {
+  display: block;
+  height: 80px;
+  overflow: auto;
+}
+.inf-chart .panel-group .minicolors-theme-default.minicolors, .inf-chart .settings-modal .minicolors-theme-default.minicolors {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+}
+.inf-chart .panel-group .minicolors-theme-default .minicolors-swatch.minicolors-sprite, .inf-chart .settings-modal .minicolors-theme-default .minicolors-swatch.minicolors-sprite {
+  width: 100%;
+  height: 30px;
+}
+.inf-chart .panel-group .fib-section .row-item, .inf-chart .settings-modal .fib-section .row-item {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+}
+.inf-chart .panel-group .fib-section .item-label, .inf-chart .settings-modal .fib-section .item-label {
+  padding-bottom: 0;
+}
+.inf-chart .panel-group .fib-section .item-label .fib-levels-input, .inf-chart .settings-modal .fib-section .item-label .fib-levels-input {
+  height: 25px;
+}
+.inf-chart .panel-group .footer-section, .inf-chart .settings-modal .footer-section {
+  display: flex;
+  padding: 5px 10px 10px;
+  column-gap: 10px;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color, .inf-chart .settings-modal .fib-options-wrapper .change-color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color .minicolors-theme-default.minicolors, .inf-chart .panel-group .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch, .inf-chart .settings-modal .fib-options-wrapper .change-color .minicolors-theme-default.minicolors, .inf-chart .settings-modal .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch {
+  width: 20px;
+  height: 15px;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch, .inf-chart .settings-modal .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch {
+  top: 0px;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color:nth-child(2) .minicolors-theme-default .minicolors-swatch, .inf-chart .settings-modal .fib-options-wrapper .change-color:nth-child(2) .minicolors-theme-default .minicolors-swatch {
+  height: 6px;
+}
+.inf-chart .panel-group .fib-options-wrapper .change-color .color-inner-box, .inf-chart .settings-modal .fib-options-wrapper .change-color .color-inner-box {
+  display: none;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown-toggle, .inf-chart .settings-modal .fib-options-wrapper .dropdown-toggle {
+  height: 25px;
+}
+.inf-chart .panel-toggle {
+  width: 25px;
+  height: 36px;
+}
+.inf-chart .c-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inf-chart .int-chart {
+  position: absolute !important;
+  z-index: 1;
+}
+.inf-chart .int-chart__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.inf-chart .int-chart__body {
+  padding: 10px;
+}
+.inf-chart .int-chart__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inf-chart .int-chart__drag {
+  cursor: move;
+}
+.inf-chart .int-chart__operators {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inf-chart .int-chart__operators-close {
+  cursor: pointer;
+}
+
+.settings-modal {
+  height: auto;
+  min-width: 280px;
+}
+.settings-modal .drawing_popup_header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.settings-modal .drawing_popup_body {
+  overflow-y: auto;
+}
+.settings-modal .drawing_popup_body .item-label {
+  padding-bottom: 6px;
+}
+.settings-modal .drawing_popup_body .sl-tp-settings .item-label {
+  min-width: 70px;
+}
+.settings-modal .drawing_popup_body .long-short-settings .item-label {
+  min-width: 90px;
+}
+.settings-modal .drawing_popup_body .long-short-settings .dropdown-menu {
+  margin-top: 1px;
+}
+.settings-modal .drawing_popup_body .body-section .section-row .color-palette {
+  width: 30px;
+}
+.settings-modal .drawing_popup_row:last-child {
+  margin-top: 0;
+}
+.settings-modal .footer-section {
+  display: flex;
+  padding: 5px 10px 10px;
+  column-gap: 10px;
+}
+.settings-modal .reset-default-btn {
+  width: 130px;
+  margin: 5px 10px 10px;
+  height: 32px;
+}
+.settings-modal .footer-def-btn {
+  width: 130px;
+}
+.settings-modal .footer-def-btn .c-btn {
+  height: 32px;
+  width: 100%;
+}
+.settings-modal .footer-def-btn.dropup .c-btn > .icom {
+  margin-left: 10px;
+  transform: rotate(0deg);
+  transition: all 0.25s linear;
+  transform-origin: center;
+}
+.settings-modal .footer-def-btn.dropup.open .c-btn > .icom {
+  transform: rotate(-180deg);
+  transition: all 0.25s linear;
+  transform-origin: center;
+}
+.settings-modal .footer-def-btn .dropdown-menu .custom-template {
+  max-height: 130px;
+  overflow: auto;
+}
+.settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  padding: 10px;
+  column-gap: 5px;
+}
+.settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li > a .icom {
+  align-self: baseline;
+  margin-top: 5px;
+}
+.settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li > a > span {
+  word-break: break-all;
+}
+.settings-modal .footer-def-btn .dropdown-menu .save-template > a, .settings-modal .footer-def-btn .dropdown-menu .reset-template > a {
+  padding: 10px;
+}
+.settings-modal .save-custom-template {
+  width: 160px;
+  height: 32px;
+}
+.settings-modal .save-user-default {
+  display: block;
+  width: 180px;
+}
+.settings-modal .reset-options {
+  margin-left: auto;
+}
+.settings-modal .ico-close {
+  top: 13px;
+}
+.settings-modal .fib-section .row-item, .settings-modal .setting-section .row-item {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  min-height: 35px;
+}
+.settings-modal .fib-section .item-label, .settings-modal .setting-section .item-label {
+  padding-bottom: 0;
+}
+.settings-modal .fib-section .item-label .fib-levels-input, .settings-modal .setting-section .item-label .fib-levels-input {
+  height: 25px;
+}
+.settings-modal .fib-options-wrapper .change-color {
+  width: 30px;
+}
+.settings-modal .fib-options-wrapper .change-color .minicolors-theme-default.minicolors, .settings-modal .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch {
+  width: 25px;
+}
+.settings-modal .fib-options-wrapper .change-color.line-color .minicolors-theme-default .minicolors-swatch {
+  height: 6px;
+}
+.settings-modal .fib-options-wrapper .dropdown-toggle {
+  height: 25px;
+}
+.settings-modal .hl-label-wrapper .change-color {
+  width: 100px;
+}
+.settings-modal .hl-label-wrapper .change-color .minicolors-theme-default.minicolors, .settings-modal .hl-label-wrapper .change-color .minicolors-theme-default .minicolors-swatch {
+  width: 90px;
+}
+.settings-modal .fib-options-wrapper .change-color, .settings-modal .hl-label-wrapper .change-color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+}
+.settings-modal .fib-options-wrapper .change-color .minicolors-theme-default.minicolors, .settings-modal .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch, .settings-modal .hl-label-wrapper .change-color .minicolors-theme-default.minicolors, .settings-modal .hl-label-wrapper .change-color .minicolors-theme-default .minicolors-swatch {
+  height: 15px;
+}
+.settings-modal .fib-options-wrapper .change-color .minicolors-theme-default .minicolors-swatch, .settings-modal .hl-label-wrapper .change-color .minicolors-theme-default .minicolors-swatch {
+  top: -3px;
+}
+.settings-modal .fib-options-wrapper .change-color .color-inner-box, .settings-modal .hl-label-wrapper .change-color .color-inner-box {
+  display: none;
+}
+.settings-modal .opened-list > ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 7px;
+}
+.settings-modal .opened-list > ul > li a {
+  padding: 5px 10px;
+  display: flex;
+}
+
+.indicators-dropdown-wrapper {
+  position: relative;
+  min-height: 210px;
+  overflow-y: auto;
+}
+.indicators-dropdown-wrapper .indicators-dropdown {
+  top: 0;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.indicators-dropdown-wrapper .indicators-dropdown > li input[type=text] {
+  margin: 0;
+}
+.indicators-dropdown-wrapper .indicators-dropdown > li a {
+  min-height: 35px;
+  height: auto;
+  white-space: normal;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+.indicators-dropdown-wrapper .indicators-dropdown > li:first-child {
+  padding: 5px 10px;
+  height: 40px;
+}
+.indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input {
+  width: 100%;
+  height: 30px;
+  padding: 6px;
+}
+.indicators-dropdown-wrapper .indicators-dropdown > li + li {
+  margin-top: 1px;
+}
+
+.chart-order-window {
+  display: grid;
+  grid-gap: 5px;
+  padding: 10px;
+  width: 200px;
+  position: absolute;
+}
+.chart-order-window .window-arrow {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: -209px;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+}
+.chart-order-window .window-arrow:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -14px;
+  right: 0px;
+  margin: -9px auto 0;
+  width: 0;
+  height: 0;
+}
+.chart-order-window .close {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+}
+.chart-order-window .row-item {
+  display: grid;
+  grid-gap: 5px;
+}
+.chart-order-window .row-item .item {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1.25fr;
+  text-align: right;
+}
+.chart-order-window .row-item .item.item-wide {
+  grid-template-columns: 1fr;
+}
+.chart-order-window .row-item .item .item-label {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  align-self: center;
+}
+.chart-order-window .row-item .item .item-label.msg {
+  width: 100%;
+  text-align: center;
+  height: 12px;
+}
+.chart-order-window .row-item .item input[type=text] {
+  padding: 6px 12px;
+  width: 100%;
+  text-align: right;
+  height: 25px;
+}
+.chart-order-window .row-item .item .btn {
+  padding: 3px;
+}
+
+.revert-lbl rect {
+  width: 30px;
+}
+
+.tooltip1 {
+  display: block;
+}
+.tooltip1 .tooltip1_table {
+  margin: 0;
+  padding: 0;
+  display: table;
+}
+.tooltip1 .tooltip1_table .tooltip1_tr {
+  display: table-row;
+  height: 12px;
+}
+.tooltip1 .tooltip1_table .tooltip1_tr .tooltip1_td {
+  height: 12px;
+  padding: 0 5px;
+  display: table-cell;
+  width: 46%;
+}
+.tooltip1 .tooltip1_table .tooltip1_tr .tooltip1_td:first-child {
+  padding: 0;
+  width: 4%;
+}
+
+#ui-datepicker-div {
+  top: auto !important;
+  bottom: 9.5% !important;
+}
+
+.dropdown-toggle .icon {
+  display: inline-block;
+}
+
+.context-menu-panel {
+  position: fixed;
+  z-index: 1001;
+}
+
+.drawing-rc {
+  --position-full: 100%;
+  --position-zero: 0;
+  --layout-column: column;
+  --layout-column-reverse: column-reverse;
+}
+.drawing-rc-options {
+  cursor: pointer;
+  width: max-content;
+}
+.drawing-rc-options--submenu {
+  --position-full: 100%;
+  --position-zero: 0;
+  position: absolute;
+  display: none;
+}
+.drawing-rc-options--submenu.right {
+  top: var(--position-zero);
+  left: var(--position-full);
+}
+.drawing-rc-options--submenu.left {
+  top: var(--position-zero);
+  right: var(--position-full);
+}
+.drawing-rc-options--submenu.right-bottom {
+  left: var(--position-full);
+  bottom: var(--position-zero);
+}
+.drawing-rc-options--submenu.left-bottom {
+  right: var(--position-full);
+  bottom: var(--position-zero);
+}
+.drawing-rc-item {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 5px 10px;
+  position: relative;
+}
+.drawing-rc-item.active .drawing-rc-options--submenu {
+  display: flex;
+  flex-direction: column;
+}
+.drawing-rc-item.active .drawing-rc-options--submenu.right-bottom, .drawing-rc-item.active .drawing-rc-options--submenu.left-bottom {
+  flex-direction: column-reverse;
+}
+.drawing-rc-item.disabled {
+  pointer-events: none;
+  color: grey;
+}
+.drawing-rc-text {
+  max-width: 200px;
+}
+
+.chart-context-menu-mask, .chart-custom-popup-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.flt-tlbar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1002;
+}
+.flt-tlbar__tools {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 1px;
+}
+.flt-tlbar__item {
+  height: 40px;
+  width: 40px;
+}
+.flt-tlbar__item, .flt-tlbar__item > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flt-tlbar__item > a {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.flt-tlbar__item .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flt-tlbar .has-color-picker .minicolors-theme-default.minicolors {
+  margin: 0;
+  width: 30px;
+  height: 30px;
+}
+.flt-tlbar .has-list.flt-tlbar__item {
+  display: flex;
+  align-items: center;
+}
+.flt-tlbar .has-list.flt-tlbar__item.items--2 {
+  width: 81px;
+}
+.flt-tlbar .has-list.flt-tlbar__item .selection-types {
+  display: flex;
+  align-items: center;
+}
+.flt-tlbar .has-list.flt-tlbar__item .selection-types > li a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border-radius: 50%;
+  font-size: 11px;
+  text-indent: -99999em;
+  margin: auto;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before, .loader:after {
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+}
+.loader:before {
+  top: 0;
+  left: -1px;
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-animation: loadanim 1s infinite ease-in-out 0.1s;
+  animation: loadanim 1s infinite ease-in-out 0.1s;
+  background-color: transparent;
+}
+.loader:after {
+  top: 0;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-animation: loadanim 1s infinite ease-in-out 0.3s;
+  animation: loadanim 1s infinite ease-in-out 0.3s;
+  background-color: transparent;
+}
+
+.ch_ul .adv-chart-tooltip:hover:before {
+  min-width: 50px;
+}
+.ch_ul.book-vol-options .adv-chart-tooltip:hover:before {
+  width: 110px;
+  white-space: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .lm_item_container .navbar-collapse.defaultNavbar1 {
+    display: block;
+  }
+  .lm_item_container .inf-chart .navbar-default .navbar-nav.interval, .lm_item_container .inf-chart .navbar-default .navbar-nav.chart-settings, .lm_item_container .inf-chart .navbar-default .navbar-nav.period {
+    margin: 0;
+  }
+  .lm_item_container .inf-chart .navbar-default .navbar-nav.interval li, .lm_item_container .inf-chart .navbar-default .navbar-nav.chart-settings li, .lm_item_container .inf-chart .navbar-default .navbar-nav.period li {
+    float: left;
+  }
+  .lm_item_container .inf-chart .navbar-default .navbar-nav.interval .dropdown-menu li, .lm_item_container .inf-chart .navbar-default .navbar-nav.chart-settings .dropdown-menu li, .lm_item_container .inf-chart .navbar-default .navbar-nav.period .dropdown-menu li {
+    float: none;
+  }
+  .lm_item_container .inf-chart .navbar-default .navbar-nav.interval .open .dropdown-menu, .lm_item_container .inf-chart .navbar-default .navbar-nav.chart-settings .open .dropdown-menu, .lm_item_container .inf-chart .navbar-default .navbar-nav.period .open .dropdown-menu {
+    position: absolute;
+    float: left;
+  }
+  .lm_item_container .inf-chart .navbar-default .navbar-nav.interval .ch_ul li, .lm_item_container .inf-chart .navbar-default .navbar-nav.chart-settings .ch_ul li, .lm_item_container .inf-chart .navbar-default .navbar-nav.period .ch_ul li {
+    float: left;
+  }
+  .lm_item_container .navbar-toggle {
+    display: none;
+  }
+  .chart-left-toolbar {
+    top: 0;
+  }
+  .ico-nav-off.just_ico {
+    clear: left;
+  }
+  .inf-chart .navbar-default .interval, .inf-chart .navbar-default .period {
+    float: left;
+    margin: 0;
+  }
+  .inf-chart .navbar-default .interval li, .inf-chart .navbar-default .period li {
+    float: left;
+  }
+}
+.drawing_popup {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 40px;
+  z-index: 1000;
+  float: left;
+  min-width: 185px;
+  padding: 0;
+  margin: 2px 0 0;
+  text-align: left;
+}
+.drawing_popup .ico-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.drawing_popup .drawing_popup_header {
+  width: 100%;
+  height: 40px;
+  cursor: move;
+  position: relative;
+}
+.drawing_popup .drawing_popup_header .tabs-menu li.current {
+  position: relative;
+  z-index: 5;
+}
+.drawing_popup .drawing_popup_header ul + ul {
+  padding: 8px 8px 0 0;
+}
+.drawing_popup .tab-container ul.tabs {
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+.drawing_popup .tab-container ul.tabs li {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding: 5px;
+}
+.drawing_popup .tab-container ul.tabs li.active {
+  text-decoration: none;
+}
+.drawing_popup .tab-container .fib-level .checkboxList {
+  padding: 15px 10px;
+  list-style: none;
+  height: 120px;
+  overflow: auto;
+}
+.drawing_popup .tab-container .fib-level .checkboxList li {
+  display: inline-block;
+  margin-right: 3px;
+}
+.drawing_popup .tab {
+  float: left;
+  width: auto;
+  padding: 10px;
+}
+.drawing_popup .tab .tab-content-popup {
+  padding: 0;
+  display: none;
+}
+.drawing_popup .tab .tab-content-popup ul {
+  list-style: none;
+  margin: 7px 0 0;
+  padding: 0;
+  display: block;
+  min-height: 35px;
+}
+.drawing_popup .tab .tab-content-popup ul li {
+  float: left;
+  margin: 0;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+}
+.drawing_popup .drawing_popup_row {
+  padding: 0 10px;
+  float: left;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.drawing_popup .drawing_popup_row:last-child {
+  margin-top: 10px;
+}
+.drawing_popup .drawing_popup_row .tab-pane {
+  margin: 0;
+}
+.drawing_popup .drawing_popup_row .o_list_label {
+  margin-right: 10px;
+}
+.drawing_popup .drawing_popup_row input {
+  height: 30px;
+  width: 100%;
+}
+.drawing_popup .drawing_popup_row input[type=button] {
+  padding: 2px 4px;
+  text-align: center;
+  margin: 0 0 10px 0;
+  width: calc(50% - 5px);
+}
+.drawing_popup .drawing_popup_row input[type=button] + input[type=button] {
+  margin-left: 10px;
+}
+.drawing_popup .drawing_popup_row table tbody tr td {
+  padding: 0;
+}
+.drawing_popup .drawing_popup_row .label_colorPicker {
+  margin-top: 5px;
+  float: left;
+}
+.drawing_popup.o_list_holder .drawing_popup_header {
+  padding: 8px;
+}
+.drawing_popup.o_list_holder .o_list li {
+  display: grid;
+  align-items: center;
+  margin: 0;
+}
+.drawing_popup.o_list_holder .o_list li + li {
+  margin-top: 5px;
+}
+.drawing_popup .minicolors-theme-default.minicolors {
+  margin-top: 8px;
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  margin-left: 0;
+}
+.drawing_popup .minicolors-theme-default.minicolors .minicolors-swatch {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.drawing_popup .up-down {
+  float: left;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.chart-controllers {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.chart-controllers .coin {
+  padding-right: 10px;
+  vertical-align: middle;
+  display: block;
+}
+.chart-controllers ul li {
+  float: left;
+}
+.chart-controllers ul li a {
+  padding: 2px 14px;
+  display: block;
+}
+
+.chart-message-pop-up .modal-header {
+  flex-direction: row-reverse;
+}
+.chart-message-pop-up .pop-ms-body .body-raw {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.chart-message-pop-up .pop-ms-body .body-raw div:first-child {
+  text-align: right;
+  float: left;
+  width: 100px;
+  padding: 0 3px;
+}
+.chart-message-pop-up .pop-ms-body .body-raw div:last-child {
+  text-align: left;
+}
+
+.all-exchange-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5px;
+}
+.all-exchange-wrapper .all-exchange-title {
+  white-space: nowrap;
+}
+.all-exchange-wrapper .all-exchange-title .fa {
+  margin: 0 5px;
+}
+.all-exchange-wrapper .btn {
+  padding: 2px 14px;
+}
+.all-exchange-wrapper .relative-to {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 5px;
+}
+.all-exchange-wrapper .relative-to .custom-check-box {
+  margin-right: 4px;
+}
+
+.chart-style-popup {
+  display: block;
+  min-width: 170px;
+  padding: 5px;
+}
+.chart-style-popup .main-title {
+  margin: 5px 0;
+}
+.chart-style-popup .tab {
+  padding: 0;
+  width: 100%;
+}
+.chart-style-popup .tab .tab-content-popup label {
+  margin-top: 5px;
+}
+.chart-style-popup .tab .tab-content-popup .form-popup {
+  width: 100%;
+  outline-style: none;
+  margin-bottom: 10px;
+}
+.chart-style-popup .tab .tab-content-popup ul {
+  margin: 0;
+  min-height: 25px;
+}
+.chart-style-popup .tab .tab-content-popup ul li {
+  height: 20px;
+  width: 26px;
+}
+.chart-style-popup .tab .tab-content-popup ul li a {
+  text-decoration: none;
+}
+.chart-style-popup .tab .tab-content-popup .line-weight ul li {
+  width: 52px;
+  height: 25px;
+}
+.chart-style-popup .color-pallet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chart-style-popup .color-pallet .up-color .up-color-box, .chart-style-popup .color-pallet .up-color .down-color-box, .chart-style-popup .color-pallet .down-color .up-color-box, .chart-style-popup .color-pallet .down-color .down-color-box {
+  width: 75px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.chart_holder {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.chart-settings li ul li {
+  width: 100%;
+  height: 30px;
+  display: block;
+}
+.chart-settings .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+  margin-left: 14px;
+}
+
+.chart-controllers-mobile {
+  display: none;
+  float: left;
+}
+@media screen and (max-width: 825px) {
+  .chart-controllers-mobile {
+    display: block;
+  }
+}
+.chart-controllers-mobile .control-item {
+  float: left;
+  padding: 0;
+  margin: 0 3px 0 0;
+}
+.chart-controllers-mobile .control-item .dropdown-menu > li > a {
+  padding: 3px 10px;
+  text-align: center;
+}
+.chart-controllers-mobile .control-item li {
+  list-style-type: none;
+}
+.chart-controllers-mobile .control-item .dropdown-toggle .icon {
+  margin-top: auto;
+}
+.chart-controllers-mobile .control-item.indicators .dropdown-menu > li > a {
+  text-align: left;
+}
+.chart-controllers-mobile .period .dropdown-menu, .chart-controllers-mobile .intervals .dropdown-menu {
+  min-width: 0;
+}
+
+.chart-name-option {
+  display: none;
+}
+
+.stock-chart-wrapper {
+  min-width: 250px;
+  padding: 5px;
+}
+.stock-chart-wrapper .stock-chart-name h3 {
+  margin: 0;
+}
+.stock-chart-wrapper .stock-chart-name span {
+  margin-left: 3px;
+  float: right;
+  cursor: pointer;
+  padding: 1px 4px 0px 4px;
+}
+.stock-chart-wrapper .ohlc-values {
+  margin-top: 5px;
+}
+.stock-chart-wrapper .ohlc-values ul {
+  padding: 0;
+  margin: 0;
+}
+.stock-chart-wrapper .ohlc-values ul li {
+  float: left;
+  list-style-type: none;
+}
+.stock-chart-wrapper .ohlc-values ul li + li {
+  margin-left: 5px;
+}
+.stock-chart-wrapper .ohlc-values ul li span.value {
+  margin-left: 3px;
+}
+.stock-chart-wrapper .stock-chart-name h3, .stock-chart-wrapper .stock-chart-name span {
+  float: left;
+}
+
+@media screen and (max-width: 450px) {
+  .inf-chart .chart-buy-sell-button button .bs-text {
+    vertical-align: middle;
+    padding: 10px;
+    display: block;
+  }
+}
+.hide-navigator .highcharts-navigator-handle-left, .hide-navigator .highcharts-navigator-handle-right, .hide-navigator .highcharts-navigator {
+  display: none;
+}
+.hide-navigator .highcharts-navigator-xaxis {
+  display: none;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  box-shadow: inset 0 0 0 1.6666666667px;
+}
+.loader:before, .loader:after {
+  width: 21px;
+  height: 41px;
+}
+.loader:before {
+  border-radius: 41px 0 0 41px;
+}
+.loader:after {
+  border-radius: 0 41px 41px 0;
+  left: 20px;
+}

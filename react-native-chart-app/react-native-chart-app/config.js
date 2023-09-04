@@ -59,11 +59,11 @@ const config = {
 
     chartType: 
          [
-            { key: "line", desc: "Line", label: "label.line", ico: "icon ico-chart-line" },
-            { key: "candlestick", desc: "Candlestick", label: "label.candlestick", ico: "icon ico-chart-candlestick" },
-            { key: "area", desc: "Area", label: "label.area", ico: "icon ico-chart-area" },
-            { key: "ohlc", desc: "OHLC", label: "label.ohlc", ico: "icon ico-chart-ohlc" },
-            { key: "heikinashi", desc: "Heikin Ashi", label: "label.heikinashi", ico: "icon ico-chart-candle-ha" }
+            { key: "line", desc: "Line", label: "label.line", ico: "linechart" },
+            { key: "candlestick", desc: "Candlestick", label: "label.candlestick", ico: "barschart" },
+            { key: "area", desc: "Area", label: "label.area", ico: "areachart" },
+            { key: "ohlc", desc: "OHLC", label: "label.ohlc", ico: "barchart" },
+            { key: "heikinashi", desc: "Heikin Ashi", label: "label.heikinashi", ico: "dotchart" }
         ]
     
 };

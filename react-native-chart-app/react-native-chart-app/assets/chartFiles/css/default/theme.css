@@ -1,0 +1,1470 @@
+.inf-chart {
+  background: #121212;
+  color: #ffffff;
+}
+.inf-chart .line-hover {
+  stroke: #0099ff;
+  stroke-width: 4px;
+}
+.inf-chart .label-hover {
+  stroke: #0099ff;
+}
+.inf-chart input[type=text] {
+  background: transparent;
+  border: 1px solid rgba(66, 82, 113, 0.3);
+  color: #ffffff;
+}
+.inf-chart input[type=text]:focus {
+  border-color: #ffffff;
+  outline: none;
+}
+.inf-chart input[type=text]:focus::-webkit-input-placeholder {
+  color: #ffffff;
+}
+.inf-chart input[type=text]:focus:-moz-placeholder {
+  color: #ffffff;
+}
+.inf-chart input[type=text]:focus::-moz-placeholder {
+  color: #ffffff;
+}
+.inf-chart input[type=text], .inf-chart input[type=text]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.inf-chart .navbar-default {
+  background-color: transparent;
+  border: none;
+}
+.inf-chart .navbar-default .navbar-nav > li {
+  border: 0;
+  font-size: 11px;
+}
+.inf-chart .navbar-default .navbar-nav > li a {
+  line-height: 13px;
+  border-radius: 1px;
+}
+.inf-chart .navbar-default .navbar-nav > li a:hover {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown a {
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown a:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown .dropdown-menu li a {
+  color: #f4f4f4;
+  background: #1b1d21;
+  font-weight: 500;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown .dropdown-menu li a:hover {
+  color: #f4f4f4;
+  background: #2a2f37;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown .dropdown-menu li.active {
+  border-bottom: none;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown .dropdown-menu li.active a {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown .dropdown-menu.ch_ul li {
+  color: #f4f4f4;
+}
+.inf-chart .navbar-default .navbar-nav > li.dropdown .dropdown-menu.ch_ul li:hover {
+  color: #f4f4f4;
+  background: #2a2f37;
+  border: 0;
+}
+.inf-chart .navbar-default .navbar-nav > li.active a {
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+}
+.inf-chart .navbar-default .navbar-nav > li.active:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.interval > li a, .inf-chart .navbar-default .navbar-nav.period > li a {
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+  border-radius: 2px;
+}
+.inf-chart .navbar-default .navbar-nav.interval > li a:hover, .inf-chart .navbar-default .navbar-nav.period > li a:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.interval > li.active > a, .inf-chart .navbar-default .navbar-nav.period > li.active > a {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.interval > li.active .dropdown-menu .active a, .inf-chart .navbar-default .navbar-nav.period > li.active .dropdown-menu .active a {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .navbar-default .navbar-nav.interval > li.active-dim > a, .inf-chart .navbar-default .navbar-nav.period > li.active-dim > a {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.interval.upper-toolbar-horizontal li.dropdown > .dropdown-menu, .inf-chart .navbar-default .navbar-nav.period.upper-toolbar-horizontal li.dropdown > .dropdown-menu {
+  background: transparent;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico {
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 2px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=volume], .inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=spread] {
+  font-size: 11px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=reset] > a {
+  font-size: 12px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico[inf-ctrl=reset] > a i {
+  font-size: 10px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico a {
+  background: transparent;
+  border: 0;
+  color: #f4f4f4;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico.selected {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico.selected:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico.selected a {
+  color: #f4f4f4;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico.selected:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico .icon {
+  line-height: 0.9;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.just_ico .adv-chart-tooltip {
+  line-height: 1;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu {
+  border-radius: 2px;
+  background: #2a2f37;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li, .inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li a {
+  background: #1b1d21;
+  border: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li:hover, .inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu li a:hover {
+  border: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu.ch_ul {
+  background: #121a2c;
+  border-radius: 2px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu.ch_ul li {
+  line-height: 2.39;
+  font-size: 14px;
+  border-radius: 1px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu.ch_ul.vertical-dropdown .dropdown-text {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li .dropdown-menu .symbol-search-dropdown {
+  border: none;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu > li {
+  font-size: 11px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu.ch_ul > li {
+  background: #070b14;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu.ch_ul > li:hover {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .icon, .inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .fa {
+  font-size: 12px;
+  line-height: 23px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu {
+  border-radius: 0;
+  border-right: none;
+  border: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul li a .icon {
+  line-height: 16px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.charttype {
+  grid-template-columns: repeat(10, auto);
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.print-type {
+  grid-template-columns: repeat(4, auto);
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.book-vol-options {
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 1px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.ch_ul.book-vol-options > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .dropdown-menu.icon-list li a .icon {
+  line-height: 16px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown.inf-options .dropdown-menu .dropdown .ch_ul li {
+  line-height: 30px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.dropdown .dropdown-toggle .icon {
+  line-height: 20px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask {
+  font-size: 10px;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask .bid-text {
+  color: #1de099;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask .ask-text {
+  color: #ffa600;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask.selected .bid-text, .inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask.selected .ask-text, .inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask:hover .bid-text, .inf-chart .navbar-default .navbar-nav.chart-settings li.show-bid-ask:hover .ask-text {
+  color: #ffffff;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content {
+  font-size: 10px;
+  border: 0;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content.btn-buy {
+  background: #3cde61;
+}
+.inf-chart .navbar-default .navbar-nav.chart-settings .btn-content.btn-sell {
+  background: #de3c4c;
+}
+.inf-chart .navbar-default .navbar-nav .dropdown-menu li {
+  border-left: 1px solid rgba(140, 140, 142, 0.5);
+}
+.inf-chart .dropdown-menu {
+  border: 1px solid #2a2f37;
+  background: #2a2f37;
+}
+.inf-chart .dropdown-menu > li {
+  background: #1b1d21;
+}
+.inf-chart .dropdown-menu > li a {
+  font-size: 11px;
+  background: transparent;
+}
+.inf-chart .dropdown-menu > li a:hover {
+  color: #f4f4f4;
+  background: #2a2f37;
+}
+.inf-chart .dropdown-menu .icon {
+  line-height: 22px;
+}
+.inf-chart .dropdown-menu input[type=text] {
+  border-radius: 2px;
+  box-shadow: none;
+}
+.inf-chart .dropdown-menu input[type=text]:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.inf-chart .chart-drawing a {
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 2px;
+}
+.inf-chart .chart-drawing a:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .chart-drawing a.active {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .chart-drawing a.has-text-highlight.active {
+  color: theme-var(inf-chart-text-highlight-color);
+}
+.inf-chart .chart-drawing a .icom-line-arrow-down, .inf-chart .chart-drawing a .icom-line-arrow-up {
+  font-size: 12px;
+}
+.inf-chart .chart-drawing a .icom-square {
+  font-size: 16px;
+}
+.inf-chart .chart-drawing a .icom-circle, .inf-chart .chart-drawing a .icom-box-arrow-up, .inf-chart .chart-drawing a .icom-box-arrow-down, .inf-chart .chart-drawing a .icom-pen {
+  font-size: 17px;
+}
+.inf-chart .chart-drawing a .ico-arch1 {
+  font-size: 24px;
+}
+.inf-chart .chart-drawing a .icom-xabcd-tool {
+  font-size: 18px;
+}
+.inf-chart .chart-drawing a .icom-high-low-label {
+  font-size: 21px;
+}
+.inf-chart .chart-drawing li {
+  border: 0;
+  border-bottom: none;
+  margin-top: 1px;
+}
+.inf-chart .chart-drawing li .dropdown-menu > li > a {
+  color: #f4f4f4;
+  background: #1b1d21;
+  font-weight: 500;
+  font-size: 15px;
+  border: 0;
+}
+.inf-chart .chart-drawing li .dropdown-menu > li > a[inf-ctrl-shape=fibArcs] {
+  font-size: 20px;
+}
+.inf-chart .chart-drawing li .dropdown-menu > li > a:hover {
+  color: #f4f4f4;
+  background: #2a2f37;
+}
+.inf-chart .chart-drawing li .dropdown-menu > li > a.active {
+  color: #f4f4f4;
+  background: #2a2f37;
+  border: 0;
+}
+.inf-chart .chart-drawing li.dropdown ul.dropdown-menu li {
+  border-left: none;
+  border-radius: 2px;
+}
+.inf-chart .chart-drawing.navbar-nav2 {
+  border: 0;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu {
+  background: #141c2b;
+  border: 0;
+  color: #6785c1;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu li:hover {
+  background: transparent;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu li a .icon {
+  line-height: 1;
+}
+.inf-chart .chart-drawing.navbar-nav2 li.dropdown .dropdown-menu li a .drawing-line-text {
+  font-weight: 400;
+  font-size: 12px;
+}
+.inf-chart .order-book-volume-tooltip-wrapper {
+  color: #ffffff;
+  background-color: rgba(11, 17, 31, 0.7);
+}
+.inf-chart .order-book-volume-tooltip-wrapper h3 {
+  font-size: 20px;
+  color: #ffffff;
+}
+.inf-chart .order-book-volume-tooltip-wrapper h3 span {
+  font-size: 20px;
+  color: #858587;
+}
+.inf-chart .order-book-volume-tooltip-wrapper h4 {
+  font-size: 16px;
+}
+.inf-chart .order-book-volume-tooltip-wrapper p.tooltip-main-val {
+  font-weight: 700;
+  font-size: 14px;
+}
+.inf-chart .order-book-volume-tooltip-wrapper p.title {
+  color: #858587;
+  font-size: 12px;
+}
+.show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-content .bs-text {
+  font-size: 9px;
+}
+.show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-content.btn-algo-buy, .show-hide-trade-buttons.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content.items-5 .btn-content.btn-algo-sell {
+  font-size: 10px;
+}
+
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content {
+  background: #23334E;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content .title {
+  line-height: 0.9;
+  font-size: 10px;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content .form-control {
+  background: transparent;
+  border-color: transparent;
+  line-height: 1;
+}
+.inf-chart .chart-buy-sell-button .chart-buy-sell-button-inner-content .size-content.edit-size .form-control {
+  border-color: rgba(146, 184, 253, 0.5);
+}
+.inf-chart .chart-buy-sell-button .btn-sell {
+  background: rgba(36, 191, 44, 0.8);
+  border-right: 2px solid #24bf2c;
+}
+.inf-chart .chart-buy-sell-button .btn-sell .bs-text {
+  border-radius: 1px 0 0 1px;
+  background-color: #24bf2c;
+}
+.inf-chart .chart-buy-sell-button .btn-buy {
+  background: rgba(253, 15, 67, 0.8);
+  border-left: 2px solid #FD0F43;
+}
+.inf-chart .chart-buy-sell-button .btn-buy .bs-text {
+  background-color: #FD0F43;
+  border-radius: 0 5px 5px 0;
+}
+.inf-chart .chart-buy-sell-button .btn-algo-sell {
+  background: rgba(36, 191, 44, 0.7);
+}
+.inf-chart .chart-buy-sell-button .btn-algo-buy {
+  background: rgba(253, 15, 67, 0.7);
+}
+.inf-chart .chart-buy-sell-button .btn-algo-sell .tiny-text, .inf-chart .chart-buy-sell-button .btn-algo-buy .tiny-text {
+  font-size: 7px;
+}
+.inf-chart .chart-buy-sell-button .btn-content {
+  border-radius: 1px;
+}
+.inf-chart .chart-buy-sell-button .btn-content .bs-value {
+  font-size: 12px;
+  font-weight: 700;
+}
+.inf-chart .chart-buy-sell-button .btn-content .bs-text {
+  font-weight: bold;
+  font-size: 10px;
+}
+.inf-chart .chart-buy-sell-button .btn-content .bs-text .fa {
+  font-size: 8px;
+}
+.inf-chart .chart-buy-sell-button button {
+  border: none;
+}
+.inf-chart .chart-option-y-axis-reset-wrapper .axis-reset-container .axis-reset-icon {
+  background-color: #1DE033;
+  color: #000;
+}
+.inf-chart .symbol-search-dropdown-wrapper:hover {
+  background-color: transparent;
+}
+.inf-chart .symbol-search-dropdown-wrapper .symbol-search-dropdown {
+  border-radius: 2px;
+  background: #121a2c;
+}
+.inf-chart .symbol-search-dropdown-wrapper .symbol-search-dropdown > li .ui-menu-item-wrapper {
+  background: #0B111F;
+  border-radius: 1px;
+}
+.inf-chart .symbol-search-dropdown-wrapper .symbol-search-dropdown > li:hover .ui-menu-item-wrapper {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .symbol-search-dropdown-wrapper .symbol-search-dropdown > li:hover .ui-menu-item-wrapper .instrument-type {
+  color: #fff;
+}
+.inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu {
+  border-radius: 0;
+  border-bottom: 0;
+}
+.inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu li.ui-menu-item .ui-menu-item-wrapper .symbol-type {
+  font-size: 11px;
+}
+.inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu li.ui-menu-item .ui-menu-item-wrapper .exchange-type, .inf-chart .symbol-search-dropdown.ui-autocomplete.ui-menu li.ui-menu-item .ui-menu-item-wrapper .instrument-type {
+  font-size: 11px;
+}
+.inf-chart .chart-option-wrapper .box-main {
+  border-radius: 3px;
+}
+.inf-chart .chart-option-wrapper .box-main .box .lbl {
+  color: #8c8c8e;
+}
+.inf-chart .chart-option-wrapper .box-main .legend-item-wrapper {
+  background: rgba(77, 105, 154, 0.075);
+}
+.inf-chart .chart-option-wrapper .box-main .legend-item-wrapper .legend-items {
+  border: none;
+}
+.inf-chart .chart-option-wrapper .box-main:hover .popup-options ul li.btn-group + .btn-group a {
+  border-bottom-right-radius: 0;
+}
+.inf-chart .chart-option-wrapper .value {
+  font-size: 12px;
+  line-height: 1;
+}
+.inf-chart .chart-option-wrapper .symbol-select {
+  color: #8c8c8e;
+}
+.inf-chart .chart-option-wrapper .symbol-select .btn {
+  background: #0b3550;
+  border: none;
+}
+.inf-chart .chart-option-wrapper .symbol-select .btn .fa {
+  line-height: normal;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown .dropdown-menu li .symbol-select .selected-symbol {
+  font-size: 12px;
+}
+.inf-chart .chart-option-wrapper .symbol-select .dropdown .dropdown-menu li + li .symbol-select {
+  border-top: none;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper {
+  border-radius: 2px;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items {
+  border-radius: 0;
+  line-height: 14px;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .item-value-content .item-label {
+  color: #8c8c8e;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper .legend-items .item-name {
+  font-size: 12px;
+  line-height: 1;
+}
+.inf-chart .chart-option-wrapper .legend-item-wrapper:hover {
+  background: rgba(77, 105, 154, 0.11);
+}
+.inf-chart .chart-option-wrapper .bid-last-L-ask-last-H {
+  font-size: 10px;
+}
+.inf-chart .chart-option-wrapper .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper.bid-last-L {
+  background: rgba(29, 224, 153, 0.4);
+}
+.inf-chart .chart-option-wrapper .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper.bid-last-L .box {
+  background: #1de099;
+}
+.inf-chart .chart-option-wrapper .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper.ask-last-H {
+  background: rgba(255, 166, 0, 0.4);
+}
+.inf-chart .chart-option-wrapper .bid-last-L-ask-last-H .bid-last-L-ask-last-H-item-wrapper.ask-last-H .box {
+  background: #ffa600;
+}
+.inf-chart .chart-option-wrapper.hide-tooltip .legend-item-wrapper.active .item-name {
+  font-weight: 700;
+}
+.inf-chart .chart-option-wrapper .main-symbol-name {
+  font-size: 18px;
+  line-height: 12px;
+  font-weight: 600;
+  color: #FF9933;
+}
+.inf-chart .chart-option-wrapper .refresh-value .ico-wrap {
+  font-size: 10px;
+}
+.inf-chart .chart-option-wrapper .popup-options ul li.btn-group .btn {
+  border: none;
+}
+.inf-chart .chart-option-wrapper .dropdown .dropdown-menu li + li .symbol-select {
+  border-top: none;
+}
+.inf-chart .chart-right-panel {
+  border: 1px solid rgba(77, 105, 154, 0.1);
+  border-radius: 5px;
+  background: #0B111F;
+}
+.inf-chart .chart-right-panel .right-panel-close {
+  cursor: pointer;
+}
+.inf-chart .chart-right-panel .right-panel-close:hover {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .chart-right-panel .right-panel-close .fa:before {
+  content: "\e083";
+  font-family: xinfinitchart !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.inf-chart .chart-right-panel .nav-tabs {
+  background: #0B111F;
+  border-radius: 2px 2px 0 0;
+  border-bottom: 1px solid rgba(77, 105, 154, 0.1);
+}
+.inf-chart .chart-right-panel .nav-tabs > li {
+  cursor: pointer;
+}
+.inf-chart .chart-right-panel .nav-tabs > li a {
+  background: #23334E;
+  border: 0;
+  color: #ffffff;
+  border-radius: 2px;
+}
+.inf-chart .chart-right-panel .nav-tabs > li:hover a {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+  border: 0;
+}
+.inf-chart .chart-right-panel .nav-tabs > li.active:hover, .inf-chart .chart-right-panel .nav-tabs > li.active a {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+  border: 0;
+  border-radius: 2px;
+}
+.inf-chart .chart-right-panel .nav-tabs > li.active .icon {
+  display: none;
+}
+.inf-chart .panel-group .panel, .inf-chart .settings-modal .panel {
+  border: 0;
+  box-shadow: none;
+}
+.inf-chart .panel-group .panel .fa-caret-down, .inf-chart .settings-modal .panel .fa-caret-down {
+  font-size: 14px;
+  transform: rotate(0deg);
+  transition: transform 0.25s linear;
+}
+.inf-chart .panel-group .panel.active .panel-heading, .inf-chart .settings-modal .panel.active .panel-heading {
+  background: #23334E;
+}
+.inf-chart .panel-group .panel.active .fa-caret-down, .inf-chart .settings-modal .panel.active .fa-caret-down {
+  transform: rotate(90deg);
+  transition: transform 0.25s linear;
+}
+.inf-chart .panel-group .panel-title, .inf-chart .settings-modal .panel-title {
+  font-size: 11px;
+  line-height: 20px;
+  color: #ffffff;
+}
+.inf-chart .panel-group .panel-title > a:hover, .inf-chart .settings-modal .panel-title > a:hover {
+  background: #23334E;
+}
+.inf-chart .panel-group .panel-heading, .inf-chart .settings-modal .panel-heading {
+  background: #0B111F;
+  border-bottom: 1px solid rgba(77, 105, 154, 0.1);
+  border-radius: 0;
+}
+.inf-chart .panel-group .panel-heading.panel-main-heading, .inf-chart .settings-modal .panel-heading.panel-main-heading {
+  background: #23334E;
+}
+.inf-chart .panel-group .panel-body, .inf-chart .settings-modal .panel-body {
+  background: #0B111F;
+  border: 0 !important;
+}
+.inf-chart .panel-group .body-section .btn-default, .inf-chart .settings-modal .body-section .btn-default {
+  font-size: 11px;
+}
+.inf-chart .panel-group .body-section + .body-section, .inf-chart .settings-modal .body-section + .body-section {
+  border-top: 1px solid rgba(77, 105, 154, 0.1);
+}
+.inf-chart .panel-group .item-label, .inf-chart .panel-group .sub-item-label, .inf-chart .panel-group .section-heading, .inf-chart .settings-modal .item-label, .inf-chart .settings-modal .sub-item-label, .inf-chart .settings-modal .section-heading {
+  font-size: 10px;
+  line-height: 12px;
+  color: #ffffff;
+  font-weight: 500;
+}
+.inf-chart .panel-group .section-heading, .inf-chart .settings-modal .section-heading {
+  font-size: 11px;
+  font-weight: 600;
+}
+.inf-chart .panel-group .item-body .selection-types > li a, .inf-chart .settings-modal .item-body .selection-types > li a {
+  border: 1px solid rgba(77, 105, 154, 0.1);
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.inf-chart .panel-group .item-body .selection-types > li a:hover, .inf-chart .settings-modal .item-body .selection-types > li a:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .panel-group .item-body .selection-types > li.active a, .inf-chart .settings-modal .item-body .selection-types > li.active a {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .panel-group .item-body .form-control, .inf-chart .panel-group .item-body .form-control:hover, .inf-chart .panel-group .item-body .dropdown-toggle, .inf-chart .panel-group .item-body .dropdown-toggle:hover, .inf-chart .settings-modal .item-body .form-control, .inf-chart .settings-modal .item-body .form-control:hover, .inf-chart .settings-modal .item-body .dropdown-toggle, .inf-chart .settings-modal .item-body .dropdown-toggle:hover {
+  font-size: 12px;
+  line-height: 16px;
+}
+.inf-chart .panel-group .item-body .form-control, .inf-chart .settings-modal .item-body .form-control {
+  background: transparent;
+  border: 1px solid rgba(66, 82, 113, 0.3);
+  color: #ffffff;
+  border-radius: 2px;
+}
+.inf-chart .panel-group .item-body .form-control:focus, .inf-chart .settings-modal .item-body .form-control:focus {
+  border-color: #ffffff;
+  outline: none;
+}
+.inf-chart .panel-group .item-body .form-control:focus::-webkit-input-placeholder, .inf-chart .settings-modal .item-body .form-control:focus::-webkit-input-placeholder {
+  color: #ffffff;
+}
+.inf-chart .panel-group .item-body .form-control:focus:-moz-placeholder, .inf-chart .settings-modal .item-body .form-control:focus:-moz-placeholder {
+  color: #ffffff;
+}
+.inf-chart .panel-group .item-body .form-control:focus::-moz-placeholder, .inf-chart .settings-modal .item-body .form-control:focus::-moz-placeholder {
+  color: #ffffff;
+}
+.inf-chart .panel-group .item-body .form-control, .inf-chart .panel-group .item-body .form-control:focus, .inf-chart .settings-modal .item-body .form-control, .inf-chart .settings-modal .item-body .form-control:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.inf-chart .panel-group .item-body .open .dropdown-toggle, .inf-chart .settings-modal .item-body .open .dropdown-toggle {
+  border-radius: 2px;
+  background: #23334E;
+  border: 0;
+  color: #ffffff;
+}
+.inf-chart .panel-group .item-body .dropdown-toggle, .inf-chart .panel-group .item-body .btn, .inf-chart .settings-modal .item-body .dropdown-toggle, .inf-chart .settings-modal .item-body .btn {
+  background: #23334E;
+  border: 0;
+  color: #ffffff;
+  border-radius: 2px;
+}
+.inf-chart .panel-group .item-body .dropdown-toggle:focus, .inf-chart .panel-group .item-body .btn:focus, .inf-chart .settings-modal .item-body .dropdown-toggle:focus, .inf-chart .settings-modal .item-body .btn:focus {
+  outline: 0;
+}
+.inf-chart .panel-group .item-body .dropdown-toggle:active, .inf-chart .panel-group .item-body .btn:active, .inf-chart .settings-modal .item-body .dropdown-toggle:active, .inf-chart .settings-modal .item-body .btn:active {
+  box-shadow: none;
+}
+.inf-chart .panel-group .item-body .dropdown-toggle .caret, .inf-chart .panel-group .item-body .btn .caret, .inf-chart .settings-modal .item-body .dropdown-toggle .caret, .inf-chart .settings-modal .item-body .btn .caret {
+  border: 0;
+  font-size: 14px;
+}
+.inf-chart .panel-group .item-body .dropdown-menu > li, .inf-chart .settings-modal .item-body .dropdown-menu > li {
+  border-radius: 2px;
+}
+.inf-chart .panel-group .item-body .dropdown-menu > li a, .inf-chart .settings-modal .item-body .dropdown-menu > li a {
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+}
+.inf-chart .panel-group .item-body .toggle-on-off, .inf-chart .settings-modal .item-body .toggle-on-off {
+  border: 1px solid #4D699A;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.inf-chart .panel-group .item-body .toggle-on-off p, .inf-chart .settings-modal .item-body .toggle-on-off p {
+  font-size: 10px;
+  line-height: 25px;
+}
+.inf-chart .panel-group .item-body .toggle-on-off .on-off-slider, .inf-chart .settings-modal .item-body .toggle-on-off .on-off-slider {
+  background: #23334E;
+  border-radius: 25px;
+  border: 1px solid #4D699A;
+}
+.inf-chart .panel-group .item-body .toggle-on-off.on .on-off-slider, .inf-chart .settings-modal .item-body .toggle-on-off.on .on-off-slider {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+}
+.inf-chart .panel-group .item-body .dropdown.font-size.open, .inf-chart .panel-group .item-body .dropdown.wave-patterns.open, .inf-chart .settings-modal .item-body .dropdown.font-size.open, .inf-chart .settings-modal .item-body .dropdown.wave-patterns.open {
+  background: var(--inf-chart-btn-hvr-bg-color);
+}
+.inf-chart .panel-group .item-body .dropdown.font-size .dropdown-toggle, .inf-chart .panel-group .item-body .dropdown.wave-patterns .dropdown-toggle, .inf-chart .settings-modal .item-body .dropdown.font-size .dropdown-toggle, .inf-chart .settings-modal .item-body .dropdown.wave-patterns .dropdown-toggle {
+  background: transparent;
+}
+.inf-chart .panel-group .item-body .dropdown.font-size .dropdown-toggle:hover, .inf-chart .panel-group .item-body .dropdown.wave-patterns .dropdown-toggle:hover, .inf-chart .settings-modal .item-body .dropdown.font-size .dropdown-toggle:hover, .inf-chart .settings-modal .item-body .dropdown.wave-patterns .dropdown-toggle:hover {
+  background: var(--inf-chart-btn-hvr-bg-color);
+}
+.inf-chart .panel-group .fib-section .row-item, .inf-chart .panel-group .setting-section .row-item, .inf-chart .settings-modal .fib-section .row-item, .inf-chart .settings-modal .setting-section .row-item {
+  background: rgba(40, 40, 40, 0.25);
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-toggle, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-toggle {
+  border: 1px solid #32363D !important;
+  background: #24262A;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown .dropdown-toggle .caret, .inf-chart .settings-modal .fib-options-wrapper .dropdown .dropdown-toggle .caret {
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.inf-chart .panel-group .fib-options-wrapper .dropdown.open .dropdown-toggle, .inf-chart .panel-group .fib-options-wrapper .dropdown:hover .dropdown-toggle, .inf-chart .settings-modal .fib-options-wrapper .dropdown.open .dropdown-toggle, .inf-chart .settings-modal .fib-options-wrapper .dropdown:hover .dropdown-toggle {
+  background: #32363D;
+}
+.inf-chart .panel-group .fib-options-wrapper .color-inner-box, .inf-chart .settings-modal .fib-options-wrapper .color-inner-box {
+  background: #0b111f;
+}
+.inf-chart .panel-group .fib-options-wrapper .color-inner-box .icon, .inf-chart .settings-modal .fib-options-wrapper .color-inner-box .icon {
+  font-size: 10px;
+  line-height: 10px;
+}
+.inf-chart .panel-group .minicolors-theme-default .minicolors-swatch.minicolors-sprite, .inf-chart .settings-modal .minicolors-theme-default .minicolors-swatch.minicolors-sprite {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS4AAADKCAIAAACUgDo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH2QoGExQdxfYGnwAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAADCklEQVR4nO3bwWmCQRRG0VHsyG7GLizqdWNP7uVfhaBXPGdpvkUgXJ4Q5rTW2nsvvtDMvHziT/mlZua0977f74c/vl6vh58/Hg97e/t/3N9ut/PhCHgzKUKCFCFBipAgRUiQIiRIERIuq/3/Fnv7H9m7ipAgRUiQIiRIERKkCAlShAQpQsJl5f/fYm//C3tXERKkCAlShAQpQoIUIUGKkCBFSPBe0d4+sXcVIUGKkCBFSJAiJEgREqQICVKEBO8V7e0Te1cREqQICVKEBClCghQhQYqQIEVI8F7R3j6xdxUhQYqQIEVIkCIkSBESpAgJUoQE7xXt7RN7VxESpAgJUoQEKUKCFCFBipAgRUjwXtHePrF3FSFBipAgRUiQIiRIERKkCAlShATvFe3tE3tXERKkCAlShAQpQoIUIUGKkCBFSPBe0d4+sXcVIUGKkCBFSJAiJEgREqQICVKEBO8V7e0Te1cREqQICVKEBClCghQhQYqQIEVI8F7R3j6xdxUhQYqQIEVIkCIkSBESpAgJUoQE7xXt7RP788wc7oC3mRlfUCFBipAgRUiQIiRIERLOe+9P/w7w6/be3iva2yf2vqBCghQhQYqQIEVIkCIkSBESpAgJ3iva2yf2riIkSBESpAgJUoQEKUKCFCFBipDgvaK9fWLvKkKCFCFBipAgRUiQIiRIERKkCAneK9rbJ/auIiRIERKkCAlShAQpQoIUIUGKkOC9or19Yu8qQoIUIUGKkCBFSJAiJEgREqQICd4r2tsn9q4iJEgREqQICVKEBClCghQhQYqQ4L2ivX1i7ypCghQhQYqQIEVIkCIkSBESpAgJ3iva2yf2riIkSBESpAgJUoQEKUKCFCFBipDgvaK9fWLvKkKCFCFBipAgRUiQIiRIERKkCAneK9rbJ/auIiRIERKkCAlShAQpQoIUIUGKkOC9or19Yu8qQoIUIUGKkCBFSJAiJEgREqQICd4r2tsn9q4iJEgREqQICVKEBClCghQhQYqQcFpr7b0//WvwFzPz8ok/5ZeamSf9MKYbaseHKgAAAABJRU5ErkJggg==);
+  background-repeat: repeat;
+  background-size: 140%;
+  background-position: -1px -1px;
+}
+.inf-chart .panel-group .minicolors-theme-default .minicolors-swatch::after, .inf-chart .settings-modal .minicolors-theme-default .minicolors-swatch::after {
+  border: 1px solid #33363C;
+}
+.inf-chart .panel-group .minicolors-theme-default .minicolors-hex-input-wrapper, .inf-chart .settings-modal .minicolors-theme-default .minicolors-hex-input-wrapper {
+  background: #ccc;
+}
+.inf-chart .panel-group .minicolors-theme-default .minicolors-hex-input-wrapper .minicolors-hex-input, .inf-chart .settings-modal .minicolors-theme-default .minicolors-hex-input-wrapper .minicolors-hex-input {
+  border: 1px solid #fff;
+  color: var(--form-control-def-text-color);
+  background: var(--form-bg);
+  font-size: 12px;
+  font-weight: 600;
+}
+.inf-chart .settings-modal {
+  box-shadow: 0 3px 9px #000;
+}
+.inf-chart .settings-modal .drawing_popup_header {
+  font-weight: 600;
+  font-size: 12px;
+  border-bottom: 1px solid #2a2f37;
+}
+.inf-chart .settings-modal .reset-default-btn {
+  font-size: 11px;
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+}
+.inf-chart .settings-modal .footer-def-btn, .inf-chart .settings-modal .footer-def-btn .c-btn {
+  font-size: 11px;
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+}
+.inf-chart .settings-modal .footer-def-btn:disabled, .inf-chart .settings-modal .footer-def-btn.disabled, .inf-chart .settings-modal .footer-def-btn .c-btn:disabled, .inf-chart .settings-modal .footer-def-btn .c-btn.disabled {
+  cursor: not-allowed;
+  background: transparent;
+  border-color: #425271;
+  opacity: 0.25;
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li > a {
+  color: #f4f4f4;
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li > a .icom {
+  color: #fb1044;
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li > a .icom:hover {
+  color: rgba(251, 16, 68, 0.5);
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li + li {
+  border-top: 1px solid #2a2f37;
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .custom-template > ul > li:last-child {
+  border-bottom: 1px solid #2a2f37;
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .save-template > a, .inf-chart .settings-modal .footer-def-btn .dropdown-menu .reset-template > a {
+  color: #f4f4f4;
+  background: #1b1d21;
+}
+.inf-chart .settings-modal .footer-def-btn .dropdown-menu .save-template > a:hover, .inf-chart .settings-modal .footer-def-btn .dropdown-menu .reset-template > a:hover {
+  background: #2a2f37;
+}
+.inf-chart .settings-modal .fib-section .row-item, .inf-chart .settings-modal .fib-section .fib-levels-input {
+  border-radius: 5px;
+}
+.inf-chart .settings-modal .fib-options-wrapper .change-color, .inf-chart .settings-modal .hl-label-wrapper .change-color {
+  border: 1px solid #32363D;
+}
+.inf-chart .settings-modal .fib-options-wrapper .dropdown-toggle, .inf-chart .settings-modal .hl-label-wrapper .dropdown-toggle {
+  border-radius: 5px;
+}
+.inf-chart .settings-modal .fib-options-wrapper .has-btn .btn-default, .inf-chart .settings-modal .hl-label-wrapper .has-btn .btn-default {
+  border: 1px solid #32363D;
+  background: transparent;
+}
+.inf-chart .settings-modal .fib-options-wrapper .has-btn .btn-default:hover, .inf-chart .settings-modal .fib-options-wrapper .has-btn .btn-default.active, .inf-chart .settings-modal .hl-label-wrapper .has-btn .btn-default:hover, .inf-chart .settings-modal .hl-label-wrapper .has-btn .btn-default.active {
+  background: #32363D;
+  box-shadow: none;
+}
+.inf-chart .settings-modal .opened-list > ul > li {
+  border: 1px solid #2a2f37;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.inf-chart .settings-modal .opened-list > ul > li a {
+  font-size: 10px;
+  color: #f4f4f4;
+}
+.inf-chart .settings-modal .opened-list > ul > li:hover a, .inf-chart .settings-modal .opened-list > ul > li.active a {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown {
+  border-radius: 0;
+  background: #121a2c;
+  border: 0;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li {
+  background: #0B111F;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li a {
+  color: #ffffff;
+  font-size: 11px;
+  cursor: pointer;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li a:hover {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input {
+  background: transparent;
+  border: 1px solid rgba(66, 82, 113, 0.3);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 2px;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input:focus {
+  border-color: #ffffff;
+  outline: none;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input:focus::-webkit-input-placeholder {
+  color: #ffffff;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input:focus:-moz-placeholder {
+  color: #ffffff;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input:focus::-moz-placeholder {
+  color: #ffffff;
+}
+.inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input, .inf-chart .indicators-dropdown-wrapper .indicators-dropdown > li .symbol-search-input:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.inf-chart .chart-order-window {
+  background: #111725;
+  border: 1px solid rgba(77, 105, 154, 0.36);
+  border-radius: 5px;
+}
+.inf-chart .chart-order-window .window-arrow {
+  border-top: 10px solid transparent;
+  border-left: 12px solid rgba(77, 105, 154, 0.36);
+  border-bottom: 10px solid transparent;
+}
+.inf-chart .chart-order-window .window-arrow:before {
+  border-top: 9px solid transparent;
+  border-left: 10px solid #111725;
+  border-bottom: 9px solid transparent;
+}
+.inf-chart .chart-order-window .row-item .item input[type=text] {
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 3px;
+}
+.inf-chart .chart-order-window .row-item .item input[type=text]:focus {
+  outline: 0;
+  color: #fff;
+  box-shadow: none;
+}
+.inf-chart .chart-order-window .row-item .item .item-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+.inf-chart .chart-order-window .row-item .item .item-label .currency {
+  text-transform: uppercase;
+}
+.inf-chart .chart-order-window .row-item .item .item-label.msg {
+  font-size: 8px;
+  line-height: 12px;
+  border-radius: 12px;
+}
+.inf-chart .chart-order-window .row-item .item .item-label.warning {
+  background: #F79F05;
+}
+.inf-chart .chart-order-window .row-item .item .btn-buy, .inf-chart .chart-order-window .row-item .item .v-buy {
+  background: linear-gradient(45deg, #24bf2c 0, #3ddf89 100%);
+  border: 0;
+  color: #fff;
+}
+.inf-chart .chart-order-window .row-item .item .btn-buy:hover, .inf-chart .chart-order-window .row-item .item .v-buy:hover {
+  background: linear-gradient(45deg, #24bf2c 0, #3ddf89 100%);
+}
+.inf-chart .chart-order-window .row-item .item .btn-sell, .inf-chart .chart-order-window .row-item .item .v-sell {
+  background: linear-gradient(45deg, #fd0f43 0, #dd3c75 100%);
+  border: 0;
+  color: #fff;
+}
+.inf-chart .chart-order-window .row-item .item .btn-sell:hover, .inf-chart .chart-order-window .row-item .item .v-sell:hover {
+  background: linear-gradient(45deg, #fd0f43 0, #dd3c75 100%);
+}
+.inf-chart .chart-order-window .row-item .item .v-cancel {
+  background: #ff1a42;
+  border: 0;
+  color: #ffffff;
+}
+.inf-chart .chart-order-window .row-item .item .v-cancel:hover {
+  background: #f3002a;
+  color: #fff;
+}
+.inf-chart .chart-order-window .row-item .item .v-transmit {
+  background: #1a80ff;
+  border: 0;
+  color: #ffffff;
+}
+.inf-chart .chart-order-window .row-item .item .v-transmit:hover {
+  background: #006cf3;
+  color: #fff;
+}
+.inf-chart .chart-order-window .row-item .item .btn {
+  font-size: 12px;
+}
+.inf-chart .chart-order-window .close {
+  opacity: 1;
+  line-height: 0.7;
+  font-size: 12px;
+}
+.inf-chart .chart-order-window .close:before {
+  content: "\e1c9";
+  font-family: xinfinitchart !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.inf-chart .revert-lbl text {
+  font-family: fontawesome;
+  font-size: 10px;
+}
+.inf-chart .indicator-close-btn text {
+  font-weight: 700;
+  font-family: fontawesome;
+}
+.inf-chart .highcharts-volume-series rect {
+  fill-opacity: 0.2;
+  stroke-opacity: 0.1;
+}
+.inf-chart .highcharts-volume-series.volume_panel rect {
+  fill-opacity: 1;
+  stroke-opacity: 1;
+}
+.inf-chart .tooltip1 {
+  background-color: rgba(11, 17, 31, 0.9);
+  color: #fff;
+}
+.inf-chart .tooltip1 .tooltip1_table .tooltip1_tr:first-child {
+  background-color: rgba(11, 17, 31, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+}
+.inf-chart .tooltip1 .tooltip1_table .tooltip1_tr .tooltip1_td {
+  font-size: 10px;
+}
+.inf-chart .chartwrapper .chart-outer-wrapper.order-book-volume-right .order-book-volume-chart .order-book-volume-tooltip-wrapper .values ul li + li {
+  border-left: none;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder input:checked + .radio-custom-holder {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder input:checked + .radio-custom-holder .fa {
+  color: #1DE033;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder .radio-custom-holder {
+  background: #23334E;
+  border: 0;
+  color: #ffffff;
+}
+.inf-chart .chartwrapper .radio-button-wrapper .radio-button-holder .radio-custom-holder input {
+  opacity: 0;
+}
+.inf-chart .o_list li {
+  color: #fff;
+}
+.inf-chart .indicator-title {
+  font-size: 10px;
+}
+.inf-chart .has-error .form-control, .inf-chart .has-error input[type=text] {
+  border: 1px solid #cd0e37;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.inf-chart .has-error .form-control:focus, .inf-chart .has-error input[type=text]:focus {
+  border: 1px solid #cd0e37;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483 !important;
+}
+.inf-chart .dropdown-toggle .icon {
+  font-size: 16px;
+  line-height: 25px;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.just_ico.show-right-panel .icon {
+  line-height: 0.9;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.sell {
+  background: rgba(0, 61, 107, 0.8);
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.sell a {
+  border: 1px solid #007fe0;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.sell a > span:last-child {
+  background: #007fe0;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.buy {
+  background: rgba(129, 58, 0, 0.8);
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.buy a {
+  border: 1px solid #ff771b;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.buy a > span:last-child {
+  background: #ff771b;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.btn-algo-sell {
+  background: #007fe0;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.btn-algo-buy {
+  background: #ff771b;
+}
+.inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.btn-algo-sell .tiny-text, .inf-chart.compact-toolbar .navbar .navbar-header .defaultNavbar2 .chart-settings > li.trade-controls .dropdown-menu li.btn-algo-buy .tiny-text {
+  font-size: 7px;
+}
+.inf-chart .popup-options ul li.btn-group .btn {
+  font-size: 12px;
+  border-radius: 0;
+  line-height: 11px;
+}
+.inf-chart .adv-chart-tooltip:hover:before {
+  background: #000;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 1.42857143;
+}
+.inf-chart .adv-chart-tooltip:hover:after {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid black;
+}
+.inf-chart .label-input-container input[type=text] {
+  box-shadow: none;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper {
+  border: 1px solid #000;
+  background: rgba(27, 43, 59, 0.7);
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask {
+  color: #fff;
+  line-height: 1;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask .bid-text {
+  color: #007fe0;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask .ask-text {
+  color: #ff831d;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask:hover, .inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask.selected {
+  background: #506c89;
+  border-width: 0;
+}
+.inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask:hover .bid-text, .inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask:hover .ask-text, .inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask.selected .bid-text, .inf-chart .navbar .navbar-header.ad-chart-navbar-header .show-bid-ask-wrapper .show-bid-ask.selected .ask-text {
+  color: #fff;
+}
+.inf-chart li.symbol-search-dropdown-wrapper {
+  border-bottom: 0;
+}
+.inf-chart li.symbol-search-dropdown-wrapper .symbol-search-dropdown > li .ui-menu-item-wrapper.ui-state-active {
+  border: 0;
+}
+.inf-chart .option-btn-group-colors .btn-group .btn {
+  color: #2f2e33;
+  background: #8c8c8e;
+}
+.inf-chart .option-btn-group-colors .btn-group .btn.opg-settings:hover {
+  background: #3cde61;
+}
+.inf-chart .option-btn-group-colors .btn-group .btn.opg-delete:hover {
+  background: #ff5154;
+}
+.inf-chart .option-btn-group-colors .btn-group .btn.opg-refresh:hover {
+  background: #4D699A;
+}
+.inf-chart .loader {
+  color: #92B8FD;
+}
+.inf-chart .loader:before {
+  background-color: transparent;
+  background-image: radial-gradient(circle at center right, transparent 58%, #141414 22%);
+}
+.inf-chart .loader:after {
+  background-color: transparent;
+  background-image: radial-gradient(circle at center left, transparent 58%, #141414 22%);
+}
+.inf-chart .loader.white-gray {
+  color: #8c8c8e;
+}
+.inf-chart .loader.white-gray:before {
+  background-image: radial-gradient(circle at center right, transparent 58%, #fff 22%);
+}
+.inf-chart .loader.white-gray:after {
+  background-image: radial-gradient(circle at center left, transparent 58%, #fff 22%);
+}
+.inf-chart .drawing-rc-options {
+  background: #0b111f;
+  border-radius: 2px;
+}
+.inf-chart .drawing-rc-item:hover {
+  background: #23334E;
+}
+.inf-chart .drawing-rc-icon {
+  font-size: 11px;
+}
+.inf-chart .drawing-rc-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.inf-chart .flt-tlbar__item {
+  background: #0B111F;
+  font-size: 16px;
+}
+.inf-chart .flt-tlbar__item a {
+  color: #ffffff;
+}
+.inf-chart .flt-tlbar__item + .flt-tlbar__item {
+  border-left: 1px solid #232731;
+}
+.inf-chart .flt-tlbar__item:hover {
+  background: #23334E;
+}
+.inf-chart .flt-tlbar__handler {
+  background: #23334E;
+  border-left: 1px solid #232731;
+}
+.inf-chart .flt-tlbar__drag {
+  cursor: move;
+}
+.inf-chart .flt-tlbar__close {
+  font-size: 11px;
+}
+.inf-chart .flt-tlbar .has-list.flt-tlbar__item:hover {
+  background: #0B111F;
+}
+.inf-chart .flt-tlbar .has-list.flt-tlbar__item .selection-types > li {
+  cursor: pointer;
+}
+.inf-chart .flt-tlbar .has-list.flt-tlbar__item .selection-types > li:hover {
+  background: #23334E;
+}
+.inf-chart .flt-tlbar .has-list.flt-tlbar__item .selection-types > li + li {
+  border-left: 1px solid #232731;
+}
+.inf-chart .flt-tlbar .has-color-picker.font-color .minicolors-swatch {
+  border: 0;
+}
+.inf-chart .flt-tlbar .has-color-picker.font-color .minicolors-swatch-color:before {
+  background: var(--adv-chart-flt-tlbar-font-cover);
+  background-size: cover;
+}
+.inf-chart .flt-tlbar .has-color-picker .minicolors-hex-input-wrapper {
+  background: #ccc;
+}
+.inf-chart .flt-tlbar .has-color-picker .minicolors-hex-input-wrapper .minicolors-hex-input {
+  border: 1px solid #fff;
+  color: var(--form-control-def-text-color);
+  background: var(--form-bg);
+  font-size: 12px;
+  font-weight: 600;
+}
+.inf-chart .flt-tlbar .has-dropdown .dropdown-toggle {
+  border: 0;
+  background: 0;
+  font-size: 12px;
+}
+.inf-chart .flt-tlbar .has-dropdown .dropdown-menu {
+  border-radius: 0;
+  border: 0;
+}
+.inf-chart .flt-tlbar .has-dropdown .dropdown-menu > li > a .line-weight-space {
+  color: #f4f4f4;
+}
+.inf-chart .flt-tlbar .is-settings .icom-cog {
+  font-size: 16px;
+}
+.inf-chart .panel-toggle {
+  color: #f4f4f4;
+  background: #1b1d21;
+  border: 1px solid #1b1d21;
+  font-weight: 500;
+}
+.inf-chart .panel-toggle:hover {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .panel-toggle.active {
+  color: #f4f4f4;
+  background: #32363d;
+  border-color: #32363d;
+}
+.inf-chart .int-chart {
+  background: #000;
+  border-radius: 5px;
+}
+
+.modal-header, .modal-footer {
+  background: #263238;
+}
+
+.drawing_popup {
+  font-size: 9px;
+  border-radius: 5px;
+  background: #15171b;
+}
+.drawing_popup .drawing_popup_header {
+  font-size: 11px;
+}
+.drawing_popup .tab-container ul.tabs li {
+  font-size: 12px;
+}
+.drawing_popup .tab .tab-content-popup {
+  line-height: 10px;
+}
+.drawing_popup .tab .tab-content-popup ul li {
+  line-height: 34px;
+  font-size: 22px;
+}
+.drawing_popup .drawing_popup_row input[type=button] {
+  background: #23334E;
+  border: 0;
+  color: #ffffff;
+}
+.drawing_popup .drawing_popup_row input[type=button]:hover {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.drawing_popup .drawing_popup_row input[type=button] + input[type=button] {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.drawing_popup .drawing_popup_row input[type=button] + input[type=button]:hover {
+  background: linear-gradient(45deg, #283F67 0, #557FC6 100%);
+  color: #ffffff;
+}
+.drawing_popup .drawing_popup_row .settings_btn {
+  border: none;
+}
+.drawing_popup .drawing_popup_row .label_colorPicker {
+  font-size: 9px;
+}
+.drawing_popup .up-down {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.chart-controllers .coin {
+  font-size: 14px;
+  line-height: 26px;
+}
+.chart-controllers ul li a {
+  line-height: 20px;
+  font-size: 11px;
+}
+
+.chart-message-pop-up .pop-ms-body .body-raw {
+  font-size: 13px;
+}
+.chart-message-pop-up .pop-ms-body .body-raw .small {
+  font-size: 12px;
+}
+.chart-message-pop-up .pop-ms-body .body-raw div:first-child {
+  font-weight: bolder;
+}
+.chart-message-pop-up .pop-ms-body .body-raw div:last-child {
+  font-weight: lighter;
+}
+
+.all-exchange-wrapper .all-exchange-title .fa {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.chart-style-popup .sub-title {
+  font-size: 8px;
+}
+.chart-style-popup .tab .tab-content-popup label {
+  font-size: 8px;
+}
+.chart-style-popup .tab .tab-content-popup ul li {
+  font-size: 8px;
+  line-height: 22px;
+}
+.chart-style-popup .tab .tab-content-popup ul li + li {
+  border-left: none;
+}
+.chart-style-popup .main-title {
+  font-weight: 900;
+}
+
+.chart-controllers-mobile .control-item li .btn {
+  border-radius: 0;
+}
+.chart-controllers-mobile .control-item.indicators .dropdown-toggle .icon {
+  font-size: 18px;
+}
+.chart-controllers-mobile .period .btn {
+  background: transparent;
+  border-radius: 0;
+}
+
+.stock-chart-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+  border-left: 3px solid #FF4400;
+}
+.stock-chart-wrapper .stock-chart-name h3 {
+  font-size: 20px;
+  color: #ccc;
+  line-height: 13px;
+}
+.stock-chart-wrapper .stock-chart-name span {
+  line-height: 13px;
+  font-size: 9px;
+  background-color: #7E7E82;
+  color: #FFFFFe;
+}
+.stock-chart-wrapper .ohlc-values ul li span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+}
+.stock-chart-wrapper .ohlc-values ul li span.value.negative {
+  color: #f00;
+}
+.stock-chart-wrapper .ohlc-values ul li span.value.positive {
+  color: #52ac62;
+}
+
+.chart-settings li ul li {
+  border-bottom: 1px dashed;
+}
+
+@media screen and (max-width: 450px) {
+  .inf-chart .chart-buy-sell-button button .bs-text {
+    font-size: 13px;
+  }
+}
