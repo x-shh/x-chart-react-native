@@ -8,7 +8,7 @@ import styles from '../styles';
 import { EvilIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
-const chartHtml = require('../../dist/html/chart.html');
+const chartHtml = require('../../chartFiles/html/chart.html');
 
 export function ChartScreen() {
 
