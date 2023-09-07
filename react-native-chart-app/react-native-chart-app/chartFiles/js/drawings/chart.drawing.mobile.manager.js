@@ -2693,6 +2693,8 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
     };
 
     var _initializeDrawing = function (chartObj, shapeId, drawingSettingsContainer, quickDrawingSettingsContainer, subType, isPropertyChange) {
+        drawingSettingsContainer  = undefined;
+        quickDrawingSettingsContainer = undefined;
         isActiveDrawing = true;
         isActiveDrawingInprogress = true;
         _deselectDeleteTool(chartObj);
@@ -4075,7 +4077,7 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
     }
 
     return {
-        //initializeDrawing: _initializeDrawing,
+        initializeDrawing: _initializeDrawing,
         setActiveDrawing: _setActiveDrawing,
         setActiveDrawingSettings: _setActiveDrawingSettings,
         getActiveDrawing: _getActiveDrawing,

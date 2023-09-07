@@ -839,7 +839,7 @@ infChart.settings = {
         topTb: [],
         //topTb: ["optionsDropDown", "file", "chartType", "intervalD", "grid", "comparison", "indicator", "tradeControlCompact", "volume", "navigator", "value", "last", "preclose", "crosshair", "minMax", "tooltip", "print", "depth", "reset", "rightPanel", "bidAskHistory", "spread", "buy", "sell", "undo", "redo"],//"popOut", "full-screen", "layoutFullScreen", "zoom"
         //leftTb: ["select", "label", "line", "rect", "fibonacci", "pattern", "volumeProfile", "arrow", "positions", "multiple", "delete", "lock", "favorite"], //
-        leftTb:["select", "line"],
+        leftTb:[],
         tradingTb:[],
         //tradingTb: ["tradeControl"], //, "size"
         // rightTb: ['indicatorPanelView', 'drawingToolPanelView'],

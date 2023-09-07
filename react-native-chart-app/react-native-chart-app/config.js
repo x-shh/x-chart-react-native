@@ -52,20 +52,33 @@ const config = {
             key: "M",
             desc: "Monthly"
         }
-
-
-
     ],
-
-    chartType: 
+    chartType:
          [
             { key: "line", desc: "Line", label: "label.line", ico: "linechart" },
             { key: "candlestick", desc: "Candlestick", label: "label.candlestick", ico: "barschart" },
             { key: "area", desc: "Area", label: "label.area", ico: "areachart" },
             { key: "ohlc", desc: "OHLC", label: "label.ohlc", ico: "barchart" },
             { key: "heikinashi", desc: "Heikin Ashi", label: "label.heikinashi", ico: "dotchart" }
+        ],
+        drawings: [
+             {
+                    role: 'drawing',
+                    cat: 'line',
+                    shape: 'line',
+                    options: [
+                        {
+                            role: 'drawing',
+                            cat: 'line',
+                            shape: 'line',
+                            subType:  "shape",
+                            cls: 'icon ico-ang-dash',
+                            active: true,
+                            label: 'label.line',
+                            isFavorite: false
+                        }
+                    ]
+                }
         ]
-    
 };
-
 export default config;

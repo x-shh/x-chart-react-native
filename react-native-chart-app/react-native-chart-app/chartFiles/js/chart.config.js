@@ -51,12 +51,12 @@ infChart.config = {
     accessibility: {
         enabled: false
     },
-    watermark: {
-        type: "text",
-        text: "",
-        opacity: 0.5,
-        enabled: true
-    },
+    // watermark: {
+    //     type: "text",
+    //     text: "",
+    //     opacity: 0.5,
+    //     enabled: true
+    // },
     "scrollbar": {
         "enabled": true,
         height: 0,
@@ -839,7 +839,7 @@ infChart.settings = {
         topTb: [],
         //topTb: ["optionsDropDown", "file", "chartType", "intervalD", "grid", "comparison", "indicator", "tradeControlCompact", "volume", "navigator", "value", "last", "preclose", "crosshair", "minMax", "tooltip", "print", "depth", "reset", "rightPanel", "bidAskHistory", "spread", "buy", "sell", "undo", "redo"],//"popOut", "full-screen", "layoutFullScreen", "zoom"
         //leftTb: ["select", "label", "line", "rect", "fibonacci", "pattern", "volumeProfile", "arrow", "positions", "multiple", "delete", "lock", "favorite"], //
-        leftTb:["select", "line"],
+        leftTb:[],
         tradingTb:[],
         //tradingTb: ["tradeControl"], //, "size"
         // rightTb: ['indicatorPanelView', 'drawingToolPanelView'],

@@ -339,6 +339,7 @@ infChart.lineDrawing.prototype.selectAndBindResize = function () {
         infChart.drawingUtils.common.addAndBindSelectionMarker.call(this, ann, newX, 0, this.stepFunction, this.stop, true);
         infChart.drawingUtils.common.addAndBindSelectionMarker.call(this, ann, newXEnd, height, this.stepFunction, this.stop, false);
     }
+    self.selectionMarkersBringToFront();
 };
 
 infChart.lineDrawing.prototype.step = function (e, isStartPoint) {
@@ -500,6 +501,7 @@ infChart.lineDrawing.prototype.stop = function (e, isStartPoint) {
     this.updateLineWithArrowHeadsAndPoints();
     infChart.drawingUtils.common.saveBaseYValues.call(this, ann.options.yValue, y);
     self.resetDragSUpporters();
+    self.selectionMarkersBringToFront();
     infChart.drawingUtils.common.fixSelectionMarker.call(self, ann);
     infChart.drawingUtils.common.onPropertyChange.call(this);
 };
@@ -556,6 +558,7 @@ infChart.lineDrawing.prototype.translateEnd = function () {
     self.selectAndBindResize();
     chart.selectedAnnotation = ann;  
     self.resetDragSUpporters();
+    self.selectionMarkersBringToFront();
 }
 
 // infChart.lineDrawing.prototype.translateEnd = function () {
@@ -1202,3 +1205,11 @@ infChart.lineDrawing.prototype.showSelectionMarkers = function () {
         }
     }
 };
+
+infChart.lineDrawing.prototype.selectionMarkersBringToFront = function (){
+    if(this.annotation.selectionMarker && this.annotation.selectionMarker.length > 0){
+        for (var i = 0; i < this.annotation.selectionMarker.length; i++) {
+            this.annotation.selectionMarker[i].toFront();
+        }
+    }
+}

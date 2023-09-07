@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { View, Text, Modal, Pressable, TouchableOpacity, PanResponder } from 'react-native';
 import styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 export const IntervlModal = ({
     values,
     intervalModalVisibility,
@@ -31,14 +30,10 @@ export const IntervlModal = ({
                 onRequestClose={() => {
                     // setIntervalModalVisble(!intervalModalVisibility);
                 }}>
-
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
-
                     <View style={styles.modalView}>
-
                         <MaterialIcons name="drag-handle" size={24} color="black" />
-
                         {/* <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => setIntervalModalVisble(false)}>
@@ -72,7 +67,6 @@ export const IntervlModal = ({
         </View>
     )
 };
-
 export const ChartTypeModal = ({
     values,
     chartTypeModalVisibility,
@@ -100,7 +94,6 @@ export const ChartTypeModal = ({
                 onRequestClose={() => {
                     // setIntervalModalVisble(!intervalModalVisibility);
                 }}>
-
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
@@ -112,7 +105,6 @@ export const ChartTypeModal = ({
                   onPress={() => setchartTypeModalVisble(false)}>
                   <Text style={styles.textStyle}>Close</Text>
                 </Pressable> */}
-
                         <View style={styles.row}>
                             {values.map(value => (
                                 <TouchableOpacity
@@ -140,15 +132,13 @@ export const ChartTypeModal = ({
         </View>
     )
 };
-
 export const DrawingTypeModal = ({
     values,
     drawingsModalVisibility,
     setDrawingModalVisble,
-    changeInterval,
+    changeDrawing,
     setActiveInterval
 }) => {
-
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
@@ -160,7 +150,6 @@ export const DrawingTypeModal = ({
             },
         })
     ).current;
-
     return (<View>
         <Modal
             animationType="slide"
@@ -169,7 +158,6 @@ export const DrawingTypeModal = ({
             onRequestClose={() => {
                 // setIntervalModalVisble(!intervalModalVisibility);
             }}>
-
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={styles.modalView}>
@@ -181,22 +169,22 @@ export const DrawingTypeModal = ({
                   onPress={() => setDrawingModalVisble(false)}>
                   <Text style={styles.textStyle}>Close</Text>
                 </Pressable> */}
-
                     <View style={styles.row}>
                         {values.map(value => (
                             <TouchableOpacity
                                 key={value.key}
                                 onPress={() => {
-                                    changeInterval(value.key);
+                                    changeDrawing(value);
                                     setDrawingModalVisble(false);
                                 }}
                                 style={[styles.button]}>
-                                <Text
-                                    style={[
-                                        styles.buttonLabel
-                                    ]}>
-                                    {value.desc}
-                                </Text>
+                                <Entypo name="flow-line" size={24} color="black" />
+                                    <Text
+                                        style={[
+                                            styles.buttonLabel
+                                        ]}>
+                                        {value.options[0].shape}
+                                    </Text>
                             </TouchableOpacity>
                         ))}
                     </View>
@@ -207,4 +195,3 @@ export const DrawingTypeModal = ({
     </View>
     )
 };
-

@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import { Text, View, SafeAreaView, useWindowDimensions, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
@@ -28,18 +27,30 @@ export function ChartScreen() {
         }
           true; 
         `;
-      console.log("injectcode", injectingCode);
       if (webViewRef.current) {
         webViewRef.current.injectJavaScript(injectingCode);
       }
     }
   
     const changeChartType = (type) => {
-      console.log("changeChartType");
       const changeChartType = `  
           infChart.manager.setChartStyle("mainchart", "`+ type + `", undefined, true);
           true; 
     `;
+  
+      if (webViewRef.current) {
+        webViewRef.current.injectJavaScript(changeChartType);
+      }
+    };
+
+    const changeDrawing = (value) => {
+      const changeChartType = `  
+        var chart = infChart.manager.getChart("mainchart");
+        if(chart){
+          infChart.mobileDrawingsManager.initializeDrawing(chart.chart, "` +  value.options[0].shape + `", undefined, undefined, "shape", true)
+        }
+        true; 
+      `;
   
       if (webViewRef.current) {
         webViewRef.current.injectJavaScript(changeChartType);
@@ -124,10 +135,9 @@ export function ChartScreen() {
   
         <DrawingTypeModal
           drawingsModalVisibility={drawingsModalVisibility}
-          values={config.interval}
+          values={config.drawings}
           setDrawingModalVisble={setDrawingModalVisble}
-          changeInterval={changeInterval}
-          setActiveInterval={setActiveInterval}
+          changeDrawing={changeDrawing}
         >
   
         </DrawingTypeModal>
