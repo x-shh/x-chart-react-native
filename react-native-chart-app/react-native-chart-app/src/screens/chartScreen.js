@@ -4,8 +4,7 @@ import { WebView } from 'react-native-webview';
 import config from '../../config';
 import { IntervlModal, ChartTypeModal, DrawingTypeModal, BasicModal, IndicatorModal } from './../modalComponents';
 import styles from '../styles';
-import { EvilIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { EvilIcons, AntDesign, Ionicons } from '@expo/vector-icons';
 
 const chartHtml = require('../../chartFiles/html/chart.html');
 
@@ -49,10 +48,11 @@ export function ChartScreen() {
   };
 
   const changeDrawing = (value) => {
+    console.log("changeDrawing",value);
     const changeChartType = `  
         var chart = infChart.manager.getChart("mainchart");
         if(chart){
-          infChart.mobileDrawingsManager.initializeDrawing(chart.chart, "` + value.options[0].shape + `", undefined, undefined, "shape", true)
+          infChart.mobileDrawingsManager.initializeDrawing(chart.chart, "` + value + `", undefined, undefined, "shape", true)
         }
         true; 
       `;
@@ -127,6 +127,7 @@ export function ChartScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
+          key={"3"}
           onPress={() => {
             setDrawingModalVisble(false);
             setIntervalModalVisble(false);
@@ -144,15 +145,12 @@ export function ChartScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
+          key={"4"}
           onPress={() => setbasicModalVisibile(true)}
           style={[styles.buttonBarButtons]}>
-          {/* <Text
-              style={[
-                styles.buttonLabel
-              ]}>
-              Drawings
-            </Text> */}
-          <EvilIcons name="pencil" size={26} color="black" />
+     
+          {/* <EvilIcons name="pencil" size={26} color="black" /> */}
+          <Ionicons name="add" size={26} color="black" />
         </TouchableOpacity>
 
       </View>
@@ -175,7 +173,7 @@ export function ChartScreen() {
 
       <DrawingTypeModal
           drawingsModalVisibility={drawingsModalVisibility}
-          values={config.drawings}
+          values={config.drawings[0].options}
           setDrawingModalVisble={setDrawingModalVisble}
           changeDrawing={changeDrawing}
         >

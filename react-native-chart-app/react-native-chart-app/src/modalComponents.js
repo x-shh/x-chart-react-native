@@ -245,18 +245,18 @@ export const DrawingTypeModal = ({
                         <View style={styles.row}>
                             {values.map(value => (
                                 <TouchableOpacity
-                                    key={value.key}
+                                    key={value.shape}
                                     onPress={() => {
-                                        changeDrawing(value);
+                                        changeDrawing(value.shape);
                                         setDrawingModalVisble(false);
                                     }}
                                     style={[styles.button]}>
-                                    {/* <Entypo name="flow-line" size={24} color="black" /> */}
+                                    <Entypo name="flow-line" size={24} color="black" />
                                     <Text
                                         style={[
                                             styles.buttonLabel
                                         ]}>
-                                        {value.desc}
+                                        {value.shape}
                                     </Text>
                                 </TouchableOpacity>
                             ))}
@@ -288,16 +288,17 @@ export const IndicatorModal = ({
         })
     ).current;
 
-    // const [values, setValues] = useState(initialValues);
+    const [indicators, setIndicators] = useState(values);
 
     const filterIndicators = function(searchTerm) {
-        let matchingRows
+        
         if(searchTerm) {
-            console.log("filter indi9cator", matchingRows);
-           let updatedValues = initialValues.filter(item => item.desc.toLowerCase().includes(searchTerm.toLowerCase()))
-           setValues(updatedValues);
-           console.log("filter indi9cator", updatedValues)
-        }      
+            const regex = new RegExp(searchTerm, 'i');
+            const filteredIndicators = values.filter(item => regex.test(item.desc));
+            setIndicators(filteredIndicators);
+        } else {
+            setIndicators(values);
+        }    
     }
 
     return (<View>
@@ -325,7 +326,7 @@ export const IndicatorModal = ({
                         />
                         <ScrollView>
                             <View style={styles.row}>
-                                {values.map(value => (
+                                {indicators.map(value => (
                                     <TouchableOpacity
                                         key={value.key}
                                         onPress={() => {

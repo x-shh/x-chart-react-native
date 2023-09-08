@@ -62,7 +62,7 @@ const config = {
             { key: "heikinashi", desc: "Heikin Ashi", label: "label.heikinashi", ico: "dotchart" }
         ],
     drawings: [
-            {
+            {   
                 role: 'drawing',
                 cat: 'line',
                 shape: 'line',
