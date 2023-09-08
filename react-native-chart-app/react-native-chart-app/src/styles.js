@@ -27,6 +27,18 @@ styles = StyleSheet.create({
     // flex: 1,
     flexDirection: 'row'
   },
+  indicatorButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 4,
+    backgroundColor: 'gainsboro',
+    alignSelf: 'flex-start',
+    marginBottom: 6,
+    minWidth: '100%',
+    textAlign: 'center',
+    // flex: 1,
+    flexDirection: 'row'
+  },
   buttonBar: {
     flexDirection: 'row',
     flexWrap: 'wrap',

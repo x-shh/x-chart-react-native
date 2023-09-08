@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
-import { View, Text, Modal, Pressable, TouchableOpacity, PanResponder } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Text, Modal, TextInput, TouchableOpacity, PanResponder, ScrollView } from 'react-native';
 import styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
+
 export const IntervlModal = ({
     values,
     intervalModalVisibility,
@@ -39,27 +40,27 @@ export const IntervlModal = ({
                   onPress={() => setIntervalModalVisble(false)}>
                   <Text style={styles.textStyle}>Close</Text>
                 </Pressable> */}
-                    <View style={{paddingTop: 20}}>
-                        <Text style={styles.modalText}>Interval</Text>
-                        <View style={styles.row}>
-                            {values.map(value => (
-                                <TouchableOpacity
-                                    key={value.key}
-                                    onPress={() => {
-                                        changeInterval(value.key);
-                                        setIntervalModalVisble(false);
-                                        setActiveInterval(value.desc);
-                                    }}
-                                    style={[styles.button]}>
-                                    <Text
-                                        style={[
-                                            styles.buttonLabel
-                                        ]}>
-                                        {value.desc}
-                                    </Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
+                        <View style={{ paddingTop: 20 }}>
+                            <Text style={styles.modalText}>Interval</Text>
+                            <View style={styles.row}>
+                                {values.map(value => (
+                                    <TouchableOpacity
+                                        key={value.key}
+                                        onPress={() => {
+                                            changeInterval(value.key);
+                                            setIntervalModalVisble(false);
+                                            setActiveInterval(value.desc);
+                                        }}
+                                        style={[styles.button]}>
+                                        <Text
+                                            style={[
+                                                styles.buttonLabel
+                                            ]}>
+                                            {value.desc}
+                                        </Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -97,25 +98,102 @@ export const ChartTypeModal = ({
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
-                    <MaterialIcons name="drag-handle" size={24} color="black" />
-                    <View style={{paddingTop: 20}}>
-                        <Text style={styles.modalText}>Candle Type</Text>
-                        {/* <Pressable
+                        <MaterialIcons name="drag-handle" size={24} color="black" />
+                        <View style={{ paddingTop: 20 }}>
+                            <Text style={styles.modalText}>Candle Type</Text>
+                            {/* <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => setchartTypeModalVisble(false)}>
                   <Text style={styles.textStyle}>Close</Text>
                 </Pressable> */}
+                            <View style={styles.row}>
+                                {values.map(value => (
+                                    <TouchableOpacity
+                                        key={value.key}
+                                        onPress={() => {
+                                            changeChartType(value.key);
+                                            setchartTypeModalVisble(false);
+                                            setActiveChartType(value.ico)
+                                        }}
+                                        style={[styles.button]}>
+                                        <AntDesign name={value.ico} size={24} color="black" />
+                                        <Text
+                                            style={[
+                                                styles.buttonLabel
+                                            ]}>
+                                            {value.desc}
+                                        </Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+        </View>
+    )
+};
+export const BasicModal = ({
+    values,
+    basicModalVisibility,
+    setBasicModalVisble,
+    changeDrawing,
+    setActiveInterval,
+    setDrawingModalVisble,
+    setCompareModalVisble,
+    setIndicatorModalVisble
+}) => {
+    const panResponder = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderMove: () => { },
+            onPanResponderRelease: (_, gestureState) => {
+                if (gestureState.dy > 50) {
+                    setBasicModalVisble(false);
+                }
+            },
+        })
+    ).current;
+    const mapMethod = function (configMethodName) {
+        switch (configMethodName) {
+            case 'setDrawingModalVisble':
+                console.log("setDrawingModalVisbler")
+                return setDrawingModalVisble;
+            case 'setCompareModalVisble':
+                return setCompareModalVisble
+            case 'setIndicatorModalVisble':
+                console.log("setIndicatorModalVisble")
+                return setIndicatorModalVisble;
+            default:
+                return setDrawingModalVisble;
+
+        }
+
+    }
+    return (<View>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={basicModalVisibility}
+            onRequestClose={() => {
+                // setIntervalModalVisble(!intervalModalVisibility);
+            }}>
+            <View style={styles.centeredView}
+                {...panResponder.panHandlers}>
+                <View style={styles.modalView}>
+                    <MaterialIcons name="drag-handle" size={24} color="black" />
+                    <View style={{ paddingTop: 20 }}>
+                        <Text style={styles.modalText}>Add</Text>
                         <View style={styles.row}>
                             {values.map(value => (
                                 <TouchableOpacity
                                     key={value.key}
                                     onPress={() => {
-                                        changeChartType(value.key);
-                                        setchartTypeModalVisble(false);
-                                        setActiveChartType(value.ico)
+                                        setBasicModalVisble(false);
+                                        mapMethod(value.ModalVisibleMethodName)(true)
                                     }}
                                     style={[styles.button]}>
-                                    <AntDesign name={value.ico} size={24} color="black" />
+                                    {/* <Entypo name="flow-line" size={24} color="black" /> */}
                                     <Text
                                         style={[
                                             styles.buttonLabel
@@ -125,11 +203,11 @@ export const ChartTypeModal = ({
                                 </TouchableOpacity>
                             ))}
                         </View>
-                        </View>
                     </View>
                 </View>
-            </Modal>
-        </View>
+            </View>
+        </Modal>
+    </View>
     )
 };
 export const DrawingTypeModal = ({
@@ -161,33 +239,111 @@ export const DrawingTypeModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={styles.modalView}>
-                <MaterialIcons name="drag-handle" size={24} color="black" />
-                <View style={{paddingTop: 20}}>
-                    <Text style={styles.modalText}>Drawings</Text>
-                    {/* <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setDrawingModalVisble(false)}>
-                  <Text style={styles.textStyle}>Close</Text>
-                </Pressable> */}
-                    <View style={styles.row}>
-                        {values.map(value => (
-                            <TouchableOpacity
-                                key={value.key}
-                                onPress={() => {
-                                    changeDrawing(value);
-                                    setDrawingModalVisble(false);
-                                }}
-                                style={[styles.button]}>
-                                <Entypo name="flow-line" size={24} color="black" />
+                    <MaterialIcons name="drag-handle" size={24} color="black" />
+                    <View style={{ paddingTop: 20 }}>
+                        <Text style={styles.modalText}>Add</Text>
+                        <View style={styles.row}>
+                            {values.map(value => (
+                                <TouchableOpacity
+                                    key={value.key}
+                                    onPress={() => {
+                                        changeDrawing(value);
+                                        setDrawingModalVisble(false);
+                                    }}
+                                    style={[styles.button]}>
+                                    {/* <Entypo name="flow-line" size={24} color="black" /> */}
                                     <Text
                                         style={[
                                             styles.buttonLabel
                                         ]}>
-                                        {value.options[0].shape}
+                                        {value.desc}
                                     </Text>
-                            </TouchableOpacity>
-                        ))}
+                                </TouchableOpacity>
+                            ))}
+                        </View>
                     </View>
+                </View>
+            </View>
+        </Modal>
+    </View>
+    )
+};
+
+export const IndicatorModal = ({
+    values,
+    indicatorModalVisibility,
+    setIndicatorModalVisble,
+    addIndicator,
+    setSearchTerm
+}) => {
+    const panResponder = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderMove: () => { },
+            onPanResponderRelease: (_, gestureState) => {
+                if (gestureState.dy > 50) {
+                    setIndicatorModalVisble(false);
+                }
+            },
+        })
+    ).current;
+
+    // const [values, setValues] = useState(initialValues);
+
+    const filterIndicators = function(searchTerm) {
+        let matchingRows
+        if(searchTerm) {
+            console.log("filter indi9cator", matchingRows);
+           let updatedValues = initialValues.filter(item => item.desc.toLowerCase().includes(searchTerm.toLowerCase()))
+           setValues(updatedValues);
+           console.log("filter indi9cator", updatedValues)
+        }      
+    }
+
+    return (<View>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={indicatorModalVisibility}
+            onRequestClose={() => {
+                // setIntervalModalVisble(!intervalModalVisibility);
+            }}>
+            <View style={styles.centeredView}
+                {...panResponder.panHandlers}>
+                <View style={styles.modalView}>
+                    <MaterialIcons name="drag-handle" size={24} color="black" />
+                    <View style={{ paddingTop: 20 }}>
+                        <Text style={styles.modalText}>Add Indicator</Text>
+                        <TextInput
+                            style={{ height: 40 }}
+                            placeholder="Search Indicator"
+                            onChangeText={newText => {
+                                setSearchTerm(newText)
+                                filterIndicators(newText)}
+                            }
+                            // defaultValue={text}
+                        />
+                        <ScrollView>
+                            <View style={styles.row}>
+                                {values.map(value => (
+                                    <TouchableOpacity
+                                        key={value.key}
+                                        onPress={() => {
+                                            addIndicator(value.key);
+                                            setIndicatorModalVisble(false);
+                                        }}
+                                        style={[styles.indicatorButton]}>
+                                        {/* <Entypo name="flow-line" size={24} color="black" /> */}
+                                        <Text
+                                            style={[
+                                                styles.buttonLabel
+                                            ]}>
+                                            {value.desc}
+                                        </Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </ScrollView>
                     </View>
                 </View>
             </View>
