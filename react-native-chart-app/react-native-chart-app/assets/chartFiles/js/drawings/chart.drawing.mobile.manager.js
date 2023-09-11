@@ -3603,6 +3603,11 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
         };
         if (infChart.contextMenuManager && infChart.contextMenuManager.isContextMenuEnabled(chartId) && (drawingType === infChart.constants.drawingTypes.shape || drawingType === infChart.constants.drawingTypes.indicator)) {
             drawingEvents.contextmenu = function (event) {
+                const sendDataToReactNativeApp = async () => {
+                    window.ReactNativeWebView.postMessage('Data from WebView / Website');
+                  };
+            
+                sendDataToReactNativeApp();
                 if (!_isMultipleDrawingsEnabled(chartId)) {
                     if (drawingType === infChart.constants.drawingTypes.shape)  {
                         var ann = this;

@@ -97,6 +97,11 @@ export function ChartScreen() {
 
   };
 
+  const onMessageFromWebView = (message) => {
+    console.log('Message from WebView:', message);
+    // Perform any desired actions in response to the message
+  };
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -106,6 +111,10 @@ export function ChartScreen() {
           style={{ flex: 1 }}
           source={chartHtml}
         // source={{ uri: 'http://localhost:8081/' }}
+        onMessage={(event) => {
+          console.log('Message from WebView:');
+          onMessageFromWebView(event.nativeEvent.data);
+        }}
         />
       </View>
       <View style={[styles.buttonBar]}>

@@ -244,12 +244,13 @@ export const DrawingTypeModal = ({
                         <Text style={styles.modalText}>Add</Text>
                         <View style={styles.row}>
                             {values.map(value => (
+                                <><Text>{}</Text>
                                 <TouchableOpacity
                                     key={value.shape}
                                     onPress={() => {
                                         changeDrawing(value.shape);
                                         setDrawingModalVisble(false);
-                                    }}
+                                    } }
                                     style={[styles.button]}>
                                     <Entypo name="flow-line" size={24} color="black" />
                                     <Text
@@ -258,7 +259,7 @@ export const DrawingTypeModal = ({
                                         ]}>
                                         {value.shape}
                                     </Text>
-                                </TouchableOpacity>
+                                </TouchableOpacity></>
                             ))}
                         </View>
                     </View>
