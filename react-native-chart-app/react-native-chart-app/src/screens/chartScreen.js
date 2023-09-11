@@ -52,7 +52,7 @@ export function ChartScreen() {
     const changeChartType = `  
         var chart = infChart.manager.getChart("mainchart");
         if(chart){
-          infChart.mobileDrawingsManager.initializeDrawing(chart.chart, "` + value + `", undefined, undefined, "shape", true)
+          infChart.drawingsManager.initializeDrawing(chart.chart, "` + value + `", undefined, undefined, "shape", true)
         }
         true; 
       `;
