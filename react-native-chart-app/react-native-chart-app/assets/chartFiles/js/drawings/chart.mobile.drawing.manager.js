@@ -3,7 +3,7 @@ var infChart = window.infChart || {};
  * Created by nimila on 9/15/15.
  * Chart drawing features
  */
-infChart.mobileDrawingsManager = (function ($, infChart) {
+infChart.drawingsManager = (function ($, infChart) {
     var chartDrawingObjects = {},
         listeners = {},
         drawingToolBarProperties = {},
@@ -60,28 +60,18 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
          * @param e
          */
         function start(e) {
-
-            // if (e.which !== 1 || e.button !== 0) {
-            //     e.preventDefault();
-            //     return;
-            // }
-
             if (chart) {
                 e = chart.pointer.normalize(e);
             }
             _changeGlobalLockStatus(chart);
+            var stockChartId = infChart.drawingsManager.getChartIdFromHighchartInstance(chart);
+            var chartInstance = infChart.manager.getChart(stockChartId);
             chart.annotationChangeInProgress = true;
+            chartInstance.throughTheDrawingClick = true;
             isActiveDrawingInprogress = true;
             var bbox = chart.container.getBoundingClientRect(),
                 clickX = e.chartX,
                 clickY = e.chartY;
-            /* if( chart.infScaleX ) {
-             clickX = clickX/chart.infScaleX;
-             }
-
-             if( chart.infScaleY ) {
-             clickY = clickY/chart.infScaleY;
-             }*/
 
             if (!chart.isInsidePlot(clickX - chart.plotLeft, clickY - chart.plotTop)) {
                 return;
@@ -93,8 +83,6 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
             clickValues.shape = shapeId;
             var drawingObject = _createDrawing(chart, shapeId, drawingSettingsContainer, quickDrawingSettingsContainer);
             drawingObj = _addAnnotation(drawingObject, chart, shapeId, clickValues, false);
-            // _loadSettings(drawingObj);
-            // _loadQuickSettings(drawingObj);
 
             var hasIntermediateStep = drawingObj.hasMoreIntermediateSteps && drawingObj.hasMoreIntermediateSteps();
 
@@ -105,10 +93,8 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
             chart.activeAnnotation.transX = 0;
             chart.activeAnnotation.transY = 0;
 
-            infChart.util.unbindEvent(container, 'mousedown', start);
+            Highcharts.removeEvent(container, 'touchstart', start);
             document.addEventListener('keydown', keyDownEnd);
-            // container.addEventListener('mouseleave', ignoreUnfinishedDrawing);
-            /*Highcharts.removeEvent(container, 'touchstart', start);*/
 
             switch (shapeId) {
                 case 'label':
@@ -147,16 +133,12 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                         infChart.util.bindEvent(container, 'mousemove', step);
                         infChart.util.bindEvent(container, 'mousedown', intermediate);
                     } else {
-                        infChart.util.bindEvent(container, 'mousemove', step);
-                        infChart.util.bindEvent(container, 'mouseup', end);
+                        Highcharts.addEvent(container, 'touchmove', step);
+                        Highcharts.addEvent(container, 'touchstart', end);
                     }
-
-                    /*infChart.util.bindEvent(container, 'touchmove', step);
-                     Highcharts.addEvent(container, 'touchstart', end);*/
                     break;
             }
 
-            //$(container).css({'cursor': 'url("../img/block_cursor.png"), default'});
             infChart.util.setCursor(container, 'block');
         }
 
@@ -184,14 +166,6 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                 var bbox = chart.container.getBoundingClientRect(),
                     clickX = e.chartX,
                     clickY = e.chartY;
-
-                /* if( chart.infScaleX ) {
-                clickX = clickX/chart.infScaleX;
-                }
-
-                if( chart.infScaleY ) {
-                clickY = clickY/chart.infScaleY;
-                }*/
 
                 if (!chart.isInsidePlot(clickX - chart.plotLeft, clickY - chart.plotTop)) {
                     return;
@@ -232,7 +206,6 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                     drawingObj.newPointAdded = false;
                 }
                 infChart.util.setCursor(container, 'block');
-                //$(container).css({'cursor': 'url("../img/block_cursor.png"), default'});
             }
         }
 
@@ -319,19 +292,17 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
             var isBrush = (shapeId === "brush" || drawingObj.shape === "brush");
             var stopFunctionOutput;
             var chartId = _getChartIdFromHighchartInstance(chart);
-            //container.removeEventListener('mouseleave', ignoreUnfinishedDrawing);
 
             if(isRightClick){
                 abortDrawing = true;
             }
 
             if (isDoubleClick && !isPolyline && !isHighLowLabel || (!drawingObj.newPointAdded && _isIntermediatePointDrawing(shapeId, true))) {
-                //e.preventDefault();
                 if (!_isSingleClickDrawing(shapeId)) {
                     return;
                 }
             }
-            if(isPolyline && abortDrawing && !drawingObj.newPointAdded){ //prevent remove last point when step function haven't run
+            if(isPolyline && abortDrawing && !drawingObj.newPointAdded){
                 abortDrawing = false;
             }
 
@@ -351,7 +322,6 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
             }
 
             if (drawingObj && !(abortDrawing && !drawingObj.isContinuousDrawing) && drawingObj.annotation && drawingObj.stop) {
-                //drawingObj.stopFunction.call(drawingObj, e, undefined, true);
                 stopFunctionOutput = drawingObj.wrapFunctionHelper.call(drawingObj, "stopFunction", drawingObj.stop, [e, undefined, true, abortDrawing]);
             }
 
@@ -359,10 +329,9 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                 _removeDrawingInner(chartId, drawingObj.drawingId);
                 drawingObj = null;
                 Highcharts.removeEvent(container, 'mousedown', intermediate);
-                //TODO - Currently undo stop is not working. when we fix it we have to remove undo function from undo stack
             }
 
-            infChart.util.unbindEvent(container, 'mousemove', step);
+            Highcharts.removeEvent(container, 'touchmove', step);
             document.removeEventListener('keydown', keyDownEnd, false);
 
             if (isBrush) {
@@ -375,7 +344,8 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
             } else if (isPolyline) {
                 infChart.util.unbindEvent(container, 'mousedown', specificIntermediate);
             } else {
-                infChart.util.unbindEvent(container, 'mouseup', end);
+                infChart.util.unbindEvent(container, 'mousedown', end);
+                Highcharts.removeEvent(container, 'touchstart', end);
             }
 
             if (_isMultipleDrawingsEnabled(chartId) && subTypeId === infChart.constants.drawingTypes.shape || unfinishedDrawing) {
@@ -386,15 +356,13 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
             }
 
             if (!abortDrawing && !isPolyline) {
-                infChart.util.bindEvent(container, 'mouseup', select);
+                Highcharts.addEvent(container, 'mouseup', select);
             }
 
             if (drawingObj && isPropertyChange) {
                 drawingObj.onPropertyChange("drawings");
             }
             isActiveDrawingInprogress = false;
-            // chart.activeAnnotation.onInit = false;
-            // should redraw if plot area is depend on the drawing
             if (drawingObj && drawingObj.chartRedrawRequired) {
                 infChart.manager.getChart(drawingObj.stockChartId).redrawChart();
             }
@@ -407,7 +375,6 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
         function select() {
 
             if (drawingObj && drawingObj.annotation) {
-                // chart.selectedAnnotation = drawingObj.annotation; // if we do not set this, two drawings get selected at the same time
                 if (drawingObj.stop) {
                     if (drawingObj.selectAndBindResize) {
                         drawingObj.selectAndBindResize();
@@ -420,14 +387,14 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                     }
                 }
 
-                chart.selectedAnnotation = drawingObj.annotation; // if we do not set this, two drawings get selected at the same time
+                chart.selectedAnnotation = drawingObj.annotation;
             }
 
             annotation = null;
             drawingObj = null;
 
-            infChart.util.unbindEvent(container, 'mouseup', select);
-            /*Highcharts.removeEvent(container, 'touchend', select);*/
+            //infChart.util.unbindEvent(container, 'mouseup', select);
+            Highcharts.removeEvent(container, 'mouseup', select);
         }
 
         return {
@@ -440,7 +407,7 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                     isActiveDrawingInprogress = true;
                 }
 
-                container = chartObj.container;//'.tt_panelDiv';
+                container = chartObj.container;
                 annotations = chartObj.annotations.allItems;
                 shapeId = shape;
                 subTypeId = subType;
@@ -450,18 +417,13 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                 chart.annotations.tradingMode = (shape === 'tradingLine' || subType === 'shape');
                 isPropertyChange = isPropChange;
 
-                infChart.util.bindEvent(container, 'mousedown', start);
-                //Highcharts.addEvent(container, 'touchstart', start);
+                Highcharts.addEvent(container, 'touchstart', start);
                 infChart.util.setCursor(container, 'block');
-                //$(container).css({'cursor': 'url("../img/block_cursor.png"), default'});
-                //$(container).css({'cursor': 'url("../img/block_cursor.png"), default', 'z-index' : 10});
             },
             unbindEvents: function (chartObj) {
                 container = chartObj.container;
                 Highcharts.removeEvent(container, 'mousedown', start);
                 infChart.util.setCursor(container, 'default');
-                //$(container).css({'cursor': 'default'});
-                //$(container).css({'cursor': 'default', 'z-index' : -10});
 
                 if (chartObj.annotations) {
                     chartObj.annotations.allowZoom = true;
@@ -565,7 +527,7 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
 
         switch (shapeId) {
             case 'line':
-                drawing = new infChart.lineDrawing(drawingId, chartObj, shapeId, drawingSettingsContainer, quickDrawingSettingsContainer);
+                drawing = new infChart.mobilelineDrawing(drawingId, chartObj, shapeId, drawingSettingsContainer, quickDrawingSettingsContainer);
                 break;
             case 'lineArrow':
                 drawing = new infChart.lineArrowDrawing(drawingId, chartObj, shapeId, drawingSettingsContainer, quickDrawingSettingsContainer);
@@ -3380,157 +3342,157 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
      */
     var _getDrawingEvents = function (drawingId, chartId, drawingType) {
         var drawingEvents = {
-            click: function (event) {
-                var ann = this,
-                    annotationOptions = ann.options,
-                    drawingId = annotationOptions.id,
-                    stockChartId = _getChartIdFromHighchartInstance(ann.chart),
-                    drawingObj = _getDrawingObject(stockChartId, drawingId);
+            // click: function (event) {
+            //     var ann = this,
+            //         annotationOptions = ann.options,
+            //         drawingId = annotationOptions.id,
+            //         stockChartId = _getChartIdFromHighchartInstance(ann.chart),
+            //         drawingObj = _getDrawingObject(stockChartId, drawingId);
 
-                if (!_isMultipleDrawingsEnabled(chartId) && !_getIsActiveDrawingInprogress() && !_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && !ann.chart.isAnnotationSelected && !annotationOptions.isDisplayOnly) {
-                    if (!_isDisableDrawingSettingsPanel) {
-                        _openSettings(drawingObj, false);
-                    }
-                    if (drawingObj.select) {
-                        drawingObj.select();
-                    }
-                    if (drawingObj.onClick) {
-                        drawingObj.onClick(event);
-                    }
-                }
-            },
-            dblclick: function (event) {
-                var ann = this,
-                    annotationOptions = ann.options,
-                    drawingId = annotationOptions.id,
-                    stockChartId = _getChartIdFromHighchartInstance(ann.chart),
-                    drawingObj = _getDrawingObject(stockChartId, drawingId);
+            //     if (!_isMultipleDrawingsEnabled(chartId) && !_getIsActiveDrawingInprogress() && !_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && !ann.chart.isAnnotationSelected && !annotationOptions.isDisplayOnly) {
+            //         if (!_isDisableDrawingSettingsPanel) {
+            //             _openSettings(drawingObj, false);
+            //         }
+            //         if (drawingObj.select) {
+            //             drawingObj.select();
+            //         }
+            //         if (drawingObj.onClick) {
+            //             drawingObj.onClick(event);
+            //         }
+            //     }
+            // },
+            // dblclick: function (event) {
+            //     var ann = this,
+            //         annotationOptions = ann.options,
+            //         drawingId = annotationOptions.id,
+            //         stockChartId = _getChartIdFromHighchartInstance(ann.chart),
+            //         drawingObj = _getDrawingObject(stockChartId, drawingId);
 
-                if (!_isMultipleDrawingsEnabled(chartId) && !_getIsActiveDrawingInprogress() && !_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && !ann.chart.isAnnotationSelected && !annotationOptions.isDisplayOnly) {
-                    if (!_isDisableDrawingSettingsPanel) {
-                        _openSettings(drawingObj, false);
-                    }
-                    if (drawingObj.select) {
-                        drawingObj.select();
-                    }
-                    if (drawingObj.onDoubleClick) {
-                        drawingObj.onDoubleClick(event);
-                    }
-                }
+            //     if (!_isMultipleDrawingsEnabled(chartId) && !_getIsActiveDrawingInprogress() && !_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && !ann.chart.isAnnotationSelected && !annotationOptions.isDisplayOnly) {
+            //         if (!_isDisableDrawingSettingsPanel) {
+            //             _openSettings(drawingObj, false);
+            //         }
+            //         if (drawingObj.select) {
+            //             drawingObj.select();
+            //         }
+            //         if (drawingObj.onDoubleClick) {
+            //             drawingObj.onDoubleClick(event);
+            //         }
+            //     }
 
-                if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
-                    infChart.indicatorMgr.indicatorLegendClick(_getChartIdFromHighchartInstance(ann.chart), ann.chart.get(this.options.indicatorId).options.id);
-                }
-            },
-            mousedown: function (e) {
-                var ann = this,
-                    annotationOptions = ann.options,
-                    drawingId = annotationOptions.id,
-                    stockChartId = _getChartIdFromHighchartInstance(ann.chart),
-                    drawingObj = _getDrawingObject(stockChartId, drawingId),
-                    stockChart = infChart.manager.getChart(stockChartId),
-                    isPropergateEvent = annotationOptions.isLocked || stockChart.isGloballyLocked;
+            //     if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
+            //         infChart.indicatorMgr.indicatorLegendClick(_getChartIdFromHighchartInstance(ann.chart), ann.chart.get(this.options.indicatorId).options.id);
+            //     }
+            // },
+            // mousedown: function (e) {
+            //     var ann = this,
+            //         annotationOptions = ann.options,
+            //         drawingId = annotationOptions.id,
+            //         stockChartId = _getChartIdFromHighchartInstance(ann.chart),
+            //         drawingObj = _getDrawingObject(stockChartId, drawingId),
+            //         stockChart = infChart.manager.getChart(stockChartId),
+            //         isPropergateEvent = annotationOptions.isLocked || stockChart.isGloballyLocked;
 
-                if (e.detail === 2 && drawingObj.onDoubleClick && !isActiveDrawingInprogress && !_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId)){
-                        drawingObj.onDoubleClick(e);
-                }
+            //     if (e.detail === 2 && drawingObj.onDoubleClick && !isActiveDrawingInprogress && !_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId)){
+            //             drawingObj.onDoubleClick(e);
+            //     }
 
-                if (_getIsActiveDeleteTool(stockChartId) && e.which == 1) {
-                    if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
-                        ann.chart.isAnnotationSelected = false;
-                        _removeDrawing(stockChartId, drawingId, undefined, true);
-                        _updateIsGloballyLockInDelete(stockChartId);
-                    }
-                } else if(_getIsActiveEraseMode(stockChartId) && e.which == 1){
-                    var drawingType = e.target.getAttribute('type');
-                    var selectedLevel = e.target.getAttribute('level');
-                    if(!selectedLevel && e.target.parentNode && (drawingObj.shape ==  "fibVerRetracements" || drawingObj.shape ==  "fib2PointTimeProjection" || drawingObj.shape ==  "fib3PointTimeProjection")){
-                        if (e.target.parentNode.getAttribute('level')) {
-                            selectedLevel = e.target.parentNode.getAttribute('level');
-                            drawingType = e.target.parentNode.getAttribute('type');
-                        } else if (e.target.parentNode.parentNode && e.target.parentNode.parentNode.getAttribute('level')) {
-                            selectedLevel = event.target.parentElement.parentElement.getAttribute('level');
-                            drawingType = e.target.parentNode.parentNode.getAttribute('type');
-                        }
-                    }
-                    if(drawingType == "additionalDrawing" && selectedLevel){
-                        if (drawingObj.isVisibleLastLevel()) {
-                            _removeDrawing(stockChartId, drawingId, undefined, true);
-                            _updateIsGloballyLockInDelete(stockChartId);
-                        } else {
-                            if(drawingObj.shape == "fibFans"){
-                                drawingObj.onFibFansLevelChange(selectedLevel, false, true);
-                            } else if (drawingObj.shape ==  "fibArcs"){
-                                drawingObj.onFibArcsLevelChange(selectedLevel, false, true);
-                            } else if (drawingObj.shape ==  "fibVerRetracements" || drawingObj.shape ==  "fib2PointTimeProjection" || drawingObj.shape ==  "fib3PointTimeProjection"){
-                                drawingObj.eraseFibLevel(selectedLevel, false, true);
-                            } else if (drawingObj.shape ==  "shortLine" || drawingObj.shape ==  "longLine"){
-                                infChart.drawingUtils.common.settings.onApplyLine.call(drawingObj, false, selectedLevel, true);
-                            } else if (drawingObj.shape == "andrewsPitchfork"){
-                                drawingObj.onChangeFibLines(drawingObj.getFibLevelById(selectedLevel), 'enable', false, true);
-                            } else {
-                                infChart.drawingUtils.common.settings.onFibLevelChange.call(drawingObj, selectedLevel, false, true, true);
-                            }
-                        }
-                    } else if(drawingType == "fibLevelDrawing"){
-                        var subType = e.target.getAttribute('subType');
-                        if (drawingObj.isVisibleLastLevel()) {
-                            _removeDrawing(stockChartId, drawingId, undefined, true);
-                            _updateIsGloballyLockInDelete(stockChartId);
-                        } else {
-                            drawingObj.onFibLevelChange(selectedLevel, false, subType, true);
-                        }
-                    } else {
-                        if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
-                            ann.chart.isAnnotationSelected = false;
-                            _removeDrawing(stockChartId, drawingId, undefined, true);
-                            _updateIsGloballyLockInDelete(stockChartId);
-                        }
-                    }
-                } else {
-                    if (!_getIsActiveDrawing()) {
-                        // ann.events.deselect.call(ann, e);
-                        //infChart.drawingsManager.closeActiveDrawingSettings();
-                    }
+            //     if (_getIsActiveDeleteTool(stockChartId) && e.which == 1) {
+            //         if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
+            //             ann.chart.isAnnotationSelected = false;
+            //             _removeDrawing(stockChartId, drawingId, undefined, true);
+            //             _updateIsGloballyLockInDelete(stockChartId);
+            //         }
+            //     } else if(_getIsActiveEraseMode(stockChartId) && e.which == 1){
+            //         var drawingType = e.target.getAttribute('type');
+            //         var selectedLevel = e.target.getAttribute('level');
+            //         if(!selectedLevel && e.target.parentNode && (drawingObj.shape ==  "fibVerRetracements" || drawingObj.shape ==  "fib2PointTimeProjection" || drawingObj.shape ==  "fib3PointTimeProjection")){
+            //             if (e.target.parentNode.getAttribute('level')) {
+            //                 selectedLevel = e.target.parentNode.getAttribute('level');
+            //                 drawingType = e.target.parentNode.getAttribute('type');
+            //             } else if (e.target.parentNode.parentNode && e.target.parentNode.parentNode.getAttribute('level')) {
+            //                 selectedLevel = event.target.parentElement.parentElement.getAttribute('level');
+            //                 drawingType = e.target.parentNode.parentNode.getAttribute('type');
+            //             }
+            //         }
+            //         if(drawingType == "additionalDrawing" && selectedLevel){
+            //             if (drawingObj.isVisibleLastLevel()) {
+            //                 _removeDrawing(stockChartId, drawingId, undefined, true);
+            //                 _updateIsGloballyLockInDelete(stockChartId);
+            //             } else {
+            //                 if(drawingObj.shape == "fibFans"){
+            //                     drawingObj.onFibFansLevelChange(selectedLevel, false, true);
+            //                 } else if (drawingObj.shape ==  "fibArcs"){
+            //                     drawingObj.onFibArcsLevelChange(selectedLevel, false, true);
+            //                 } else if (drawingObj.shape ==  "fibVerRetracements" || drawingObj.shape ==  "fib2PointTimeProjection" || drawingObj.shape ==  "fib3PointTimeProjection"){
+            //                     drawingObj.eraseFibLevel(selectedLevel, false, true);
+            //                 } else if (drawingObj.shape ==  "shortLine" || drawingObj.shape ==  "longLine"){
+            //                     infChart.drawingUtils.common.settings.onApplyLine.call(drawingObj, false, selectedLevel, true);
+            //                 } else if (drawingObj.shape == "andrewsPitchfork"){
+            //                     drawingObj.onChangeFibLines(drawingObj.getFibLevelById(selectedLevel), 'enable', false, true);
+            //                 } else {
+            //                     infChart.drawingUtils.common.settings.onFibLevelChange.call(drawingObj, selectedLevel, false, true, true);
+            //                 }
+            //             }
+            //         } else if(drawingType == "fibLevelDrawing"){
+            //             var subType = e.target.getAttribute('subType');
+            //             if (drawingObj.isVisibleLastLevel()) {
+            //                 _removeDrawing(stockChartId, drawingId, undefined, true);
+            //                 _updateIsGloballyLockInDelete(stockChartId);
+            //             } else {
+            //                 drawingObj.onFibLevelChange(selectedLevel, false, subType, true);
+            //             }
+            //         } else {
+            //             if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
+            //                 ann.chart.isAnnotationSelected = false;
+            //                 _removeDrawing(stockChartId, drawingId, undefined, true);
+            //                 _updateIsGloballyLockInDelete(stockChartId);
+            //             }
+            //         }
+            //     } else {
+            //         if (!_getIsActiveDrawing()) {
+            //             // ann.events.deselect.call(ann, e);
+            //             //infChart.drawingsManager.closeActiveDrawingSettings();
+            //         }
 
-                    if (drawingObj && ann.options.drawingType === infChart.constants.drawingTypes.shape) {
-                        _unbindKeyDown(stockChartId);
-                    }
+            //         if (drawingObj && ann.options.drawingType === infChart.constants.drawingTypes.shape) {
+            //             _unbindKeyDown(stockChartId);
+            //         }
 
-                    if (!isPropergateEvent && drawingObj && ann.chart.isAnnotationSelected) {
-                        e.stopPropagation();
-                    }
+            //         if (!isPropergateEvent && drawingObj && ann.chart.isAnnotationSelected) {
+            //             e.stopPropagation();
+            //         }
 
-                }
-            },
-            mouseup: function (e) {
-                var ann = this, annotationOptions = ann.options;
-                var stockChartId = _getChartIdFromHighchartInstance(ann.chart),
-                    drawingObj = _getDrawingObject(stockChartId, annotationOptions.id);
+            //     }
+            // },
+            // mouseup: function (e) {
+            //     var ann = this, annotationOptions = ann.options;
+            //     var stockChartId = _getChartIdFromHighchartInstance(ann.chart),
+            //         drawingObj = _getDrawingObject(stockChartId, annotationOptions.id);
 
-                if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
-                    _bindKeyDown(ann);
-                }
+            //     if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
+            //         _bindKeyDown(ann);
+            //     }
 
-                if (!_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && ann.chart.isAnnotationSelected) {
-                    if (!annotationOptions.isDisplayOnly && ann.chart.selectedAnnotation === ann) {
-                        drawingObj.selectAndBindResize();
-                        ann.chart.selectedAnnotation = ann;
-                        // drawingObj.openDrawingSettings.call(drawingObj);
-                        if (e.detail !== 2 && !ann.chart.isContextMenuOpen){
-                                drawingObj.showQuickDrawingSettings.call(drawingObj);
-                        }
-                    }
+            //     if (!_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && ann.chart.isAnnotationSelected) {
+            //         if (!annotationOptions.isDisplayOnly && ann.chart.selectedAnnotation === ann) {
+            //             drawingObj.selectAndBindResize();
+            //             ann.chart.selectedAnnotation = ann;
+            //             // drawingObj.openDrawingSettings.call(drawingObj);
+            //             if (e.detail !== 2 && !ann.chart.isContextMenuOpen){
+            //                     drawingObj.showQuickDrawingSettings.call(drawingObj);
+            //             }
+            //         }
 
-                    ann.chart.isAnnotationSelected = false;
-                    _disableDrawing(stockChartId);
-                }
+            //         ann.chart.isAnnotationSelected = false;
+            //         _disableDrawing(stockChartId);
+            //     }
 
-                if(!_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && !_getIsActiveDrawingInprogress() && drawingObj.initialSettingPanelLoad){
-                    drawingObj.openSettingPanel();
-                    drawingObj.initialSettingPanelLoad = false;
-                }
-            },
+            //     if(!_getIsActiveDeleteTool(stockChartId) && !_getIsActiveEraseMode(stockChartId) && !_getIsActiveDrawingInprogress() && drawingObj.initialSettingPanelLoad){
+            //         drawingObj.openSettingPanel();
+            //         drawingObj.initialSettingPanelLoad = false;
+            //     }
+            // },
             touchstart: function (e) {
                 var ann = this,
                     annotationOptions = ann.options,
@@ -3611,23 +3573,19 @@ infChart.mobileDrawingsManager = (function ($, infChart) {
                         }
                         var chartId = _getChartIdFromHighchartInstance(ann.chart);
                         var drawingId = ann.options.id;
-                        var drawingObj = _getDrawingObject(chartId, drawingId);
-                        if (!ann.options.isDisplayOnly) {
-                            drawingObj.selectAndBindResize();
-                            ann.chart.selectedAnnotation = ann;
-                            drawingObj.showQuickDrawingSettings.call(drawingObj);
-                        }
-                        infChart.contextMenuManager.openContextMenu(chartId, {
-                            top: event.clientY,
-                            left: event.clientX
-                        }, infChart.constants.contextMenuTypes.drawing, {drawingId: ann.options.id}, event);
+                        var config = infChart.mobileDrawingSettingsManager.getConfigForDrawing(chartId, infChart.constants.contextMenuTypes.drawing, {drawingId: ann.options.id});
+                        var settingsProperties = {config: config, drawingId: drawingId, chartId: chartId};
+                        const myJSON = JSON.stringify(settingsProperties);
+                        infChart.mobileDrawingSettingsManager.setDrawingProperties(chartId, drawingId, "onLineColorChange", {rgb: undefined, color:'#008000', opacity:'1'});
+                        infChart.mobileDrawingSettingsManager.setDrawingProperties(chartId, drawingId, "onLineWidthChange", {width: 3});
+                        infChart.mobileDrawingSettingsManager.setDrawingProperties(chartId, drawingId, "onLineStyleChange", {style: "dash"});
                     } else if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
                         infChart.indicatorMgr.openContextMenu(this.chart.renderTo.id, event, this.chart.get(this.options.indicatorId));
                     }
 
-                    event.preventDefault();
                     event.stopPropagation();
                 }
+
             }
         }
         return drawingEvents;

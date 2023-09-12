@@ -234,10 +234,10 @@ infChart.Drawing.prototype.selectPointEvents = function (dragItem, stepFunction,
         if (e.button !== 2 && !(e.ctrlKey && e.button === 0)) { // ignore right click - cannot use an event since mousedown event is fired first , ignore ctrl + click
             var chartId = infChart.drawingsManager.getChartIdFromHighchartInstance(chart);
             if (!infChart.drawingsManager.isMultipleDrawingsEnabled(chartId) && !infChart.drawingsManager.getIsActiveDrawingInprogress()) {
-                //e.preventDefault();
+                e.preventDefault();
                 e.stopPropagation();
                 e = chart.pointer.normalize(e);
-                //ann.events.deselect.call(ann, e);
+                ann.events.deselect.call(ann, e);
                 if(self.showSelectionMarkers){
                     self.showSelectionMarkers(itemProperties);
                 }
@@ -245,8 +245,10 @@ infChart.Drawing.prototype.selectPointEvents = function (dragItem, stepFunction,
                 infChart.drawingsManager.onAnnotationStore(ann);
 
                 if (!ann.options.isLocked && !chartInstance.isGloballyLocked){
-                    infChart.util.bindEvent(dragItem.element, 'mousemove', step);
-                    infChart.util.bindEvent(dragItem.element, 'mouseup', drop);
+
+                infChart.util.bindEvent(chart.container, 'mousemove', step);
+                infChart.util.bindEvent(chart.container, 'mouseup', drop);
+                infChart.util.bindEvent(chart.container, 'mouseleave', drop);
                 };
             }
         }
@@ -267,8 +269,6 @@ infChart.Drawing.prototype.selectPointEvents = function (dragItem, stepFunction,
 
     function drop(e) {
         e = self.chart.pointer.normalize(e);
-        infChart.util.unbindEvent(dragItem.element, 'mouseDown', step);
-        infChart.util.unbindEvent(dragItem.element, 'mouseup', drop);
         if (self.annotation && self.stop) {
             stopFunction.call(self, e, isStartPoint, itemProperties);
         }
@@ -281,9 +281,14 @@ infChart.Drawing.prototype.selectPointEvents = function (dragItem, stepFunction,
         if(self.toggleFibLevelEraseIcon){
             self.toggleFibLevelEraseIcon(false);
         }
+        infChart.util.unbindEvent(chart.container, 'mousemove', step);
+        infChart.util.unbindEvent(chart.container, 'mouseup', drop);
+        infChart.util.unbindEvent(chart.container, 'mouseleave', drop);
     }
 
+    //dragItem.on('mousedown', drag);
     infChart.util.bindEvent(dragItem.element, 'mousedown', drag);
+    // infChart.util.bindDragEvents(chart, dragItem, step, drop, drag);
 };
 
 /**

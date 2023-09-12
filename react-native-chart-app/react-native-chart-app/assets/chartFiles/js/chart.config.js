@@ -623,7 +623,6 @@ infChart.settings = {
         news: false,
         alert: false,
         flags: [],
-        isMobile: true,
         mouseWheelController: true,
         refreshBtn: true,
         maxResizeDelay: 1000,
@@ -675,9 +674,9 @@ infChart.settings = {
         setMaxAvailablePeriod : false, // used to display all the compare data as well when showAllHistory is true, otherwise display compare data only within the data availble range of the main symbol
         marginRight: 80,
         enableUndoRedo: true,
-        showDrawingToolbarButtons: true,
+        showDrawingToolbarButtons: false,
         disableDrawingSettingsPanel: true,
-        favoriteMenuEnabled: false,
+        favoriteMenuEnabled: true,
         disableDrawingMove: false,
         customCandleCount: 40,
         candleCountEnable: true,
@@ -834,16 +833,12 @@ infChart.settings = {
         //topTb: ["file", "interval", "chartType", "grid", "comparison", "indicator", "volume", "navigator", "value", "last", "crosshair", "preclose", "tooltip", "minMax", "zoom", "full-screen", "print",  "depth", "rightPanel", "bidAskHistory"/*, "flags"*/],
         //leftTb: ["select", "line", "rect", "fibonacci", "andrewsPitchfork", "regression", "label", "arrow", "multiple", "delete"],
         rightTb: ['indicatorPanelView', 'drawingToolPanelView','symbolSettingsPanelView'],
-        //upperTb: ["period"],
-        upperTb: [],
-        topTb: [],
-        //topTb: ["optionsDropDown", "file", "chartType", "intervalD", "grid", "comparison", "indicator", "tradeControlCompact", "volume", "navigator", "value", "last", "preclose", "crosshair", "minMax", "tooltip", "print", "depth", "reset", "rightPanel", "bidAskHistory", "spread", "buy", "sell", "undo", "redo"],//"popOut", "full-screen", "layoutFullScreen", "zoom"
-        //leftTb: ["select", "label", "line", "rect", "fibonacci", "pattern", "volumeProfile", "arrow", "positions", "multiple", "delete", "lock", "favorite"], //
-        leftTb:[],
-        tradingTb:[],
-        //tradingTb: ["tradeControl"], //, "size"
+        upperTb: ["period"],
+        topTb: ["optionsDropDown", "file", "chartType", "intervalD", "grid", "comparison", "indicator", "tradeControlCompact", "volume", "navigator", "value", "last", "preclose", "crosshair", "minMax", "tooltip", "print", "depth", "reset", "rightPanel", "bidAskHistory", "spread", "buy", "sell", "undo", "redo"],//"popOut", "full-screen", "layoutFullScreen", "zoom"
+        leftTb: ["select", "label", "line", "rect", "fibonacci", "pattern", "volumeProfile", "arrow", "positions", "multiple", "delete", "lock", "favorite"], //
+        tradingTb: ["tradeControl"], //, "size"
         // rightTb: ['indicatorPanelView', 'drawingToolPanelView'],
-        alwaysCompactToolbar: true,
+        alwaysCompactToolbar: false,
         config: {
             optionsDropDown: {
                 options: [
@@ -1563,116 +1558,116 @@ infChart.settings = {
                         label: 'label.line',
                         isFavorite: false
                     },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'lineArrow',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icom icom-arrow',
-                    //     active: false,
-                    //     label: 'label.lineArrow',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'ray',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon icom-ray',
-                    //     active: false,
-                    //     label: 'label.ray',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'extendedLine',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icom icom-extended',
-                    //     active: false,
-                    //     label: 'label.extendedLine',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'horizontalLine',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon ico-dash-1',
-                    //     active: false,
-                    //     label: 'label.horizontalLine',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'horizontalRay',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icom icom-horizontal-ray',
-                    //     active: false,
-                    //     label: 'label.horizontalRay',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'verticalLine',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon ico-dash-2',
-                    //     active: false,
-                    //     label: 'label.verticalLine',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'trendChannel',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon ico-d-dash',
-                    //     active: false,
-                    //     label: 'label.trendChannel',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'regressionLine',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon ico-chart4',
-                    //     active: false,
-                    //     label: 'label.regressionLine',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'regressionChannel',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon ico-chart5',
-                    //     active: false,
-                    //     label: 'label.regressionChannel',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'line',
-                    //     shape: 'polyline',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon icom-poly-line',
-                    //     active: false,
-                    //     label: 'label.polyline',
-                    //     isFavorite: false
-                    // },
-                    // {
-                    //     role: 'drawing',
-                    //     cat: 'andrewsPitchfork',
-                    //     shape: 'andrewsPitchfork',
-                    //     subType: infChart.constants.drawingTypes.shape,
-                    //     cls: 'icon ico-line33',
-                    //     active: false,
-                    //     label: 'label.andrewsPitchfork',
-                    //     isFavorite: false
-                    // }
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'lineArrow',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icom icom-arrow',
+                        active: false,
+                        label: 'label.lineArrow',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'ray',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon icom-ray',
+                        active: false,
+                        label: 'label.ray',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'extendedLine',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icom icom-extended',
+                        active: false,
+                        label: 'label.extendedLine',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'horizontalLine',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon ico-dash-1',
+                        active: false,
+                        label: 'label.horizontalLine',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'horizontalRay',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icom icom-horizontal-ray',
+                        active: false,
+                        label: 'label.horizontalRay',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'verticalLine',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon ico-dash-2',
+                        active: false,
+                        label: 'label.verticalLine',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'trendChannel',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon ico-d-dash',
+                        active: false,
+                        label: 'label.trendChannel',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'regressionLine',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon ico-chart4',
+                        active: false,
+                        label: 'label.regressionLine',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'regressionChannel',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon ico-chart5',
+                        active: false,
+                        label: 'label.regressionChannel',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'line',
+                        shape: 'polyline',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon icom-poly-line',
+                        active: false,
+                        label: 'label.polyline',
+                        isFavorite: false
+                    },
+                    {
+                        role: 'drawing',
+                        cat: 'andrewsPitchfork',
+                        shape: 'andrewsPitchfork',
+                        subType: infChart.constants.drawingTypes.shape,
+                        cls: 'icon ico-line33',
+                        active: false,
+                        label: 'label.andrewsPitchfork',
+                        isFavorite: false
+                    }
                 ]
             },
             rect: {

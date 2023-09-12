@@ -469,20 +469,20 @@ infChart.manager = infChart.manager || (function ($, H) {
                 }
             }
             
-            if(settings.config.isMobile){
-                if (infChart.mobileDrawingsManager) {
-                    infChart.mobileDrawingsManager.initialize(containerId, settings.dataProvider.drawingService, settings.config.disableDrawingSettingsPanel);
-                    if (settings.toolbar.enable && settings.toolbar.leftTb) {
-                        infChart.mobileDrawingsManager.createDrawingToolbar(containerElem, containerId, settings.toolbar.leftTb, settings.toolbar.config, settings.toolbar.left, settings.config.showDrawingToolbarButtons, false, undefined, settings.config.isGloballyLocked);
-                        if(settings.config.favoriteMenuEnabled){
-                            infChart.mobileDrawingsManager.createDrawingToolbar(containerElem, containerId, settings.toolbar.leftTb, settings.toolbar.config, settings.toolbar.left, settings.config.showDrawingToolbarButtons, true, undefined, settings.config.isGloballyLocked);
-                        }
-                    }
-                    if(settings.config.isMobile){
-                        infChart.drawingsManager = infChart.mobileDrawingsManager;
-                    }
-                }
-            } else {
+            // if(settings.config.isMobile){
+            //     if (infChart.mobileDrawingsManager) {
+            //         infChart.mobileDrawingsManager.initialize(containerId, settings.dataProvider.drawingService, settings.config.disableDrawingSettingsPanel);
+            //         if (settings.toolbar.enable && settings.toolbar.leftTb) {
+            //             infChart.mobileDrawingsManager.createDrawingToolbar(containerElem, containerId, settings.toolbar.leftTb, settings.toolbar.config, settings.toolbar.left, settings.config.showDrawingToolbarButtons, false, undefined, settings.config.isGloballyLocked);
+            //             if(settings.config.favoriteMenuEnabled){
+            //                 infChart.mobileDrawingsManager.createDrawingToolbar(containerElem, containerId, settings.toolbar.leftTb, settings.toolbar.config, settings.toolbar.left, settings.config.showDrawingToolbarButtons, true, undefined, settings.config.isGloballyLocked);
+            //             }
+            //         }
+            //         if(settings.config.isMobile){
+            //             infChart.drawingsManager = infChart.mobileDrawingsManager;
+            //         }
+            //     }
+            // } else {
                 if (infChart.drawingsManager) {
                     infChart.drawingsManager.initialize(containerId, settings.dataProvider.drawingService, settings.config.disableDrawingSettingsPanel);
                     if (settings.toolbar.enable && settings.toolbar.leftTb) {
@@ -492,7 +492,7 @@ infChart.manager = infChart.manager || (function ($, H) {
                         }
                     }
                 }
-            }
+            // }
 
             if (infChart.indicatorMgr) {
                 infChart.indicatorMgr.initialize(containerId, settings.indicatorOptions);

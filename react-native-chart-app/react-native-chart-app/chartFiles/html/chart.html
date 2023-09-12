@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie8" lang="en-gb"> <![endif]-->
-<!--[if IE 9 ]><html class="ie9" lang="en-gb"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en-gb">
-<!--<![endif]-->
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.®js"></script>
-<![endif]-->
 
 <head>
     <meta charset="utf-8">
@@ -23,19 +16,9 @@
         }
     </style>
 
-    <!-- Bootstrap & Addons-->
-    <!-- <link href="https://code.highcharts.com/css/highcharts.css" rel="stylesheet" type="text/css"> -->
-
     <link href="../css/vendors/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="../css/libs/x-chart-lib.css" rel="stylesheet" type="text/css">
     <link href="../css/jquery.loadmask.css" rel="stylesheet" type="text/css">
-    <!-- <link href="../css/jquery.mainColorPanel.css" rel="stylesheet" type="text/css"> -->
-    <!-- crypto-chart -->
-    <!--<link href="/rest/web/css?id=Vh7f6ayS0Xf-HHljLEH5CAtpNZ2rsb7q" rel="stylesheet" type="text/css">-->
-    <!--&lt;!&ndash; crypto-chart-dark &ndash;&gt;-->
-    <!--<link href="/rest/web/css?id=QZ5T5UCnIpabXmgKRA7o4bXVjw3FXFOT" rel="stylesheet" type="text/css">-->
-    <!--&lt;!&ndash; icons &ndash;&gt;-->
-
 
     <link href="../css/dev-strucure.css" rel="stylesheet" type="text/css" /> 
     <link  href="../css/dev-theme.css" rel="stylesheet" type="text/css" />
@@ -46,10 +29,6 @@
     <link href="/rest/web/css?id=DsZmfPHjI8TZGBXd6w8yzbXVjw3FXFOT" rel="stylesheet" type="text/css">
     <link href="../css/reset/reset.css" rel="stylesheet" type="text/css">
     <link href="../css/icons/icons.css" rel="stylesheet" type="text/css">
-    
-    <!-- <link href="../css/default/structure.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="../css/default/theme.css" rel="stylesheet" type="text/css"> -->
-    
     
     <title>Chart</title>
 
@@ -66,48 +45,19 @@
 
 </div>
 
-<!--<input type="button" id="performanceCheck" value="performance">-->
-
 <!--Chart Container-->
 <div id="mainchart" style="height:100%;width:100%"></div>
-<!--<div id="depth" style="height:100px;"></div>-->
-<!--<div id="depth-navigator" class="inf-chart" style="height:50px;"></div>-->
 
-
-
-<!--Common Libs-->
-<!--[if lt IE 9]>
-<!--<script src="../libs/bootstrap/js/respond.src.js" type="text/javascript"></script>-->
-<!--<script src="../libs/jquery/jquery-1.9.1.js" type="text/javascript"></script>-->
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--<script src="../libs/jquery/jquery.js" type="text/javascript"></script>-->
-<!--<![endif]-->
-
-<!--<script src="../libs/json/jquery.json-2.4.min.js"></script>-->
-<!--<script src="../libs/jquery/jquery.localize.min.js"></script>-->
-<!--<script src="../libs/bootstrap/js/bootstrap.js"></script>-->
-<!--<script src="../libs/jquery/jquery.minicolors.js" type="text/javascript"></script>-->
-
-<!--HighChart-->
 <script src="../js/libs/x-chart-lib.js" type="text/javascript"></script>
-<!--<script src="../libs/highcharts/highcharts-more.js" type="text/javascript"></script>-->
-<!-- <script src="../js/libs/highcharts/boost.src.js" type="text/javascript"></script> -->
 <script src="../js/libs/jquery/jquery.loadmask.js" type="text/javascript"></script>
 <script src="../js/libs/jquery/jquery.mainColorPanel.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-<!--<script src="../js/portal/x-chart-basic.js" type="text/javascript"></script>-->
-<!--<script src="../js/portal/x-chart-adv.js" type="text/javascript"></script>-->
-<!--<script src="../build/js/x-chart-trade.js" type="text/javascript"></script>-->
-<!--<script type="text/javascript" src="../libs/canvg/rgbcolor.js"></script>-->
-<!--<script type="text/javascript" src="../libs/canvg/StackBlur.js"></script>-->
-<!--<script type="text/javascript" src="../libs/canvg/canvg.js"></script>-->
+
 
 <!--Chart-->
 <script src="../js/chart.theme.manager.js"></script>
 <script src="../js/chart.favouriteColor.manager.js"></script>
-<script src="../theme/js/dark-unica.js" type="text/javascript"></script> <!--TODO :: load according to the user theme -->
-<!--<script src="../theme/theme-light.js" type="text/javascript"></script> &lt;!&ndash;TODO :: load according to the user theme &ndash;&gt;-->
+<script src="../theme/js/dark-unica.js" type="text/javascript"></script> 
 <script src="../js/chart.highstock.extend.js"></script>
 <script src="../js/chart.util.js"></script>
 <script src="../js/chart.data.manager.js"></script>
@@ -115,11 +65,9 @@
 <script src="../js/dataProviders/chart.mock.provider.js"></script>
 <script src="../js/dataProviders/chart.webfg.provider.js"></script>
 <script src="../js/dataProviders/chart.xinfinit.provider.js"></script>
-<script src="../js/chart.config.js"></script>
+<script src="../js/chart.mobileConfig.js"></script>
 <script src="../js/chart.MouseWheelController.js"></script>
 <script src="../js/chart.core.js"></script>
-<!--<script src="../js/chart.data.manager.js"></script>-->
-<!--<script src="../js/chart.data.manager.webfg.js"></script>-->
 <script src="../js/chart.manager.js"></script>
 <script src="../js/chart.structure.manager.js"></script>
 <script src="../js/chart.lang.manager.js"></script>
@@ -136,9 +84,10 @@
 <script src="../js/drawings/chart.drawingUtils.js"></script>
 <script src="../js/drawings/chart.drawingSettings.js"></script>
 <script src="../js/drawings/chart.drawings.js"></script>
-<script src="../js/drawings/chart.drawingObject.js"></script>
-<script src="../js/drawings/chart.drawing.manager.js"></script>
-<script src="../js/drawings/chart.drawing.mobile.manager.js"></script>
+<script src="../js/drawings/chart.mobile.drawing.js"></script>
+<script src="../js/drawings/chart.mobile.drawingObject.js"></script>
+<script src="../js/drawings/chart.mobile.drawing.manager.js"></script>
+<script src="../js/drawings/chart.mobile.drawingSettingsManager.js"></script>
 <script src="../js/drawings/chart.drawing.structure.manager.js" type="text/javascript"></script>
 <script src="../js/drawings/dataProviders/chart.drawing.mock.provider.js" type="text/javascript"></script>
 <script src="../js/drawings/impl/chart.drawing.andrewsPitchfork.js"></script>
@@ -162,14 +111,13 @@
 <script src="../js/drawings/impl/chart.drawing.highLowLabels.js"></script>
 <script src="../js/drawings/impl/chart.drawing.fib2PointTimeProjection.js"></script>
 <script src="../js/drawings/impl/chart.drawing.timestampMarker.js"></script>
-<!-- <script src="../js/drawings/impl/chart.fib3PointPriceProjectionHLH.js"></script>
-<script src="../js/drawings/impl/chart.drawing.fib3PointPriceProjectionLHL.js"></script> -->
 <script src="../js/drawings/impl/chart.drawing.horizontalLine.js"></script>
 <script src="../js/drawings/impl/chart.drawing.shortLine.js"></script>
 <script src="../js/drawings/impl/chart.drawing.longLine.js"></script>
 <script src="../js/drawings/impl/chart.drawing.horizontalRay.js"></script>
 <script src="../js/drawings/impl/chart.drawing.label.js"></script>
 <script src="../js/drawings/impl/chart.drawing.line.js"></script>
+<script src="../js/drawings/impl/chart.drawing.mobile.line.js"></script>
 <script src="../js/drawings/impl/chart.drawing.brush.js"></script>
 <script src="../js/drawings/impl/chart.drawing.rectangle.js"></script>
 <script src="../js/drawings/impl/chart.drawing.regressionChannel.js"></script>
@@ -299,7 +247,6 @@
 <!-- alert -->
 <script src="../js/alert/dataProviders/chart.alert.mock.provider.js"></script>
 <script src="../js/alert/chart.alert.manager.js"></script>
-<!-- <script src="../js/alert/drawings/chart.alert.drawingUtils.js"></script> -->
 <script src="../js/alert/drawings/impl/chart.alert.drawing.line.js"></script>
 
 <!-- highcharts -->
@@ -324,17 +271,7 @@
 <script src="../js/intradayChart/chart.intradayChart.manager.js" type="text/javascript"></script>
 
 <!-- jquery auto suggest only for testing-->
-
-<!--<script src="../libs/jquery/jquery-ui.min.js" type="text/javascript"></script>-->
 <script src="../js/jqueryAutoComplete.js"></script>
-
-
-
-<!--KeyCloak related js-->
-<!--<script src="https://security-xinfinit.rhcloud.com/auth/js/keycloak.js"></script>-->
-<!--<script src="../js/keycloakAdaptor.js"></script>-->
-
-
 
 </body>
 </html>

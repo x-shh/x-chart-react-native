@@ -109,10 +109,9 @@ export function ChartScreen() {
         <WebView
           ref={webViewRef}
           style={{ flex: 1 }}
-          //source={chartHtml}
-          source={{ uri: 'http://localhost:8081/' }}
+          source={chartHtml}
+          //source={{ uri: 'http://localhost:8081/' }}
           onMessage={(event) => {
-            console.log('Message from WebView:');
             onMessageFromWebView(event.nativeEvent.data);
           }}
         />

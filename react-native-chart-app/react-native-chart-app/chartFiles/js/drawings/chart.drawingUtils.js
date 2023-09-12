@@ -38,8 +38,9 @@ window.infChart = window.infChart || {};
             var highChartTheme = infChart.themeManager.getTheme();
             if (forced || highChartTheme) {
                 var defaultTheme = {
-                    _selectPointStyles: {
-                        'stroke-width': 5,
+                    //TODO :: move other theme related default settings here and apply changes in the theme file if any
+                    selectPointStyles: {
+                        'stroke-width': 1,
                         stroke: '#959595',
                         fill: '#333',
                         dashstyle: 'solid',
@@ -47,12 +48,6 @@ window.infChart = window.infChart || {};
                         'z-index': 10,
                         cursor: 'crosshair',
                         'class': 'selection-marker'
-                    },
-                    get selectPointStyles() {
-                        return this._selectPointStyles;
-                    },
-                    set selectPointStyles(value) {
-                        this._selectPointStyles = value;
                     },
                     upArrow: {
                         fillColor: "#52ac62"
@@ -222,7 +217,7 @@ window.infChart = window.infChart || {};
             infChart.drawingUtils.common.setDeleteModeCursor.call(this);
         },
         addSelectionMarker: function (ann, x, y, selectPointStyles) {
-            var padding = 30,
+            var padding = infChart.settings.config.isMobile ? 30 : 13,
                 chart = ann.chart,
                 point,
                 themeSelP = infChart.drawingUtils.common.getTheme.call(this).selectPointStyles;

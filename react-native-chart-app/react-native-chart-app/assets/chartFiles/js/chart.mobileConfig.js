@@ -1,6 +1,6 @@
 /**
  * Created by dushani on 8/26/15.
- * This section contains the default configurations of the chart
+ * This section contains the default configurations of the chart that includes in the mobile
  */
 
 var infChart = window.infChart || {};
@@ -36,26 +36,11 @@ infChart.constants = {
 };
 
 infChart.config = {
-    /* TODO :: uncomment once extend method is implemented
-     infmerge:{
-     avoidReplace : [
-     "xAxis",
-     "yAxis",
-     "series",
-     "scrollbar"
-     ]
-     },*/
     credits: {
         enabled: false
     },
     accessibility: {
         enabled: false
-    },
-    watermark: {
-        type: "text",
-        text: "",
-        opacity: 0.5,
-        enabled: true
     },
     "scrollbar": {
         "enabled": true,
@@ -100,13 +85,11 @@ infChart.config = {
         "text": ""
     },
     "chart": {
-        // "styledMode": true,
         "infChart" : true,
         "alignTicks": false,
         "plotBorderWidth": 0,
         "borderWidth": 0,
         "marginLeft": 3,
-        //"marginRight": 40,
         "marginTop": 0,
         "marginBottom": 15,
         "spacingBottom": 0,
@@ -117,13 +100,6 @@ infChart.config = {
         "zoomType" : undefined,
         "panning" : false,
         events: {
-            /* TODO :: uncomment once extend method is implemented
-             infmerge:{
-             avoidReplace : [
-             "click",
-             "redraw"
-             ]
-             },*/
             click: function (e) {
                 infChart.manager.chartClick(this, e);
             },
@@ -143,7 +119,6 @@ infChart.config = {
     "plotOptions": {
         "series": {
             "allowPointSelect": false,
-            //"lineWidth": 1,
             "shadow": false,
             "stickyTracking": true,
             "enableMouseTracking": true,
@@ -202,15 +177,6 @@ infChart.config = {
                 }
             },
             events: {
-
-                /* TODO :: uncomment once extend method is implemented
-                 infmerge:{
-                 avoidReplace : [
-                 "click",
-                 "mouseOut",
-                 "legendItemClick"
-                 ]
-                 },*/
                 click: function (e) {
                     infChart.manager.chartClick(this.chart, e);
                 },
@@ -220,9 +186,7 @@ infChart.config = {
                 mouseOut: function (event) {
                     infChart.manager.seriesMouseOutEvent(this.chart, "series", this);
                 }, legendItemClick: function () {
-
                     return false;
-                    /* <== returning false will cancel the default action*/
                 },
                 mouseOver: function(){
                     infChart.manager.seriesMouseOverEvent(this.chart, this);
@@ -255,7 +219,6 @@ infChart.config = {
         volume: {
             lineWidth: 0,
             threshold: 0,
-            //groupPixelWidth:1,
             softThreshold : true
         },
         arearange: {
@@ -268,18 +231,14 @@ infChart.config = {
                         var len = arr.length,
                             ret;
 
-                        /* 1. it consists of nulls exclusively*/
                         if (!len && arr.hasNulls) {
                             ret = null;
-                            /* 2. it has a length and real values*/
                         } else if (len) {
                             ret = 0;
                             while (len--) {
                                 ret += arr[len];
                             }
                         }
-                        /*3. it has zero length, so just return undefined
-                         => doNothing()*/
 
                         return ret;
                     };
@@ -310,12 +269,10 @@ infChart.config = {
             }
         },
         line: {findNearestPointBy: 'x', "dataGrouping": {
-            //groupPixelWidth:1
         }},
         spline: {},
         area: {
-            "dataGrouping": {
-                //groupPixelWidth:1
+                "dataGrouping": {
             },
             threshold: null
         },
@@ -442,7 +399,6 @@ infChart.config = {
 
         },
         labels: {
-            // "useHTML": true,
             showFirstLabel: true,
             showLastLabel: false,
             staggerLines: 1,
@@ -459,12 +415,7 @@ infChart.config = {
                 }
             },
             afterSetExtremes: function (e) {
-                // var chartObj = infChart.manager.getChart(infChart.manager.getContainerIdFromChart(this.chart.renderTo.id));
-                // var chart = chartObj.chart;
-                // chartObj.afterSetExtremes();
-
                 infChart.manager.afterXSetExtremes(this.chart.renderTo.id, this);
-
             },
             contextmenu: function (event) {
                 infChart.manager.openContextMenu(event.chart.renderTo.id, event, infChart.constants.contextMenuTypes.xAxis);
@@ -545,8 +496,7 @@ infChart.config = {
             "name": "Primary",
             infType: "base",
             showInNavigator: true,
-            kdNow: true/*,
-         navigatorOptions : {data :[]}*/
+            kdNow: true
         },
         {
             data: [],
@@ -555,8 +505,7 @@ infChart.config = {
             "name": "Empty",
             infType: "dummy",
             showInNavigator: false,
-            showInLegend : false/*,
-         navigatorOptions : {data :[]}*/
+            showInLegend : false
         },
         {
             data: [],
@@ -566,7 +515,6 @@ infChart.config = {
             infType: "dummy",
             showInNavigator: false,
             showInLegend : false,
-           // enableMouseTracking: false,
             lineWidth : 0,
             states : {
                 inactive: {
@@ -576,8 +524,7 @@ infChart.config = {
                 hover : {
                     enabled : false
                 }
-            }/*,
-         navigatorOptions : {data :[]}*/
+            }
         },
         {
             data: [],
@@ -586,17 +533,12 @@ infChart.config = {
             "name": infChart.constants.dummySeries.backwardId,
             infType: "dummy",
             showInNavigator: false,
-            showInLegend : false/*,
-         navigatorOptions : {data :[]}*/
+            showInLegend : false
         }
     ],
    noData : { fontWeight: 'bold', fontSize: '11px'}
 };
 
-/*infChart.config.chart.plotBackgroundColor = "rgba(255, 255, 255, 0.0)";
-infChart.config.chart.backgroundColor = "rgba(255, 255, 255, 0.0)";
-infChart.config.xAxis.alternateGridColor =  'rgba(255, 255, 255, 0.0)';
-infChart.config.xAxis.gridLineColor =  'rgba(255, 255, 255, 0.0)';*/
 infChart.settings = {
     defaults : {
         minGroupPixelWidth : 2,
@@ -618,11 +560,12 @@ infChart.settings = {
         indicators: [],
         compareSymbols: [],
         drawings: [],
-        navigator: true,
+        navigator: false,
         tooltip: false,
         news: false,
         alert: false,
         flags: [],
+        isMobile: true,
         mouseWheelController: true,
         refreshBtn: true,
         maxResizeDelay: 1000,
@@ -674,9 +617,9 @@ infChart.settings = {
         setMaxAvailablePeriod : false, // used to display all the compare data as well when showAllHistory is true, otherwise display compare data only within the data availble range of the main symbol
         marginRight: 80,
         enableUndoRedo: true,
-        showDrawingToolbarButtons: false,
+        showDrawingToolbarButtons: true,
         disableDrawingSettingsPanel: true,
-        favoriteMenuEnabled: true,
+        favoriteMenuEnabled: false,
         disableDrawingMove: false,
         customCandleCount: 40,
         candleCountEnable: true,
@@ -724,27 +667,10 @@ infChart.settings = {
         language: 'en', pathPrefix: "../js/lang"
     },
     symbol: {
-        /*symbol: 'FTSE 100',
-         symbolId: 'GB0001383545_indices_232_df',
-         symbolDesc: 'FTSE 100',
-         symbolType: 'IND',
-         dp: 3*/
-        /* symbol: 'YAHOO', symbolId: 'US9843321061_acciones_67_df', symbolDesc: 'YAHOO', symbolType: 'EQU', dp: 2*/
-        /*symbol: 'telefonica', symbolId: 'ES0178430E18_acciones_55_df',symbolDesc:"Telefonica description",symbolType:"EQU", dp: 2
-         symbol: 'GOOG', symbolId: 'GOOG', symbolDesc: 'Google/Reg sh nvt Cl C USD0.001', symbolType: 'EQU', dp: 2*/
-
         symbol: 'ALVd', symbolId: 'ALVd.CHX', symbolDesc: 'Allianz', symbolType: 'EQU', dp: 3, currency: 'EUR',
         id: 12, tradeSymbol: ""
-
-        /*  symbol: 'DAX',
-         symbolId: 'DE0008469008_indices_22_df',
-         symbolDesc: 'DAX',
-         symbolType: 'IND',
-         dp: 3*/
-
     },
     dataProvider: {
-        /*type: 'WEBFG', source: 'WEBFG', url: '/x-one-webfg/dataService/dataRequest?',*/
         type: 'infinit', source: 'SIX', url: '/frontend/request-by-instrument/HST/',
         newsURL: '/rest/news/search?',
         flagServices: [
@@ -827,18 +753,13 @@ infChart.settings = {
         verticalDropDown: true,
         subLevelToolTipEnabled: false,
         mobileTb: [/*"period", "interval", "chartType", "indicator"*/],
-        //tradingTb: ["tradeControl"],
-        //upperTb: ["period", "trading"],
         optionsTb : ["volume", "chartType", "grid",  "navigator", "value", "last", "crosshair", "preclose", "tooltip", "minMax", "zoom", "full-screen", "print", "bidAskHistory"],
-        //topTb: ["file", "interval", "chartType", "grid", "comparison", "indicator", "volume", "navigator", "value", "last", "crosshair", "preclose", "tooltip", "minMax", "zoom", "full-screen", "print",  "depth", "rightPanel", "bidAskHistory"/*, "flags"*/],
-        //leftTb: ["select", "line", "rect", "fibonacci", "andrewsPitchfork", "regression", "label", "arrow", "multiple", "delete"],
         rightTb: ['indicatorPanelView', 'drawingToolPanelView','symbolSettingsPanelView'],
-        upperTb: ["period"],
-        topTb: ["optionsDropDown", "file", "chartType", "intervalD", "grid", "comparison", "indicator", "tradeControlCompact", "volume", "navigator", "value", "last", "preclose", "crosshair", "minMax", "tooltip", "print", "depth", "reset", "rightPanel", "bidAskHistory", "spread", "buy", "sell", "undo", "redo"],//"popOut", "full-screen", "layoutFullScreen", "zoom"
-        leftTb: ["select", "label", "line", "rect", "fibonacci", "pattern", "volumeProfile", "arrow", "positions", "multiple", "delete", "lock", "favorite"], //
-        tradingTb: ["tradeControl"], //, "size"
-        // rightTb: ['indicatorPanelView', 'drawingToolPanelView'],
-        alwaysCompactToolbar: false,
+        upperTb: [],
+        topTb: [],
+        leftTb:[],
+        tradingTb:[],
+        alwaysCompactToolbar: true,
         config: {
             optionsDropDown: {
                 options: [
@@ -852,11 +773,8 @@ infChart.settings = {
                     "crosshair",
                     "minMax",
                     "tooltip",
-                    // "zoom",
-                    // "full-screen",
                     "print",
-                    "depth", /* "flags"*/
-                    //"reset",
+                    "depth",
                     "rightPanel"
                 ]
             },
@@ -877,14 +795,6 @@ infChart.settings = {
                 cls : 'interval-dropdown',
                 layout : 'button',
                 options: [
-                    /*{
-                        key: "T",
-                        desc: "Tick-by-Tick",
-                        label: 'label.intervals.T',
-                        grouping: false,
-                        shortDesc: "T",
-                        shortLabel: "label.intervalsShort.T"
-                    },*/
                     {
                         key: "I_1",
                         desc: "1 min",
@@ -1081,94 +991,13 @@ infChart.settings = {
                 shortLabel: false,
                 categoryLabelPrefix : 'label.periodCategory.',
                 options: [
-                    /*{
-                        key: "I",
-                        desc: "Intraday",
-                        shortDesc: 'I',
-                        label: 'label.periods.I',
-                        shortLabel: 'label.periodShort.I'/!*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*!/
-                    },
-                    {
-                        key: "M_1",
-                        desc: "1 Month",
-                        shortDesc: '1M',
-                        shortLabel: 'label.periodShort.M_1',
-                        label: 'label.periods.M_1'/!*,
-                     intervals : [ "I_1","I_5","I_15","I_30","I_60","I_120","I_240","D","W","M"]*!/,
-                        category : "M"
-                    },
-                    {
-                        key: "M_3",
-                        desc: "3 Months",
-                        shortDesc: '3M',
-                        label: 'label.periods.M_3',
-                        shortLabel: 'label.periodShort.M_3'/!*,
-                     intervals : [ "I_5","I_15","I_30","I_60","I_120","I_240","D","W","M"]*!/,
-                        category : "M"
-                    },
-                    {
-                        key: "M_6",
-                        desc: "6 Months",
-                        shortDesc: '6M',
-                        label: 'label.periods.M_6',
-                        shortLabel: 'label.periodShort.M_6'/!*,
-                     intervals : [  "I_5","D","W","M"]*!/,
-                        category : "M"
-                    },
-                    {
-                        key: "Y_1",
-                        desc: "1 Year",
-                        shortDesc: '1Y',
-                        label: 'label.periods.Y_1',
-                        shortLabel: 'label.periodShort.Y_1'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    },
-                    {
-                        key: "Y_2",
-                        desc: "2 Years",
-                        shortDesc: '2Y',
-                        label: 'label.periods.Y_2',
-                        shortLabel: 'label.periodShort.Y_2'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    },
-                    {
-                        key: "Y_3",
-                        desc: "3 Years",
-                        shortDesc: '3Y',
-                        label: 'label.periods.Y_3',
-                        shortLabel: 'label.periodShort.Y_3'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    },
-                    {
-                        key: "Y_5",
-                        desc: "5 Years",
-                        shortDesc: '5Y',
-                        label: 'label.periods.Y_5',
-                        shortLabel: 'label.periodShort.Y_5'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    },
-                    {
-                        key: "Y_10",
-                        desc: "10 Years",
-                        shortDesc: '10Y',
-                        label: 'label.periods.Y_10',
-                        shortLabel: 'label.periodShort.Y_10'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    }*/
                     {
                         key: "I_H_1",
                         desc: "1 Hour",
                         shortDesc: '1H',
                         label: 'label.periods.I_H_1',
                         categoryDefault : true,
-                        shortLabel: 'label.periodShort.I_H_1'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_H_1',
                         category : "H"
                     },
                     {
@@ -1176,8 +1005,7 @@ infChart.settings = {
                         desc: "2 Hours",
                         shortDesc: '2H',
                         label: 'label.periods.I_H_2',
-                        shortLabel: 'label.periodShort.I_H_2'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_H_2',
                         category : "H"
                     },
                     {
@@ -1185,8 +1013,7 @@ infChart.settings = {
                         desc: "4 Hours",
                         shortDesc: '4H',
                         label: 'label.periods.I_H_4',
-                        shortLabel: 'label.periodShort.I_H_4'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_H_4',
                         category : "H"
                     },
                     {
@@ -1194,8 +1021,7 @@ infChart.settings = {
                         desc: "8 Hours ",
                         shortDesc: '8H',
                         label: 'label.periods.I_H_8',
-                        shortLabel: 'label.periodShort.I_H_8'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_H_8',
                         category : "H"
                     },
                     {
@@ -1203,8 +1029,7 @@ infChart.settings = {
                         desc: "16 Hours",
                         shortDesc: '16H',
                         label: 'label.periods.I_H_16',
-                        shortLabel: 'label.periodShort.I_H_16'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_H_16',
                         category : "H"
                     },
                     {
@@ -1213,8 +1038,7 @@ infChart.settings = {
                         shortDesc: '1D',
                         label: 'label.periods.I_D_1',
                         categoryDefault : true,
-                        shortLabel: 'label.periodShort.I_D_1'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_D_1',
                         category : "D"
                     },
                     {
@@ -1222,8 +1046,7 @@ infChart.settings = {
                         desc: "2 Days",
                         shortDesc: '2D',
                         label: 'label.periods.I_D_2',
-                        shortLabel: 'label.periodShort.I_D_2'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_D_2',
                         category : "D"
                     },
                     {
@@ -1231,8 +1054,7 @@ infChart.settings = {
                         desc: "3 Days",
                         shortDesc: '3D',
                         label: 'label.periods.I_D_3',
-                        shortLabel: 'label.periodShort.I_D_3'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.I_D_3',
                         category : "D"
                     },
                     {
@@ -1241,8 +1063,7 @@ infChart.settings = {
                         shortDesc: '1W',
                         label: 'label.periods.W_1',
                         categoryDefault : true,
-                        shortLabel: 'label.periodShort.W_1'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.W_1',
                         category : "W"
                     },
                     {
@@ -1250,8 +1071,7 @@ infChart.settings = {
                         desc: "2 Weeks",
                         shortDesc: '1W',
                         label: 'label.periods.W_2',
-                        shortLabel: 'label.periodShort.W_2'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.W_2',
                         category : "W"
                     },
                     {
@@ -1259,8 +1079,7 @@ infChart.settings = {
                         desc: "3 Weeks",
                         shortDesc: '3W',
                         label: 'label.periods.W_3',
-                        shortLabel: 'label.periodShort.W_3'/*,
-                     intervals : ["T", "I_1","I_5","I_15","I_30","I_60","I_120","I_240"]*/,
+                        shortLabel: 'label.periodShort.W_3',
                         category : "W"
                     },
                     {
@@ -1269,8 +1088,7 @@ infChart.settings = {
                         shortDesc: '1M',
                         shortLabel: 'label.periodShort.M_1',
                         categoryDefault : true,
-                        label: 'label.periods.M_1'/*,
-                     intervals : [ "I_1","I_5","I_15","I_30","I_60","I_120","I_240","D","W","M"]*/,
+                        label: 'label.periods.M_1',
                         category : "M"
                     },
                     {
@@ -1279,8 +1097,7 @@ infChart.settings = {
                         shortDesc: '2M',
                         shortLabel: 'label.periodShort.M_2',
                         categoryDefault : false,
-                        label: 'label.periods.M_2'/*,
-                     intervals : [ "I_1","I_5","I_15","I_30","I_60","I_120","I_240","D","W","M"]*/,
+                        label: 'label.periods.M_2',
                         category : "M"
                     },
                     {
@@ -1288,8 +1105,7 @@ infChart.settings = {
                         desc: "3 Months",
                         shortDesc: '3M',
                         label: 'label.periods.M_3',
-                        shortLabel: 'label.periodShort.M_3'/*,
-                     intervals : [ "I_5","I_15","I_30","I_60","I_120","I_240","D","W","M"]*/,
+                        shortLabel: 'label.periodShort.M_3',
                         category : "M"
                     },
                     {
@@ -1297,8 +1113,7 @@ infChart.settings = {
                         desc: "6 Months",
                         shortDesc: '6M',
                         label: 'label.periods.M_6',
-                        shortLabel: 'label.periodShort.M_6'/*,
-                     intervals : [  "I_5","D","W","M"]*/,
+                        shortLabel: 'label.periodShort.M_6',
                         category : "M"
                     },
                     {
@@ -1306,8 +1121,7 @@ infChart.settings = {
                         desc: "8 Months",
                         shortDesc: '8M',
                         label: 'label.periods.M_8',
-                        shortLabel: 'label.periodShort.M_8'/*,
-                     intervals : [  "I_5","D","W","M"]*/,
+                        shortLabel: 'label.periodShort.M_8',
                         category : "M"
                     },
                     {
@@ -1315,8 +1129,7 @@ infChart.settings = {
                         desc: "10 Months",
                         shortDesc: '10M',
                         label: 'label.periods.M_10',
-                        shortLabel: 'label.periodShort.M_10'/*,
-                     intervals : [  "I_5","D","W","M"]*/,
+                        shortLabel: 'label.periodShort.M_10',
                         category : "M"
                     },
                     {
@@ -1325,8 +1138,7 @@ infChart.settings = {
                         shortDesc: '1Y',
                         label: 'label.periods.Y_1',
                         categoryDefault : true,
-                        shortLabel: 'label.periodShort.Y_1'/*,
-                     intervals : [ "D","W","M"]*/,
+                        shortLabel: 'label.periodShort.Y_1',
                         category : "Y"
                     },
                     {
@@ -1334,37 +1146,9 @@ infChart.settings = {
                         desc: "2 Years",
                         shortDesc: '2Y',
                         label: 'label.periods.Y_2',
-                        shortLabel: 'label.periodShort.Y_2'/*,
-                     intervals : [ "D","W","M"]*/,
+                        shortLabel: 'label.periodShort.Y_2',
                         category : "Y"
-                    }/*,
-                    {
-                        key: "Y_3",
-                        desc: "3 Years",
-                        shortDesc: '3Y',
-                        label: 'label.periods.Y_3',
-                        shortLabel: 'label.periodShort.Y_3'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    },
-                    {
-                        key: "Y_5",
-                        desc: "5 Years",
-                        shortDesc: '5Y',
-                        label: 'label.periods.Y_5',
-                        shortLabel: 'label.periodShort.Y_5'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    },
-                    {
-                        key: "Y_10",
-                        desc: "10 Years",
-                        shortDesc: '10Y',
-                        label: 'label.periods.Y_10',
-                        shortLabel: 'label.periodShort.Y_10'/!*,
-                     intervals : [ "D","W","M"]*!/,
-                        category : "Y"
-                    }*/
+                    }
                 ]
             },
             indicator: {
@@ -1385,8 +1169,6 @@ infChart.settings = {
                         desc: 'Awesome Oscillator (AwesomeOsci)'
                     },
                     {key: 'BB', label: 'label.indicatorDesc.BB', desc: 'Bollinger Bands'},
-                    /* {key : 'BA', label : 'label.indicatorDesc.BA', desc : 'Bid/Ask'},*/
-
                     {key: 'BBW', label: 'label.indicatorDesc.BBW', desc: 'Bollinger Band Width (BBW)'},
                     {key: 'BC', label: 'label.indicatorDesc.BC', desc: 'Benchmark Chart (BC)'},
                     {key: 'BearEng', label: 'label.indicatorDesc.BearEng', desc: 'Bearish Engulfing (BearEng)'},
@@ -1404,7 +1186,6 @@ infChart.settings = {
                         desc: 'Coppock Curve (CoppockCurve)'
                     },
                     {key: 'RSIC', label: 'label.indicatorDesc.RSIC', desc: 'Cutler RSI (RSIC)'},
-                    //{key: 'DarkC', label: 'label.indicatorDesc.DarkC', desc: 'Dark Cloud (DarkC) Indicator'},
                     {key: 'DMIP', label: 'label.indicatorDesc.DMIP', desc: 'Directional Movement Plus (DMI+)'},
                     {key: 'DMIM', label: 'label.indicatorDesc.DMIM', desc: 'Directional Movement Minus (DMI-)'},
                     {key: 'DMI', label: 'label.indicatorDesc.DMI', desc: 'Directional Movement Index (DMI)'},
@@ -1558,116 +1339,6 @@ infChart.settings = {
                         label: 'label.line',
                         isFavorite: false
                     },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'lineArrow',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icom icom-arrow',
-                        active: false,
-                        label: 'label.lineArrow',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'ray',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon icom-ray',
-                        active: false,
-                        label: 'label.ray',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'extendedLine',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icom icom-extended',
-                        active: false,
-                        label: 'label.extendedLine',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'horizontalLine',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon ico-dash-1',
-                        active: false,
-                        label: 'label.horizontalLine',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'horizontalRay',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icom icom-horizontal-ray',
-                        active: false,
-                        label: 'label.horizontalRay',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'verticalLine',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon ico-dash-2',
-                        active: false,
-                        label: 'label.verticalLine',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'trendChannel',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon ico-d-dash',
-                        active: false,
-                        label: 'label.trendChannel',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'regressionLine',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon ico-chart4',
-                        active: false,
-                        label: 'label.regressionLine',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'regressionChannel',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon ico-chart5',
-                        active: false,
-                        label: 'label.regressionChannel',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'polyline',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon icom-poly-line',
-                        active: false,
-                        label: 'label.polyline',
-                        isFavorite: false
-                    },
-                    {
-                        role: 'drawing',
-                        cat: 'andrewsPitchfork',
-                        shape: 'andrewsPitchfork',
-                        subType: infChart.constants.drawingTypes.shape,
-                        cls: 'icon ico-line33',
-                        active: false,
-                        label: 'label.andrewsPitchfork',
-                        isFavorite: false
-                    }
                 ]
             },
             rect: {
@@ -2146,7 +1817,6 @@ infChart.settings = {
             },
             tradeControlCompact: {
                 baseClass: 'compact-show trade-controls',
-                // menuClass : 'trade-controls',
                 options: [
                     {
                         key: "sell-order",
@@ -2162,13 +1832,11 @@ infChart.settings = {
                         key: "sell-algo-order",
                         cssClass: 'sell btn-algo-sell',
                         html: '<a><span>T<span class="tiny-text">rend</span></span><span><span class="text-label">Sell</span><span class="text-icon"><i class="fa fa-arrow-left"></i></span></span></a>'
-                        // html: '<a><span>Trend </span><span><span class="text-label">Sell</span><span class="text-icon"><i class="fa fa-arrow-left"></i></span></span></a>'
                     },
                     {
                         key: "buy-algo-order",
                         cssClass: 'buy btn-algo-buy',
                         html: '<a><span>T<span class="tiny-text">rend</span></span><span><span class="text-label">Buy</span><span class="text-icon"><i class="fa fa-arrow-right"></i></span></span></a>'
-                        // html: '<a><span>Trend </span><span><span class="text-label">Buy</span><span class="text-icon"><i class="fa fa-arrow-right"></i></span></span></a>'
                     }
                 ]
             },
@@ -2422,6 +2090,39 @@ infChart.settings = {
                 "intradayChartON" : {
                     icon : "icom icom-intraday-chart-on",
                     displayText : "Candle Info : ON"
+                }
+            }
+        }
+    },
+    drawingSettingsPanel:
+    {
+        line: {
+            title: "Line",
+            options: {
+                lineStyle: {
+                    title: "Line Style",
+                    input: "Button",
+                    style: undefined,
+                    values: ["dash", "solid"],
+                    currentValue: "solid",
+                    callBackMethod: "onLineStyleChange"
+                },
+                lineWidth: {
+                    title: "Line Weight",
+                    name: "lineWidth",
+                    input: "Button",
+                    style: undefined,
+                    values: ["1", "2", "3"],
+                    currentValue: "1",
+                    callBackMethod: "onLineWidthChange"
+                },
+                lineColor: {
+                    title: "Line Color",
+                    name: "lineColorPicker",
+                    input: "lineColorPicker",
+                    style: undefined,
+                    currentValue: "red",
+                    callBackMethod: "onLineColorChange"
                 }
             }
         }

@@ -71,6 +71,11 @@ infChart.lineDrawing.prototype.additionalDrawingsFunction = function () {
 
     ann.selectionMarker = [];
     infChart.drawingUtils.common.addSelectionMarker.call(this, ann, newX, 0);
+    $.each(ann.selectionMarker, function (index, selectionMarker) {
+        if (selectionMarker) {
+            selectionMarker.show();
+        }
+    });
 
     if(!options.settings.isStartPoint){
         additionalDrawingsArr.lineArrow["startPointHead"].hide();
@@ -221,7 +226,7 @@ infChart.lineDrawing.prototype.getOptions = function (properties, chart) {
     }
 
     options.validateTranslationFn = this.validateTranslation;
-    //options.isRealTimeTranslation = true;
+    options.isRealTimeTranslation = true;
 
     options = infChart.Drawing.prototype.getOptions(properties,options);
 
@@ -229,7 +234,7 @@ infChart.lineDrawing.prototype.getOptions = function (properties, chart) {
 };
 
 infChart.lineDrawing.prototype.getQuickSettingsPopup = function () {
-    //return infChart.drawingUtils.common.getLineQuickSettings(infChart.drawingUtils.common.baseBorderColor, infChart.drawingUtils.common.baseFillOpacity);
+    return infChart.drawingUtils.common.getLineQuickSettings(infChart.drawingUtils.common.baseBorderColor, infChart.drawingUtils.common.baseFillOpacity);
 };
 
 infChart.lineDrawing.prototype.validateTranslation = function (newXValue) {
@@ -339,7 +344,7 @@ infChart.lineDrawing.prototype.selectAndBindResize = function () {
         infChart.drawingUtils.common.addAndBindSelectionMarker.call(this, ann, newX, 0, this.stepFunction, this.stop, true);
         infChart.drawingUtils.common.addAndBindSelectionMarker.call(this, ann, newXEnd, height, this.stepFunction, this.stop, false);
     }
-    self.selectionMarkersBringToFront();
+    console.error("selectAndBindResize");
 };
 
 infChart.lineDrawing.prototype.step = function (e, isStartPoint) {
@@ -386,7 +391,7 @@ infChart.lineDrawing.prototype.step = function (e, isStartPoint) {
 
     this.updateLineWithArrowHeadsAndPoints(line, ann, additionalDrawingsArr);
     this.calculateAndUpdateTextLabel();
-    this.repositionSelectionMarkers();
+
     return {line: line, nearestDataPointForXValue: nearestDataPointForXValue, nearestDataPointForXValueEnd: nearestDataPointForXValueEnd};
 };
 
@@ -501,12 +506,12 @@ infChart.lineDrawing.prototype.stop = function (e, isStartPoint) {
     this.updateLineWithArrowHeadsAndPoints();
     infChart.drawingUtils.common.saveBaseYValues.call(this, ann.options.yValue, y);
     self.resetDragSUpporters();
-    self.selectionMarkersBringToFront();
+
     infChart.drawingUtils.common.fixSelectionMarker.call(self, ann);
     infChart.drawingUtils.common.onPropertyChange.call(this);
 };
 
-infChart.lineDrawing.prototype.translateEnd = function () {
+infChart.lineDrawing.prototype.translate = function () {
     var self = this,
         ann = self.annotation,
         chart = ann.chart,
@@ -558,15 +563,14 @@ infChart.lineDrawing.prototype.translateEnd = function () {
     self.selectAndBindResize();
     chart.selectedAnnotation = ann;  
     self.resetDragSUpporters();
-    self.selectionMarkersBringToFront();
 }
 
-// infChart.lineDrawing.prototype.translateEnd = function () {
-//     var ann = this.annotation;
-//     this.selectAndBindResize();
-//     ann.chart.selectedAnnotation = ann; 
-//     infChart.drawingUtils.common.onPropertyChange.call(this);
-// };
+infChart.lineDrawing.prototype.translateEnd = function () {
+    var ann = this.annotation;
+    this.selectAndBindResize();
+    ann.chart.selectedAnnotation = ann; 
+    infChart.drawingUtils.common.onPropertyChange.call(this);
+};
 
 
 infChart.lineDrawing.prototype.getSettingsPopup = function () {
@@ -1174,42 +1178,3 @@ infChart.lineDrawing.prototype.resetDragSUpporters = function (){
         infChart.drawingUtils.common.addDragSupporters.call(this, ann, chart, additionalDrawingsArr.lines["right"].d.split(' '), this.dragSupporters);
     }
 };
-
-infChart.lineDrawing.prototype.repositionSelectionMarkers = function () {
-    var self = this,
-        ann = self.annotation,
-        options = self.options,
-        selectionMarker = ann.selectionMarker,
-        line = ann.shape.d.split(' ');
-
-        if(selectionMarker && selectionMarker[0]){
-            selectionMarker[0].attr({
-                x: line[1],
-                y: line[2]
-            });
-        }
-
-        if(selectionMarker && selectionMarker[1]){
-            selectionMarker[1].attr({
-                x: line[4],
-                y: line[5]
-            })
-        }
- 
-};
-
-infChart.lineDrawing.prototype.showSelectionMarkers = function () {
-    if(this.annotation.selectionMarker && this.annotation.selectionMarker.length > 0){
-        for (var i = 0; i < this.annotation.selectionMarker.length; i++) {
-            this.annotation.selectionMarker[i].show();
-        }
-    }
-};
-
-infChart.lineDrawing.prototype.selectionMarkersBringToFront = function (){
-    if(this.annotation.selectionMarker && this.annotation.selectionMarker.length > 0){
-        for (var i = 0; i < this.annotation.selectionMarker.length; i++) {
-            this.annotation.selectionMarker[i].toFront();
-        }
-    }
-}
