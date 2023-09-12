@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 8,
@@ -129,4 +129,60 @@ styles = StyleSheet.create({
   }
 });
 
-export default styles;
+export const settingsStyles = StyleSheet.create({
+  settingHeader: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: 30,
+    borderBottomColor: 'gray',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    backgroundColor: 'white',
+  },
+  checkbox: {
+    alignSelf: 'center',
+  },
+  row: {
+    alignSelf: 'center',
+  },
+  container: {
+    flexDirection: 'column',
+    paddingLeft:0
+  },
+  modalView: {
+    flex: 1,
+    // margin: 20,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    // padding: 35,
+    paddingBottom: 35,
+    paddingLeft:15,
+    paddingRight: 35,
+    // alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 10,
+    // backgroundColor: 'lightblue'
+  },
+  button: {
+    width: 30,
+    height: 30,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 4,
+    backgroundColor: 'gainsboro',
+    
+    marginHorizontal: '1%',
+    marginBottom: 6,
+    // minWidth: '28%',
+    textAlign: 'center',
+    // flex: 1,
+    flexDirection: 'row'
+  }
+});

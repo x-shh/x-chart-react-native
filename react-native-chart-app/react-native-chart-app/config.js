@@ -54,7 +54,7 @@ const config = {
         }
     ],
     chartType:
-         [
+        [
             { key: "line", desc: "Line", label: "label.line", ico: "linechart" },
             { key: "candlestick", desc: "Candlestick", label: "label.candlestick", ico: "barschart" },
             { key: "area", desc: "Area", label: "label.area", ico: "areachart" },
@@ -62,23 +62,23 @@ const config = {
             { key: "heikinashi", desc: "Heikin Ashi", label: "label.heikinashi", ico: "dotchart" }
         ],
     drawings: [
-            {   
-                role: 'drawing',
-                cat: 'line',
-                shape: 'line',
-                options: [
-                    {
-                        role: 'drawing',
-                        cat: 'line',
-                        shape: 'line',
-                        subType:  "shape",
-                        cls: 'icon ico-ang-dash',
-                        active: true,
-                        label: 'label.line',
-                        isFavorite: false
-                    }
-                ]
-            }
+        {
+            role: 'drawing',
+            cat: 'line',
+            shape: 'line',
+            options: [
+                {
+                    role: 'drawing',
+                    cat: 'line',
+                    shape: 'line',
+                    subType: "shape",
+                    cls: 'icon ico-ang-dash',
+                    active: true,
+                    label: 'label.line',
+                    isFavorite: false
+                }
+            ]
+        }
     ],
     indicator: {
         options: [
@@ -192,6 +192,72 @@ const config = {
         { key: "Compare", desc: "Compare", ModalVisibleMethodName: "setCompareModalVisble", ico: "barschart" },
         { key: "Alerts", desc: "Alerts", ModalVisibleMethodName: "setDrawingModalVisble", ico: "barschart" },
         { key: "AddToWatchlist", desc: "AddToWatchlist", ModalVisibleMethodName: "setDrawingModalVisble", ico: "barschart" },
-    ]
+    ],
+    mockSettingPannel:
+    {
+        line: {
+            title: "Line",
+            drawingId: "line123",
+            subCategories: [
+                {
+                    title: "Line Style",
+                    input: "Button",
+                    style: undefined,
+                    values: ["dash", "dot"],
+                    activeValue: "dash",
+                    callBackMethod: "onLineStyleC8hange"
+                },
+                {
+                    title: "Line Weight",
+                    input: "Button",
+                    style: undefined,
+                    values: ["weight1", "weight2", "weight3"],
+                    activeValue: "weight1",
+                    callBackMethod: "onLineWidthChange"
+                },
+                {
+                    title: "Line Color",
+                    input: "Button",
+                    style: undefined,
+                    values: undefined,
+                    activeValue: "red",
+                    callBackMethod: "onLineColorChange"
+                },
+                {
+                    title: "Price Range",
+                    input: "checkBox",
+                    style: undefined,
+                    values: undefined,
+                    activeValue: false,
+                    callBackMethod: "onLineColorChange"
+                },
+                {
+                    title: "Bars Range",
+                    input: "checkBox",
+                    style: undefined,
+                    values: undefined,
+                    activeValue: false,
+                    callBackMethod: "onClickBarsRange"
+                },
+                {
+                    title: "Angle",
+                    input: "checkBox",
+                    style: undefined,
+                    values: undefined,
+                    activeValue: false,
+                    callBackMethod: "onClickPriceRange"
+                },
+                {
+                    title: "Duration",
+                    input: "checkBox",
+                    style: undefined,
+                    values: undefined,
+                    activeValue: false,
+                    callBackMethod: "onLineColorChange"
+                },
+            ]
+        }
+    }
+
 };
 export default config;

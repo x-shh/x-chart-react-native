@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { Text, View, SafeAreaView, useWindowDimensions, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, useWindowDimensions, TouchableOpacity, CheckBox } from 'react-native';
 import { WebView } from 'react-native-webview';
 import config from '../../config';
-import { IntervlModal, ChartTypeModal, DrawingTypeModal, BasicModal, IndicatorModal } from './../modalComponents';
-import styles from '../styles';
+import { IntervlModal, ChartTypeModal, DrawingTypeModal, BasicModal, IndicatorModal, SettingPanelModal } from './../modalComponents';
+import {styles} from '../styles';
 import { EvilIcons, AntDesign, Ionicons } from '@expo/vector-icons';
 
 const chartHtml = require('../../chartFiles/html/chart.html');
@@ -20,6 +20,7 @@ export function ChartScreen() {
   const [CompareModalVisibility, setCompareModalVisble] = useState(false);
   const [chartTypeModalVisibility, setchartTypeModalVisble] = useState(false);
   const [basicModalVisibility, setbasicModalVisibile] = useState(false);
+  const [settingPanelModalVisibility, setSettingPanelModalVisble] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
 
@@ -97,8 +98,20 @@ export function ChartScreen() {
 
   };
 
+  const onPress = function () {
+
+  }
+
   const onMessageFromWebView = (message) => {
-    console.log('Message from WebView:', message);
+    setSettingPanelModalVisble(true);
+    console.log("massge", message)
+    // const receivedData = JSON.parse(message);
+    
+    if (typeof message === 'function') {
+      // Call the received callback function from the WebView
+      message("mainchart");
+    }
+    console.log('Message from WebView:');
     // Perform any desired actions in response to the message
   };
 
@@ -205,6 +218,13 @@ export function ChartScreen() {
         addIndicator={addIndicator}
         setSearchTerm={setSearchTerm}
       ></IndicatorModal>
+
+      <SettingPanelModal
+      values={config.mockSettingPannel.line}
+      settingPanelModalVisibility={settingPanelModalVisibility}
+      setSettingPanelModalVisble={setSettingPanelModalVisble}
+      onPress={onPress}>
+      </SettingPanelModal>
 
     </SafeAreaView>
   );

@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { View, Text, Modal, TextInput, TouchableOpacity, PanResponder, ScrollView } from 'react-native';
-import styles from './styles';
+import { styles, settingsStyles } from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import { CheckBox } from '@rneui/themed';
 
 export const IntervlModal = ({
     values,
@@ -244,22 +245,22 @@ export const DrawingTypeModal = ({
                         <Text style={styles.modalText}>Add</Text>
                         <View style={styles.row}>
                             {values.map(value => (
-                                <><Text>{}</Text>
-                                <TouchableOpacity
-                                    key={value.shape}
-                                    onPress={() => {
-                                        changeDrawing(value.shape);
-                                        setDrawingModalVisble(false);
-                                    } }
-                                    style={[styles.button]}>
-                                    <Entypo name="flow-line" size={24} color="black" />
-                                    <Text
-                                        style={[
-                                            styles.buttonLabel
-                                        ]}>
-                                        {value.shape}
-                                    </Text>
-                                </TouchableOpacity></>
+                                <><Text>{ }</Text>
+                                    <TouchableOpacity
+                                        key={value.shape}
+                                        onPress={() => {
+                                            changeDrawing(value.shape);
+                                            setDrawingModalVisble(false);
+                                        }}
+                                        style={[styles.button]}>
+                                        <Entypo name="flow-line" size={24} color="black" />
+                                        <Text
+                                            style={[
+                                                styles.buttonLabel
+                                            ]}>
+                                            {value.shape}
+                                        </Text>
+                                    </TouchableOpacity></>
                             ))}
                         </View>
                     </View>
@@ -291,15 +292,15 @@ export const IndicatorModal = ({
 
     const [indicators, setIndicators] = useState(values);
 
-    const filterIndicators = function(searchTerm) {
-        
-        if(searchTerm) {
+    const filterIndicators = function (searchTerm) {
+
+        if (searchTerm) {
             const regex = new RegExp(searchTerm, 'i');
             const filteredIndicators = values.filter(item => regex.test(item.desc));
             setIndicators(filteredIndicators);
         } else {
             setIndicators(values);
-        }    
+        }
     }
 
     return (<View>
@@ -321,9 +322,10 @@ export const IndicatorModal = ({
                             placeholder="Search Indicator"
                             onChangeText={newText => {
                                 setSearchTerm(newText)
-                                filterIndicators(newText)}
+                                filterIndicators(newText)
                             }
-                            // defaultValue={text}
+                            }
+                        // defaultValue={text}
                         />
                         <ScrollView>
                             <View style={styles.row}>
@@ -346,6 +348,100 @@ export const IndicatorModal = ({
                                 ))}
                             </View>
                         </ScrollView>
+                    </View>
+                </View>
+            </View>
+        </Modal>
+    </View>
+    )
+};
+
+export const SettingPanelModal = ({
+    values,
+    settingPanelModalVisibility,
+    setSettingPanelModalVisble,
+    onPress,
+
+}) => {
+    const panResponder = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderMove: () => { },
+            onPanResponderRelease: (_, gestureState) => {
+                if (gestureState.dy > 50) {
+                    setSettingPanelModalVisble(false);
+                }
+            },
+        })
+    ).current;
+
+    const [checked, setChecked] = React.useState(true);
+    // const [checkedItems, setCheckedItems] = useState(Array(subCategories.length).fill(false));
+
+    const toggleCheckbox = (subcategories) => {
+        setChecked(!checked)
+
+        onPress(subcategories.callBackMethod, checked);
+        // setSettingPanelModalVisble(false);
+
+    };
+
+    console.log("settingpanel config", values)
+    return (<View>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={settingPanelModalVisibility}
+            onRequestClose={() => {
+                // setIntervalModalVisble(!intervalModalVisibility);
+            }}>
+            <View style={styles.centeredView}
+                {...panResponder.panHandlers}>
+                <View style={settingsStyles.modalView}>
+                    <View style={{ paddingTop: 20 }}>
+
+                        <Text style={settingsStyles.settingHeader}>{values.title}</Text>
+
+                        <>
+                            <ScrollView>
+                                <View style={settingsStyles.container}>
+                                    {values.subCategories && values.subCategories.map(subcategories => (
+                                        <>
+                                            {subcategories.input === "checkBox" && (< View style={[{}]}>
+                                                <CheckBox
+                                                    checked={checked}
+                                                    onPress={() => { toggleCheckbox(subcategories, ) }
+                                                    }
+                                                    title={subcategories.title}
+                                                    iconType="material-community"
+                                                    checkedIcon="checkbox-outline"
+                                                    uncheckedIcon={'checkbox-blank-outline'}
+                                                    size={18}
+                                                    textStyle={{ color: 'black', fontWeight: '400' }}
+                                                    wrapperStyle={{ paddingLeft: 0 }}
+                                                    containerStyle={{ paddingLeft: 0 }}
+                                                />
+                                            </View>)}
+                                            {subcategories.input === "Button" && (< View style={[{ flexDirection: 'row' }]}>
+                                                <Text>{subcategories.title}</Text>
+                                                {subcategories.values && subcategories.values.map(value => (
+                                                    <TouchableOpacity
+                                                        key={subcategories.title}
+                                                        onPress={() => {
+                                                            onPress(subcategories.callBackMethod, value);
+                                                            // setSettingPanelModalVisble(false);
+                                                        }}
+                                                        style={[settingsStyles.button]}>
+                                                    </TouchableOpacity>
+                                                ))}
+
+                                            </View>)}
+                                        </>
+                                    ))}
+                                </View>
+                            </ScrollView>
+                        </>
+
                     </View>
                 </View>
             </View>
