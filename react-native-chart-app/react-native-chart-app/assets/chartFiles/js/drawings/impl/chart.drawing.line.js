@@ -98,10 +98,10 @@ infChart.lineDrawing.prototype.getConfig = function () {
     return {
         shape: 'line',
         settings: {
-            lineColor: infChart.themeManager.getDrawingsBorderColor(annotation.options.shape.params.stroke, 'line'),
+            lineColor: annotation.options.shape.params.stroke ? infChart.themeManager.getDrawingsBorderColor(annotation.options.shape.params.stroke, 'line') : annotation.options.settings.lineColor,
             lineOpacity: annotation.options.settings.lineOpacity,
-            lineWidth: annotation.options.shape.params['stroke-width'],
-            lineStyle: annotation.options.shape.params.dashstyle,
+            lineWidth: annotation.options.shape.params['stroke-width'] ? annotation.options.shape.params['stroke-width'] : annotation.options.settings.lineWidth,
+            lineStyle: annotation.options.shape.params.dashstyle ? annotation.options.shape.params.dashstyle : annotation.options.settings.linestyle,
             isExtendLeft: annotation.options.settings.isExtendLeft,
             isExtendRight: annotation.options.settings.isExtendRight,
             isStartPoint: annotation.options.settings.isStartPoint,

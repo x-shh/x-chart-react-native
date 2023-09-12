@@ -299,11 +299,70 @@ infChart.mobilelineDrawing.prototype.selectionMarkersBringToFront = function (){
 infChart.mobilelineDrawing.prototype.updateConfigFromSettings = function (drawingObj, config){
     var properties = drawingObj.getConfig();
     infChart.util.forEach(config.options, function (index, option) {
-        option.currentValue = properties.settings[index];
+        switch (option.name) {
+            case 'lineColor':
+                option.callBackMethod = "onLineColorChange";
+                currentValue = {},
+                currentValue.color = currentValue.lineColor;
+                currentValue.opacity = currentValue.lineOpacity;
+                break;
+            case 'lineWidth':
+                option.callBackMethod = "onLineWidthChange";
+                option.currentValue = properties.settings.lineWidth;
+                break;
+            case 'lineStyle' :
+                option.callBackMethod = "onLineStyleChange";
+                option.currentValue = properties.settings.lineStyle;
+                break;
+            case 'isExtendLeft':
+                option.callBackMethod = "onLineExtendToLeft";
+                option.currentValue = properties.settings.isExtendLeft;
+                break;
+            case 'isExtendRight':
+                option.callBackMethod = "onLineExtendToRight";
+                option.currentValue = properties.settings.isExtendRight;
+                break;
+            case 'isStartPoint' :
+                option.callBackMethod = "onStartArrowHeadTypeChange";
+                option.currentValue = properties.settings.isStartPoint;
+                break;
+            case 'isEndPoint':
+                option.callBackMethod = "onEndArrowHeadTypeChange";
+                option.currentValue = properties.settings.isEndPoint;
+                break;
+            case 'lineText':
+                option.callBackMethod = "onLineTextChange";
+                option.currentValue = properties.settings.lineText;
+                break;
+            case 'lineTextChecked' :
+                option.callBackMethod = "onToggleLineText";
+                option.currentValue = properties.settings.lineTextChecked;
+                break;
+            case 'textColor':
+                option.callBackMethod = "onTextColorChange";
+                currentValue = {},
+                currentValue.color = currentValue.textColor;
+                currentValue.opacity = currentValue.textOpacity;
+                break;
+            case 'textFontSize':
+                option.callBackMethod = "onTextSizeChange";
+                option.currentValue = properties.settings.textFontSize;
+                break;
+            case 'textFontStyle' :
+                option.callBackMethod = "onTextFontStyleChange";
+                option.currentValue = properties.settings.textFontStyle;
+                break;
+            case 'textFontWeight':
+                option.callBackMethod = "onTextFontWeightChange";
+                option.currentValue = properties.settings.textFontWeight;
+                break;
+            case 'textDecoration':
+                option.callBackMethod = "onTextFontDecorationChange";
+                option.currentValue = properties.settings.textDecoration;
+                break;
+                
+        }
     });
-    config.options.lineColor.callBackMethod = "onLineColorChange";
-    config.options.lineWidth.callBackMethod = "onLineWidthChange";
-    config.options.lineStyle.callBackMethod = "onLineStyleChange";
 
     return config;
 };
@@ -349,6 +408,7 @@ infChart.mobilelineDrawing.prototype.onLineWidthChange = function (values){
 };
 
 infChart.mobilelineDrawing.prototype.onLineStyleChange = function (values){
+    var self = this;
     infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.lineStyle, {
         isUpdateAnnotationStyles: true,
         settingsItem: 'lineStyle',
@@ -357,4 +417,144 @@ infChart.mobilelineDrawing.prototype.onLineStyleChange = function (values){
             self.additionalDrawings.lines["right"],
         ]
     })(values.style);
+};
+
+infChart.mobilelineDrawing.prototype.onLineExtendToLeft = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.checkBox, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'isExtendLeft',
+        callBackFunction : function(settingsParams, isPropertyChange, value){
+            self.onLineExtend.call(self, value, "left", isPropertyChange);
+    },
+        ctrlSelector: "[inf-ctrl=extendToLeft]"
+    })(values.isChecked);
+};
+
+infChart.mobilelineDrawing.prototype.onLineExtendToRight = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.checkBox, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'isExtendRight',
+        callBackFunction : function(settingsParams, isPropertyChange, value){
+            self.onLineExtend.call(self, value, "right", isPropertyChange);
+    },
+        ctrlSelector: "[inf-ctrl=extendToRight]"
+    })(values.isChecked);
+};
+
+infChart.mobilelineDrawing.prototype.onStartArrowHeadTypeChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.value, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'isStartPoint',
+        callBackFunction : function(settingsParams, isPropertyChange, value){
+            self.onChangeArrowHead.call(self, value, "startPointHead", isPropertyChange);
+        },
+        ctrlSelector: "[inf-ctrl= startArrowHeadType]"
+    })(values.value);
+};
+
+infChart.mobilelineDrawing.prototype.onEndArrowHeadTypeChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.value, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'isEndPoint',
+        callBackFunction : function(settingsParams, isPropertyChange, value){
+            self.onChangeArrowHead.call(self, value, "endPointHead", isPropertyChange);
+        },
+        ctrlSelector: "[inf-ctrl= endArrowHeadType]"
+    })(values.value);
+};
+
+infChart.mobilelineDrawing.prototype.onTextColorChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.fontColor, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'text',
+        otherTextElements: [
+            self.additionalDrawings.labels["lineText"]
+        ],
+        ctrlSelector: "[inf-ctrl= textColorPicker]"
+    })(values.rgb, values.color, values.opacity);
+};
+
+infChart.mobilelineDrawing.prototype.onToggleLineText = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.checkBox, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'lineTextChecked',
+        callBackFunction: function(settingsParams, isPropertyChange, value){
+            self.onToggleLineText(value, isPropertyChange)
+        },
+        ctrlSelector: "[inf-ctrl=textToggle]"
+    })(values.isChecked);
+};
+
+infChart.mobilelineDrawing.prototype.onLineTextChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.text, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'lineText',
+        callBackFunction: function(){
+            self.calculateAndUpdateTextLabel()
+        },
+        ctrlSelector: "[inf-ctrl=line-text]"
+    })(values.text);
+};
+
+infChart.mobilelineDrawing.prototype.onTextSizeChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.fontSize, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'textFontSize',
+        otherTextElements: [
+            self.additionalDrawings.labels["lineText"]
+        ],
+        callBackFunction: function(){
+            self.calculateAndUpdateTextLabel()
+        }
+    })(values.fontSize);
+};
+
+infChart.mobilelineDrawing.prototype.onTextFontStyleChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.fontStyle, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'textFontStyle',
+        otherTextElements: [
+            self.additionalDrawings.labels["lineText"]
+        ],
+        callBackFunction: function(){
+            self.calculateAndUpdateTextLabel()
+        }
+    })(values.fontStyle);
+};
+
+infChart.mobilelineDrawing.prototype.onTextFontWeightChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.fontStyle,{
+        isUpdateAnnotationStyles: false,
+        otherTextElements: [
+            self.additionalDrawings.labels["lineText"]
+        ],
+        settingsItem: 'textFontWeight',
+        callBackFunction: function(){
+            self.calculateAndUpdateTextLabel()
+        }
+    })(values.fontWeight);
+};
+
+infChart.mobilelineDrawing.prototype.onTextFontDecorationChange = function (values){
+    var self = this;
+    infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.fontStyle, {
+        isUpdateAnnotationStyles: false,
+        settingsItem: 'textDecoration',
+        otherTextElements: [
+            self.additionalDrawings.labels["lineText"]
+        ],
+        callBackFunction: function(){
+            self.calculateAndUpdateTextLabel()
+        }
+    })(values.textDecoration);
 };

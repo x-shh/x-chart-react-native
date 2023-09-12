@@ -3575,10 +3575,10 @@ infChart.drawingsManager = (function ($, infChart) {
                         var drawingId = ann.options.id;
                         var config = infChart.mobileDrawingSettingsManager.getConfigForDrawing(chartId, infChart.constants.contextMenuTypes.drawing, {drawingId: ann.options.id});
                         var settingsProperties = {config: config, drawingId: drawingId, chartId: chartId};
-                        const myJSON = JSON.stringify(settingsProperties);
-                        infChart.mobileDrawingSettingsManager.setDrawingProperties(chartId, drawingId, "onLineColorChange", {rgb: undefined, color:'#008000', opacity:'1'});
-                        infChart.mobileDrawingSettingsManager.setDrawingProperties(chartId, drawingId, "onLineWidthChange", {width: 3});
-                        infChart.mobileDrawingSettingsManager.setDrawingProperties(chartId, drawingId, "onLineStyleChange", {style: "dash"});
+                        const jsonString = JSON.stringify(settingsProperties);
+                        if(window.ReactNativeWebView){
+                            window.ReactNativeWebView.postMessage(jsonString);
+                        }
                     } else if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
                         infChart.indicatorMgr.openContextMenu(this.chart.renderTo.id, event, this.chart.get(this.options.indicatorId));
                     }
