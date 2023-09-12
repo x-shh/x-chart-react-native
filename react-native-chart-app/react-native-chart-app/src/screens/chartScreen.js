@@ -23,6 +23,8 @@ export function ChartScreen() {
   const [settingPanelModalVisibility, setSettingPanelModalVisble] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+  var receivedData;
+
 
   const changeInterval = (interval) => {
     const injectingCode = `  
@@ -104,15 +106,9 @@ export function ChartScreen() {
 
   const onMessageFromWebView = (message) => {
     setSettingPanelModalVisble(true);
-    console.log("massge", message)
-    // const receivedData = JSON.parse(message);
-    
-    if (typeof message === 'function') {
-      // Call the received callback function from the WebView
-      message("mainchart");
-    }
-    console.log('Message from WebView:');
-    // Perform any desired actions in response to the message
+    receivedData = JSON.parse(message);
+    console.log("massge", receivedData)
+
   };
 
 

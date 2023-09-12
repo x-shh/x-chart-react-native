@@ -375,18 +375,22 @@ export const SettingPanelModal = ({
         })
     ).current;
 
-    const [checked, setChecked] = React.useState(true);
-    // const [checkedItems, setCheckedItems] = useState(Array(subCategories.length).fill(false));
+    const numberOfCheckBox = values.subCategories.filter(
+        (subcategory) => subcategory.input === 'checkBox'
+      ).length;
+    const [checkedItems, setCheckedItems] = useState(Array(numberOfCheckBox).fill(false));
 
-    const toggleCheckbox = (subcategories) => {
-        setChecked(!checked)
 
-        onPress(subcategories.callBackMethod, checked);
+    const toggleCheckbox = (subcategories, index) => {
+        const newCheckedItems = [...checkedItems];
+        newCheckedItems[index] = !newCheckedItems[index];
+        setCheckedItems(newCheckedItems);
+
+        onPress(subcategories.callBackMethod, newCheckedItems[index]);
         // setSettingPanelModalVisble(false);
 
     };
 
-    console.log("settingpanel config", values)
     return (<View>
         <Modal
             animationType="slide"
@@ -405,12 +409,12 @@ export const SettingPanelModal = ({
                         <>
                             <ScrollView>
                                 <View style={settingsStyles.container}>
-                                    {values.subCategories && values.subCategories.map(subcategories => (
+                                    {values.subCategories && values.subCategories.map((subcategories,index) => (
                                         <>
                                             {subcategories.input === "checkBox" && (< View style={[{}]}>
                                                 <CheckBox
-                                                    checked={checked}
-                                                    onPress={() => { toggleCheckbox(subcategories, ) }
+                                                    checked={checkedItems[index]}
+                                                    onPress={() => { toggleCheckbox(subcategories, index) }
                                                     }
                                                     title={subcategories.title}
                                                     iconType="material-community"
@@ -426,7 +430,7 @@ export const SettingPanelModal = ({
                                                 <Text>{subcategories.title}</Text>
                                                 {subcategories.values && subcategories.values.map(value => (
                                                     <TouchableOpacity
-                                                        key={subcategories.title}
+                                                        // key={subcategories.title}
                                                         onPress={() => {
                                                             onPress(subcategories.callBackMethod, value);
                                                             // setSettingPanelModalVisble(false);
