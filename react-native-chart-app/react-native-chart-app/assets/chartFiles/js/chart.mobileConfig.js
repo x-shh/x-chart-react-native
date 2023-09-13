@@ -757,7 +757,7 @@ infChart.settings = {
         rightTb: ['indicatorPanelView', 'drawingToolPanelView','symbolSettingsPanelView'],
         upperTb: [],
         topTb: [],
-        leftTb:["select", "line"],
+        leftTb:[],
         tradingTb:[],
         alwaysCompactToolbar: true,
         config: {
@@ -2217,6 +2217,38 @@ infChart.settings = {
                     currentValue: "inherit",
                     values:["underline", "inherit"],
                     callBackMethod: "onTextFontDecorationChange"
+                },
+                {
+                    title: "Price Range",
+                    name: "priceRange",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
+                },
+                {
+                    title: "Bars Range",
+                    name: "barsRange",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
+                },
+                {
+                    title: "Angle",
+                    name: "angle",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
+                },
+                {
+                    title: "Duration",
+                    name: "duration",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
                 }
             ]
         }

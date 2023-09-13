@@ -360,7 +360,22 @@ infChart.mobilelineDrawing.prototype.updateConfigFromSettings = function (drawin
                 option.callBackMethod = "onTextFontDecorationChange";
                 option.currentValue = properties.settings.textDecoration;
                 break;
-                
+            case 'priceRange':
+                option.callBackMethod = "onLabelItemsChangeValues";
+                option.currentValue = properties.labelDataItems[0].enabled;
+                break;
+            case 'barsRange':
+                option.callBackMethod = "onLabelItemsChangeValues";
+                option.currentValue = properties.labelDataItems[1].enabled;
+                break;
+            case 'angle':
+                option.callBackMethod = "onLabelItemsChangeValues";
+                option.currentValue = properties.labelDataItems[2].enabled;
+                break;
+            case 'duration':
+                option.callBackMethod = "onLabelItemsChangeValues";
+                option.currentValue = properties.labelDataItems[3].enabled;
+                break;      
         }
     });
 
@@ -558,3 +573,12 @@ infChart.mobilelineDrawing.prototype.onTextFontDecorationChange = function (valu
         }
     })(values.textDecoration);
 };
+
+infChart.lineDrawing.prototype.onLabelItemsChangeValues = function(values){
+    var self = this;
+    var isPropertyChange = true;
+    if (self.settingsPopup) {
+        isPropertyChange = self.isSettingsPropertyChange();
+    }
+    self.onLabelItemsChange(values.labelItemId, values.value, isPropertyChange);
+}
