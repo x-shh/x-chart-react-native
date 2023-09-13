@@ -83,7 +83,7 @@ window.infChart = window.infChart || {};
         },
         onLineWidthChange: function (drawingInstance, settingsParams, isPropertyChange, strokeWidth) {
             let annotationParams = {};
-
+            infChart.util.consoleReact(strokeWidth);
             if (settingsParams.isUpdateAnnotationStyles) {
                 annotationParams = {
                     shape: {

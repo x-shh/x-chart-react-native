@@ -3574,11 +3574,12 @@ infChart.drawingsManager = (function ($, infChart) {
                         var chartId = _getChartIdFromHighchartInstance(ann.chart);
                         var drawingId = ann.options.id;
                         var config = infChart.mobileDrawingSettingsManager.getConfigForDrawing(chartId, infChart.constants.contextMenuTypes.drawing, {drawingId: ann.options.id});
-                        var settingsProperties = {config: config, drawingId: drawingId, chartId: chartId};
-                        const jsonString = JSON.stringify(settingsProperties);
-                        if(window.ReactNativeWebView){
-                            window.ReactNativeWebView.postMessage(jsonString);
-                        }
+                        var settingsProperties = {config: config, drawingId: drawingId, chartId: chartId, type:'drawingSettingsPanel'};
+                        infChart.util.postMessageToReactNative(settingsProperties);
+                        // const jsonString = JSON.stringify(settingsProperties);
+                        // if(window.ReactNativeWebView){
+                        //     window.ReactNativeWebView.postMessage(jsonString);
+                        // }
                     } else if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
                         infChart.indicatorMgr.openContextMenu(this.chart.renderTo.id, event, this.chart.get(this.options.indicatorId));
                     }

@@ -419,7 +419,7 @@ infChart.mobilelineDrawing.prototype.onLineWidthChange = function (values){
                 });
             }
         }
-    })(values.width);
+    })(values.lineWidth);
 };
 
 infChart.mobilelineDrawing.prototype.onLineStyleChange = function (values){

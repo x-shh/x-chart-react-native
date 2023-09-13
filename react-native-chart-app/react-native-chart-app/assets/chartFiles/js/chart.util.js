@@ -1773,6 +1773,18 @@ infChart.util = (function ($, Highcharts, infChart) {
         }
     };
 
+    var _postMessageToReactNative = function(data){
+        const jsonString = JSON.stringify(data);
+        if(window.ReactNativeWebView){
+            window.ReactNativeWebView.postMessage(jsonString);
+        }
+    };
+
+    var _printInReactNative = function(data){
+        const obj = {data: data, type:'console'}
+        _postMessageToReactNative(obj);
+    };
+
     return {
         wrap: wrap,
         isEmpty: _isEmpty,
@@ -1860,7 +1872,9 @@ infChart.util = (function ($, Highcharts, infChart) {
         dragFix: _dragFix,
         getCandleData: _getCandleData,
         copyToClipBoard: _copyToClipBoard,
-        convertIntervalToTimePeriod: _convertIntervalToTimePeriod
+        convertIntervalToTimePeriod: _convertIntervalToTimePeriod,
+        postMessageToReactNative: _postMessageToReactNative,
+        consoleReact: _printInReactNative
     }
 
 })(jQuery, Highcharts, infChart);
