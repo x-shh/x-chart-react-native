@@ -22,9 +22,9 @@ export function ChartScreen() {
   const [basicModalVisibility, setbasicModalVisibile] = useState(false);
   const [settingPanelModalVisibility, setSettingPanelModalVisble] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [settingsObject, setSettingsObject] = useState(config.mockSettingPannel.mockTool);
 
   var receivedData;
-
 
   const changeInterval = (interval) => {
     const injectingCode = `  
@@ -100,14 +100,24 @@ export function ChartScreen() {
 
   };
 
-  const onPress = function () {
-
+  const onPress = function (callBackMethod, value) {
+    const drawingId = settingsObject.drawingId;
+    console.log("settingconfig", drawingId)
+    const settingPanelEvents = `  
+          infChart.mobileDrawingSettingsManager.setDrawingProperties("mainchart", "`+ drawingId + `", "`+ callBackMethod + `", `+ value + `);
+          true; 
+    `;
+    console.log("settingPanelEvents", settingPanelEvents);
+    if (webViewRef.current) {
+      webViewRef.current.injectJavaScript(settingPanelEvents);
+    }
   }
 
   const onMessageFromWebView = (message) => {
     setSettingPanelModalVisble(true);
     receivedData = JSON.parse(message);
-    console.log("massge", receivedData)
+    setSettingsObject(receivedData);
+    console.log("onmassage", receivedData)
 
   };
 
@@ -216,7 +226,7 @@ export function ChartScreen() {
       ></IndicatorModal>
 
       <SettingPanelModal
-      values={config.mockSettingPannel.line}
+      values={settingsObject.config}
       settingPanelModalVisibility={settingPanelModalVisibility}
       setSettingPanelModalVisble={setSettingPanelModalVisble}
       onPress={onPress}>

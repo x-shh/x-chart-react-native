@@ -375,8 +375,8 @@ export const SettingPanelModal = ({
         })
     ).current;
 
-    const numberOfCheckBox = values.subCategories.filter(
-        (subcategory) => subcategory.input === 'checkBox'
+    const numberOfCheckBox = values.options.filter(
+        (option) => option.input === 'checkBox'
       ).length;
     const [checkedItems, setCheckedItems] = useState(Array(numberOfCheckBox).fill(false));
 
@@ -387,7 +387,7 @@ export const SettingPanelModal = ({
         setCheckedItems(newCheckedItems);
 
         onPress(subcategories.callBackMethod, newCheckedItems[index]);
-        // setSettingPanelModalVisble(false);
+        setSettingPanelModalVisble(false);
 
     };
 
@@ -409,9 +409,9 @@ export const SettingPanelModal = ({
                         <>
                             <ScrollView>
                                 <View style={settingsStyles.container}>
-                                    {values.subCategories && values.subCategories.map((subcategories,index) => (
+                                    {values.options && values.options.map((subcategories,index) => (
                                         <>
-                                            {subcategories.input === "checkBox" && (< View style={[{}]}>
+                                            {subcategories.input === "checkbox" && (< View style={[{}]}>
                                                 <CheckBox
                                                     checked={checkedItems[index]}
                                                     onPress={() => { toggleCheckbox(subcategories, index) }
@@ -432,8 +432,12 @@ export const SettingPanelModal = ({
                                                     <TouchableOpacity
                                                         // key={subcategories.title}
                                                         onPress={() => {
-                                                            onPress(subcategories.callBackMethod, value);
-                                                            // setSettingPanelModalVisble(false);
+                                                            let data = {}                                                            
+                                                            data[subcategories.name] = value
+                                                            data = JSON.stringify(data)
+                                                            console.log("data",data);
+                                                            onPress(subcategories.callBackMethod, data);
+                                                            setSettingPanelModalVisble(false);
                                                         }}
                                                         style={[settingsStyles.button]}>
                                                     </TouchableOpacity>
