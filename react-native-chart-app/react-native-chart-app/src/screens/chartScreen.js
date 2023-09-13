@@ -5,6 +5,7 @@ import config from '../../config';
 import { IntervlModal, ChartTypeModal, DrawingTypeModal, BasicModal, IndicatorModal, SettingPanelModal } from './../modalComponents';
 import {styles} from '../styles';
 import { EvilIcons, AntDesign, Ionicons } from '@expo/vector-icons';
+import { Switch } from 'react-native-elements';
 
 const chartHtml = require('../../chartFiles/html/chart.html');
 
@@ -113,10 +114,19 @@ export function ChartScreen() {
     }
   }
 
+
   const onMessageFromWebView = (message) => {
-    setSettingPanelModalVisble(true);
     receivedData = JSON.parse(message);
-    setSettingsObject(receivedData);
+
+    switch (message.type){
+      case 'settingPanel':
+        setSettingPanelModalVisble(true);
+        setSettingsObject(receivedData);
+        break;
+      case 'consoleLog':
+        break;
+
+  }       
     console.log("onmassage", receivedData)
 
   };
