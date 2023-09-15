@@ -2098,16 +2098,17 @@ infChart.settings = {
     {
         line: {
             title: "Line",
-            options: {
-                lineStyle: {
+            options: [
+                {
                     title: "Line Style",
+                    name: "lineStyle",
                     input: "Button",
                     style: undefined,
                     values: ["dash", "solid"],
                     currentValue: "solid",
                     callBackMethod: "onLineStyleChange"
                 },
-                lineWidth: {
+                {
                     title: "Line Weight",
                     name: "lineWidth",
                     input: "Button",
@@ -2116,15 +2117,140 @@ infChart.settings = {
                     currentValue: "1",
                     callBackMethod: "onLineWidthChange"
                 },
-                lineColor: {
+                {
                     title: "Line Color",
-                    name: "lineColorPicker",
-                    input: "lineColorPicker",
+                    name: "lineColor",
+                    input: "colorPicker",
                     style: undefined,
-                    currentValue: "red",
+                    currentValue: {color: "#959595", opacity:1},
                     callBackMethod: "onLineColorChange"
+                },
+                {
+                    title: "Extend to left",
+                    name: "isExtendLeft",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLineExtendToLeft"
+                },
+                {
+                    title: "Extend to right",
+                    name: "isExtendRight",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLineExtendToRight"
+                },
+                {
+                    title: "Arrow Style",
+                    name: "isStartPoint",
+                    input: "Button",
+                    style: undefined,
+                    currentValue: false,
+                    values: ["normalHead", "arrowHead"],
+                    callBackMethod: "onStartArrowHeadTypeChange"
+                },
+                {
+                    title: "Arrow Style",
+                    name: "isEndPoint",
+                    input: "Button",
+                    style: undefined,
+                    currentValue: false,
+                    values: ["normalHead", "arrowHead"],
+                    callBackMethod: "onEndArrowHeadTypeChange"
+                },
+                {
+                    title: "Text Color",
+                    name: "textColor",
+                    input: "colorPicker",
+                    style: undefined,
+                    currentValue: {color: "#959595", opacity:1},
+                    callBackMethod: "onTextColorChange"
+                },
+                {
+                    title: "Text",
+                    name: "lineTextChecked",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onToggleLineText"
+                },
+                {
+                    name: "lineText",
+                    input: "input",
+                    style: undefined,
+                    currentValue: "",
+                    callBackMethod: "onLineTextChange"
+                },
+                {
+                    title: "Font Size",
+                    name: "textFontSize",
+                    input: "dropdown",
+                    style: undefined,
+                    currentValue: "10",
+                    values:["8", "9", "10", "11", "12"],
+                    callBackMethod: "onTextSizeChange"
+                },
+                {
+                    title: "Font Style",
+                    name: "textFontStyle",
+                    input: "button",
+                    style: undefined,
+                    currentValue: "normal",
+                    values:["normal", "italic"],
+                    callBackMethod: "onTextFontStyleChange"
+                },
+                {
+                    title: "Font Weight",
+                    name: "textFontWeight",
+                    input: "button",
+                    style: undefined,
+                    currentValue: "normal",
+                    values:["normal", "bold"],
+                    callBackMethod: "onTextFontWeightChange"
+                },
+                {
+                    title: "Text Decoration",
+                    name: "textDecoration",
+                    input: "button",
+                    style: undefined,
+                    currentValue: "inherit",
+                    values:["underline", "inherit"],
+                    callBackMethod: "onTextFontDecorationChange"
+                },
+                {
+                    title: "Price Range",
+                    name: "priceRange",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
+                },
+                {
+                    title: "Bars Range",
+                    name: "barsRange",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
+                },
+                {
+                    title: "Angle",
+                    name: "angle",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
+                },
+                {
+                    title: "Duration",
+                    name: "duration",
+                    input: "checkbox",
+                    style: undefined,
+                    currentValue: false,
+                    callBackMethod: "onLabelItemsChange"
                 }
-            }
+            ]
         }
     },
     drawingSettings : {
