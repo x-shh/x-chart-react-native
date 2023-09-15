@@ -118,16 +118,16 @@ export function ChartScreen() {
   const onMessageFromWebView = (message) => {
     receivedData = JSON.parse(message);
 
-    switch (message.type){
-      case 'settingPanel':
+    switch (receivedData.type){
+      case 'drawingSettingsPanel':
         setSettingPanelModalVisble(true);
         setSettingsObject(receivedData);
+        console.log("onmassage", receivedData)
         break;
-      case 'consoleLog':
-        break;
-
+      case 'console':
+        console.log("console from web view", receivedData.data)
+        break;      
   }       
-    console.log("onmassage", receivedData)
 
   };
 

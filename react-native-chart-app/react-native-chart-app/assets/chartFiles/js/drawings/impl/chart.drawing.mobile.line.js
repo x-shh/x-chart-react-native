@@ -19,6 +19,7 @@ infChart.mobilelineDrawing.prototype.getOptions = function(properties, chart){
             params: {
                 d: ['M', 0, 0, 'L', 0, 0],
                 dashstyle: 'solid',
+                stroke: '#000000',
                 'stroke-width': infChart.drawingUtils.common.baseLineWidth
             }
         },
@@ -431,7 +432,7 @@ infChart.mobilelineDrawing.prototype.onLineStyleChange = function (values){
             self.additionalDrawings.lines["left"],
             self.additionalDrawings.lines["right"],
         ]
-    })(values.style);
+    })(values.lineStyle);
 };
 
 infChart.mobilelineDrawing.prototype.onLineExtendToLeft = function (values){

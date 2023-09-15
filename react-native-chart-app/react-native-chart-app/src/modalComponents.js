@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, Modal, TextInput, TouchableOpacity, PanResponder, ScrollView } from 'react-native';
+import { View, Text, Modal, TextInput, TouchableOpacity, PanResponder, ScrollView, Pressable } from 'react-native';
 import { styles, settingsStyles } from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
@@ -35,13 +35,20 @@ export const IntervlModal = ({
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
-                        <MaterialIcons name="drag-handle" size={24} color="black" />
-                        {/* <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setIntervalModalVisble(false)}>
-                  <Text style={styles.textStyle}>Close</Text>
-                </Pressable> */}
-                        <View style={{ paddingTop: 20 }}>
+                        <View style={styles.dragHandle}>
+                            <MaterialIcons name="drag-handle" size={24} color="black" />
+                        </View>
+                        <View style={{ alignItems: 'flex-end' }}>
+                            <TouchableOpacity
+                                // key={value.key}
+                                onPress={() => {
+                                    setIntervalModalVisble(false)
+                                }}
+                                style={{ justifyContent: 'flex-end', }}>
+                                <AntDesign name="closecircleo" size={18} color="black" />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={[{ paddingTop: 20 }]}>
                             <Text style={styles.modalText}>Interval</Text>
                             <View style={styles.row}>
                                 {values.map(value => (
@@ -52,7 +59,7 @@ export const IntervlModal = ({
                                             setIntervalModalVisble(false);
                                             setActiveInterval(value.desc);
                                         }}
-                                        style={[styles.button]}>
+                                        style={[styles.intervalButtons]}>
                                         <Text
                                             style={[
                                                 styles.buttonLabel
@@ -377,7 +384,7 @@ export const SettingPanelModal = ({
 
     const numberOfCheckBox = values.options.filter(
         (option) => option.input === 'checkBox'
-      ).length;
+    ).length;
     const [checkedItems, setCheckedItems] = useState(Array(numberOfCheckBox).fill(false));
 
 
@@ -386,7 +393,11 @@ export const SettingPanelModal = ({
         newCheckedItems[index] = !newCheckedItems[index];
         setCheckedItems(newCheckedItems);
 
-        onPress(subcategories.callBackMethod, newCheckedItems[index]);
+        let data = {}
+        data["isChecked"] = newCheckedItems[index]
+        data = JSON.stringify(data)
+
+        onPress(subcategories.callBackMethod, data);
         setSettingPanelModalVisble(false);
 
     };
@@ -409,7 +420,7 @@ export const SettingPanelModal = ({
                         <>
                             <ScrollView>
                                 <View style={settingsStyles.container}>
-                                    {values.options && values.options.map((subcategories,index) => (
+                                    {values.options && values.options.map((subcategories, index) => (
                                         <>
                                             {subcategories.input === "checkbox" && (< View style={[{}]}>
                                                 <CheckBox
@@ -432,10 +443,10 @@ export const SettingPanelModal = ({
                                                     <TouchableOpacity
                                                         // key={subcategories.title}
                                                         onPress={() => {
-                                                            let data = {}                                                            
+                                                            let data = {}
                                                             data[subcategories.name] = value
                                                             data = JSON.stringify(data)
-                                                            console.log("data",data);
+                                                            console.log("data", data);
                                                             onPress(subcategories.callBackMethod, data);
                                                             setSettingPanelModalVisble(false);
                                                         }}

@@ -3,7 +3,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 8,
-    backgroundColor: 'aliceblue',
+    backgroundColor: 'yellow',
   },
   box: {
     width: 50,
@@ -94,31 +94,36 @@ export const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // marginTop: 22,
+    
     
   },
   modalView: {
-    margin: 20,
-    // width: '100%',
-    // height: '100%',
+    // position: 'absolute',
+    flex: 1,
+    flexDirection: 'column',
+    bottom: 0,
+    left: 0,
+    right: 0,
     backgroundColor: 'white',
-    borderRadius: 20,
-    // padding: 35,
-    paddingBottom: 35,
-    paddingLeft:35,
-    paddingRight: 35,
-    alignItems: 'center',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingBottom: 35, // Adjust as needed
+    // alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: -2, // Adjust for the desired shadow direction
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    // backgroundColor: 'lightblue'
+    backgroundColor: 'red',
+    height: '100%',
   },
   modalText: {
     marginBottom: 15,
@@ -126,7 +131,25 @@ export const styles = StyleSheet.create({
   buttonClose: {
     textAlign: 'center',
     justifyContent: 'center'
-  }
+  },
+  dragHandle: {
+    backgroundColor: 'blue',
+    alignItems: 'center'
+  },
+  intervalButtons: {
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 4,
+    height: 40,
+    backgroundColor: 'gainsboro',
+    alignSelf: 'flex-start',
+    marginHorizontal: '1%',
+    marginBottom: 6,
+    minWidth: '28%',
+    textAlign: 'center',
+    // flex: 1,
+    flexDirection: 'row'
+  },
 });
 
 export const settingsStyles = StyleSheet.create({
