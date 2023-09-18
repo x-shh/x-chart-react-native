@@ -4383,8 +4383,35 @@ infChart.drawingsManager = (function ($, infChart) {
                     annotationOptions = ann.options,
                     drawingId = annotationOptions.id,
                     stockChartId = _getChartIdFromHighchartInstance(ann.chart),
-                    drawingObj = _getDrawingObject(stockChartId, drawingId);
+                    drawingObj = _getDrawingObject(stockChartId, drawingId),
+                    chartInstance = infChart.manager.getChart(stockChartId);
 
+                var _onLongTouch = function(event, ann, chartId, drawingType){
+                    if (!_isMultipleDrawingsEnabled(chartId)) {
+                        var options = ann.options;
+                        if (options.drawingType === infChart.constants.drawingTypes.shape)  {
+                            if (ann.chart.selectedAnnotation) {
+                                ann.chart.selectedAnnotation.events.deselect.call(ann.chart.selectedAnnotation, event, true);
+                            }
+                            var chartId = _getChartIdFromHighchartInstance(ann.chart);
+                            var drawingId = ann.options.id;
+                            var config = infChart.mobileDrawingSettingsManager.getConfigForDrawing(chartId, infChart.constants.contextMenuTypes.drawing, {drawingId: ann.options.id});
+                            var settingsProperties = {config: config, drawingId: drawingId, chartId: chartId, type:'drawingSettingsPanel'};
+                            infChart.util.postMessageToReactNative(settingsProperties);
+                        } else if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
+                            infChart.indicatorMgr.openContextMenu(this.chart.renderTo.id, event, this.chart.get(this.options.indicatorId));
+                        }
+            
+                        event.stopPropagation();
+                    }
+                };
+                
+                if(ann && drawingObj) {
+                    chartInstance.touchTimer = setTimeout(function () {
+                        _onLongTouch(e, ann, chartId, drawingType);
+                    }, 500);
+                }
+                
                 if (_getIsActiveDeleteTool(stockChartId)) {
                     if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
                         ann.chart.isAnnotationSelected = false;
@@ -4430,10 +4457,15 @@ infChart.drawingsManager = (function ($, infChart) {
             touchend: function () {
                 var ann = this, annotationOptions = ann.options;
                 var stockChartId = _getChartIdFromHighchartInstance(ann.chart),
-                    drawingObj = _getDrawingObject(stockChartId, annotationOptions.id);
+                    drawingObj = _getDrawingObject(stockChartId, annotationOptions.id),
+                    chartInstance = infChart.manager.getChart(stockChartId);
 
                 if (drawingObj && annotationOptions.drawingType === infChart.constants.drawingTypes.shape) {
                     _bindKeyDown(ann);
+                }
+                if (chartInstance.touchTimer){
+                    clearTimeout(chartInstance.touchTimer);
+                    chartInstance.touchTimer = undefined;
                 }
 
                 if (ann.chart.isAnnotationSelected) {
@@ -4461,10 +4493,6 @@ infChart.drawingsManager = (function ($, infChart) {
                         var config = infChart.mobileDrawingSettingsManager.getConfigForDrawing(chartId, infChart.constants.contextMenuTypes.drawing, {drawingId: ann.options.id});
                         var settingsProperties = {config: config, drawingId: drawingId, chartId: chartId, type:'drawingSettingsPanel'};
                         infChart.util.postMessageToReactNative(settingsProperties);
-                        // const jsonString = JSON.stringify(settingsProperties);
-                        // if(window.ReactNativeWebView){
-                        //     window.ReactNativeWebView.postMessage(jsonString);
-                        // }
                     } else if (drawingType === infChart.constants.drawingTypes.indicator && this.options.indicatorId) {
                         infChart.indicatorMgr.openContextMenu(this.chart.renderTo.id, event, this.chart.get(this.options.indicatorId));
                     }
@@ -4476,7 +4504,6 @@ infChart.drawingsManager = (function ($, infChart) {
         }
         return drawingEvents;
     };
-
     //endregion
 
     /**
@@ -14966,7 +14993,7 @@ infChart.mobilelineDrawing.prototype.onLineStyleChange = function (values){
             self.additionalDrawings.lines["left"],
             self.additionalDrawings.lines["right"],
         ]
-    })(values.lineStyle);
+    })(values.style);
 };
 
 infChart.mobilelineDrawing.prototype.onLineExtendToLeft = function (values){
@@ -14978,7 +15005,7 @@ infChart.mobilelineDrawing.prototype.onLineExtendToLeft = function (values){
             self.onLineExtend.call(self, value, "left", isPropertyChange);
     },
         ctrlSelector: "[inf-ctrl=extendToLeft]"
-    })(values.isChecked);
+    })(values.isExtendLeft);
 };
 
 infChart.mobilelineDrawing.prototype.onLineExtendToRight = function (values){
@@ -14990,11 +15017,12 @@ infChart.mobilelineDrawing.prototype.onLineExtendToRight = function (values){
             self.onLineExtend.call(self, value, "right", isPropertyChange);
     },
         ctrlSelector: "[inf-ctrl=extendToRight]"
-    })(values.isChecked);
+    })(values.isExtendRight);
 };
 
 infChart.mobilelineDrawing.prototype.onStartArrowHeadTypeChange = function (values){
     var self = this;
+    var type = values.isStartPoint === 'arrowHead';
     infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.value, {
         isUpdateAnnotationStyles: false,
         settingsItem: 'isStartPoint',
@@ -15002,11 +15030,12 @@ infChart.mobilelineDrawing.prototype.onStartArrowHeadTypeChange = function (valu
             self.onChangeArrowHead.call(self, value, "startPointHead", isPropertyChange);
         },
         ctrlSelector: "[inf-ctrl= startArrowHeadType]"
-    })(values.value);
+    })(type);
 };
 
 infChart.mobilelineDrawing.prototype.onEndArrowHeadTypeChange = function (values){
     var self = this;
+    var type = values.isEndPoint === 'arrowHead';
     infChart.drawingSettings.getEventHandler(this, infChart.drawingSettings.eventTypes.value, {
         isUpdateAnnotationStyles: false,
         settingsItem: 'isEndPoint',
@@ -15014,7 +15043,7 @@ infChart.mobilelineDrawing.prototype.onEndArrowHeadTypeChange = function (values
             self.onChangeArrowHead.call(self, value, "endPointHead", isPropertyChange);
         },
         ctrlSelector: "[inf-ctrl= endArrowHeadType]"
-    })(values.value);
+    })(type);
 };
 
 infChart.mobilelineDrawing.prototype.onTextColorChange = function (values){
@@ -15115,7 +15144,24 @@ infChart.lineDrawing.prototype.onLabelItemsChangeValues = function(values){
     if (self.settingsPopup) {
         isPropertyChange = self.isSettingsPropertyChange();
     }
-    self.onLabelItemsChange(values.labelItemId, values.value, isPropertyChange);
+    if(values.priceRange){
+        labelItemId = "priceRange";
+        value = values.priceRange;
+    }
+    if(values.barsRange){
+        labelItemId = "barsRange";
+        value = values.priceRange;
+    }
+    if(values.angle){
+        labelItemId = "angle";
+        value = values.priceRange;
+    }
+    if(values.duration){
+        labelItemId = "duration";
+        value = values.priceRange;
+    }
+
+    self.onLabelItemsChange(labelItemId, values, isPropertyChange);
 }
 window.infChart = window.infChart || {};
 
@@ -46919,7 +46965,6 @@ window.infChart = window.infChart || {};
         },
         onLineWidthChange: function (drawingInstance, settingsParams, isPropertyChange, strokeWidth) {
             let annotationParams = {};
-            infChart.util.consoleReact(strokeWidth);
             if (settingsParams.isUpdateAnnotationStyles) {
                 annotationParams = {
                     shape: {
