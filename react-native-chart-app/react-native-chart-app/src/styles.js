@@ -3,7 +3,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 8,
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
   },
   box: {
     width: 50,
@@ -101,17 +101,17 @@ export const styles = StyleSheet.create({
     
   },
   modalView: {
-    // position: 'absolute',
-    flex: 1,
-    flexDirection: 'column',
+    position: 'absolute',
+    // flex: 1,
+    // flexDirection: 'column',
     bottom: 0,
     left: 0,
     right: 0,
     backgroundColor: 'white',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingLeft: 15,
+    paddingRight: 15,
     paddingBottom: 35, // Adjust as needed
     // alignItems: 'center',
     shadowColor: '#000',
@@ -122,8 +122,8 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    backgroundColor: 'red',
-    height: '100%',
+    // backgroundColor: 'red',
+    // height: '100%',
   },
   modalText: {
     marginBottom: 15,
@@ -133,23 +133,51 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   dragHandle: {
-    backgroundColor: 'blue',
-    alignItems: 'center'
+    // backgroundColor: 'blue',
+    alignItems: 'center',
+
   },
   intervalButtons: {
-    paddingHorizontal: 8,
     paddingVertical: 6,
     borderRadius: 4,
     height: 40,
-    backgroundColor: 'gainsboro',
-    alignSelf: 'flex-start',
-    marginHorizontal: '1%',
-    marginBottom: 6,
-    minWidth: '28%',
-    textAlign: 'center',
-    // flex: 1,
-    flexDirection: 'row'
+    backgroundColor: 'whitesmoke',
+    justifyContent: 'center',
+    // marginHorizontal: '3%',
+    marginRight: 20,
+    marginTop: 20,
+    minWidth: '15%',
+
   },
+  intervalButtonText :{
+    fontSize: 15,
+    fontWeight: '500',
+    color: 'black',
+    textAlign: 'center',
+    // backgroundColor: 'pink',
+    marginLeft: '10'
+  },
+  textHeaders: {
+    // backgroundColor: 'yellow',
+    // paddingBottom: 5,
+    fontWeight: 'Medium',
+    fontSize: 20
+  },
+
+  candleTypeButton: {
+    paddingVertical: 8,
+    borderRadius: 4,
+    backgroundColor: 'gainsboro',
+    justifyContent: 'center',
+    // marginHorizontal: '3%',
+    marginRight: 20,
+    marginTop: 24,
+    minWidth: '23%',
+    alignItems: 'center',
+    flexDirection: 'column',
+    backgroundColor: 'whitesmoke',
+  }
+
 });
 
 export const settingsStyles = StyleSheet.create({
@@ -196,16 +224,17 @@ export const settingsStyles = StyleSheet.create({
   button: {
     width: 30,
     height: 30,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
     borderRadius: 4,
-    backgroundColor: 'gainsboro',
-    
+    backgroundColor: 'whitesmoke',
     marginHorizontal: '1%',
     marginBottom: 6,
     // minWidth: '28%',
-    textAlign: 'center',
-    // flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: 'row'
-  }
+  },
+  inputButtonSection: {
+    flexDirection: 'row',
+    marginVertical: 10
+  },
 });

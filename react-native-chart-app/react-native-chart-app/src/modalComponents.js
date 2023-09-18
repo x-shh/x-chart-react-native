@@ -2,8 +2,10 @@ import React, { useRef, useState } from 'react';
 import { View, Text, Modal, TextInput, TouchableOpacity, PanResponder, ScrollView, Pressable } from 'react-native';
 import { styles, settingsStyles } from './styles';
 import { AntDesign } from '@expo/vector-icons';
-import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import { MaterialIcons, Entypo, Ionicons, Octicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { CheckBox } from '@rneui/themed';
+import { data } from 'jquery';
+import { iconTagGenerator } from './iconsComponents';
 
 export const IntervlModal = ({
     values,
@@ -36,7 +38,8 @@ export const IntervlModal = ({
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
                         <View style={styles.dragHandle}>
-                            <MaterialIcons name="drag-handle" size={24} color="black" />
+                            {/* <MaterialIcons name="drag-handle" size={24} color="black" /> */}
+                            <Octicons name="dash" size={35} color="gray" />
                         </View>
                         <View style={{ alignItems: 'flex-end' }}>
                             <TouchableOpacity
@@ -48,25 +51,29 @@ export const IntervlModal = ({
                                 <AntDesign name="closecircleo" size={18} color="black" />
                             </TouchableOpacity>
                         </View>
-                        <View style={[{ paddingTop: 20 }]}>
-                            <Text style={styles.modalText}>Interval</Text>
-                            <View style={styles.row}>
-                                {values.map(value => (
-                                    <TouchableOpacity
-                                        key={value.key}
-                                        onPress={() => {
-                                            changeInterval(value.key);
-                                            setIntervalModalVisble(false);
-                                            setActiveInterval(value.desc);
-                                        }}
-                                        style={[styles.intervalButtons]}>
-                                        <Text
-                                            style={[
-                                                styles.buttonLabel
-                                            ]}>
-                                            {value.desc}
-                                        </Text>
-                                    </TouchableOpacity>
+                        <View style={[{}]}>
+                            <Text style={styles.textHeaders}>Interval</Text>
+                            <View style={[styles.row, { width: '100%', }]}>
+                                {values.map(intervals => (
+                                    <View style={[styles.row, {}]}>
+                                        {intervals.map(value => (
+                                            <TouchableOpacity
+                                                key={value.key}
+                                                onPress={() => {
+                                                    changeInterval(value.key);
+                                                    setIntervalModalVisble(false);
+                                                    setActiveInterval(value.desc);
+                                                }}
+                                                style={[styles.intervalButtons]}>
+                                                <Text
+                                                    style={[
+                                                        styles.intervalButtonText
+                                                    ]}>
+                                                    {value.desc}
+                                                </Text>
+                                            </TouchableOpacity>
+                                        ))}
+                                    </View>
                                 ))}
                             </View>
                         </View>
@@ -106,32 +113,41 @@ export const ChartTypeModal = ({
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
-                        <MaterialIcons name="drag-handle" size={24} color="black" />
-                        <View style={{ paddingTop: 20 }}>
-                            <Text style={styles.modalText}>Candle Type</Text>
-                            {/* <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setchartTypeModalVisble(false)}>
-                  <Text style={styles.textStyle}>Close</Text>
-                </Pressable> */}
-                            <View style={styles.row}>
+                        <View style={styles.dragHandle}>
+                            <MaterialIcons name="drag-handle" size={24} color="black" />
+                        </View>
+                        <View style={{ alignItems: 'flex-end' }}>
+                            <TouchableOpacity
+                                // key={value.key}
+                                onPress={() => {
+                                    setchartTypeModalVisble(false)
+                                }}
+                                style={{ justifyContent: 'flex-end', }}>
+                                <AntDesign name="closecircleo" size={18} color="black" />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{}}>
+                            <Text style={styles.textHeaders}>Chart Type</Text>
+                            <View style={[styles.row, {}]}>
                                 {values.map(value => (
-                                    <TouchableOpacity
-                                        key={value.key}
-                                        onPress={() => {
-                                            changeChartType(value.key);
-                                            setchartTypeModalVisble(false);
-                                            setActiveChartType(value.ico)
-                                        }}
-                                        style={[styles.button]}>
-                                        <AntDesign name={value.ico} size={24} color="black" />
-                                        <Text
-                                            style={[
-                                                styles.buttonLabel
-                                            ]}>
-                                            {value.desc}
-                                        </Text>
-                                    </TouchableOpacity>
+                                    <>
+                                        <TouchableOpacity
+                                            key={value.key}
+                                            onPress={() => {
+                                                changeChartType(value.key);
+                                                setchartTypeModalVisble(false);
+                                                setActiveChartType(value.ico)
+                                            }}
+                                            style={[styles.candleTypeButton]}>
+                                            <AntDesign name={value.ico} size={24} color="black" />
+                                            <Text
+                                                style={[
+                                                    styles.buttonLabel
+                                                ]}>
+                                                {value.desc}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </>
                                 ))}
                             </View>
                         </View>
@@ -189,7 +205,19 @@ export const BasicModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={styles.modalView}>
-                    <MaterialIcons name="drag-handle" size={24} color="black" />
+                    <View style={styles.dragHandle}>
+                        <MaterialIcons name="drag-handle" size={24} color="black" />
+                    </View>
+                    <View style={{ alignItems: 'flex-end' }}>
+                        <TouchableOpacity
+                            // key={value.key}
+                            onPress={() => {
+                                setBasicModalVisble(false)
+                            }}
+                            style={{ justifyContent: 'flex-end' }}>
+                            <AntDesign name="closecircleo" size={18} color="black" />
+                        </TouchableOpacity>
+                    </View>
                     <View style={{ paddingTop: 20 }}>
                         <Text style={styles.modalText}>Add</Text>
                         <View style={styles.row}>
@@ -320,7 +348,7 @@ export const IndicatorModal = ({
             }}>
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
-                <View style={styles.modalView}>
+                <View style={settingsStyles.modalView}>
                     <MaterialIcons name="drag-handle" size={24} color="black" />
                     <View style={{ paddingTop: 20 }}>
                         <Text style={styles.modalText}>Add Indicator</Text>
@@ -402,6 +430,7 @@ export const SettingPanelModal = ({
 
     };
 
+
     return (<View>
         <Modal
             animationType="slide"
@@ -413,7 +442,20 @@ export const SettingPanelModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={settingsStyles.modalView}>
-                    <View style={{ paddingTop: 20 }}>
+                    <View style={styles.dragHandle}>
+                        <MaterialIcons name="drag-handle" size={24} color="black" />
+                    </View>
+                    <View style={{ alignItems: 'flex-end' }}>
+                        <TouchableOpacity
+                            // key={value.key}
+                            onPress={() => {
+                                setSettingPanelModalVisble(false)
+                            }}
+                            style={{ justifyContent: 'flex-end', }}>
+                            <AntDesign name="closecircleo" size={18} color="black" />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{}}>
 
                         <Text style={settingsStyles.settingHeader}>{values.title}</Text>
 
@@ -437,8 +479,8 @@ export const SettingPanelModal = ({
                                                     containerStyle={{ paddingLeft: 0 }}
                                                 />
                                             </View>)}
-                                            {subcategories.input === "Button" && (< View style={[{ flexDirection: 'row' }]}>
-                                                <Text>{subcategories.title}</Text>
+                                            {subcategories.input === "Button" && (< View style={[settingsStyles.inputButtonSection]}>
+                                                <Text style={{ minWidth: '30%', }}>{subcategories.title}</Text>
                                                 {subcategories.values && subcategories.values.map(value => (
                                                     <TouchableOpacity
                                                         // key={subcategories.title}
@@ -451,10 +493,30 @@ export const SettingPanelModal = ({
                                                             setSettingPanelModalVisble(false);
                                                         }}
                                                         style={[settingsStyles.button]}>
+                                                        {iconTagGenerator(value, subcategories.name)}
                                                     </TouchableOpacity>
                                                 ))}
 
                                             </View>)}
+                                            {/* {subcategories.input === "input" && (< View style={[settingsStyles.inputButtonSection, ]}>
+                                                <Text style={{ minWidth: '30%' , }}>{subcategories.title}</Text>
+                                                {subcategories.values && subcategories.values.map(value => (
+                                                    <>
+                                                        <TextInput
+                                                            style={{height: 40,
+                                                                margin: 12,
+                                                                borderWidth: 1,
+                                                                padding: 10,
+                                                            }}
+                                                            onChangeText={onChangeNumber}
+                                                            value={number}
+                                                            placeholder="useless placeholder"
+                                                            keyboardType="numeric"
+                                                        />
+                                                    </>
+                                                ))}
+
+                                            </View>)} */}
                                         </>
                                     ))}
                                 </View>

@@ -1,57 +1,63 @@
 const config = {
     interval: [
-        {
-            key: "I_1",
-            desc: "1 m"
-        },
-        {
-            key: "I_2",
-            desc: "2 m"
-        },
-        {
-            key: "I_3",
-            desc: "3 m"
-        },
-        {
-            key: "I_5",
-            desc: "5 m"
-        },
-        {
-            key: "I_15",
-            desc: "15 m"
-        },
-        {
-            key: "I_30",
-            desc: "30 m"
-        },
-        {
-            key: "I_60",
-            desc: "1 hr",
-        },
-        {
-            key: "I_120",
-            desc: "2 hrs"
-        },
-        {
-            key: "I_240",
-            desc: "4 hrs",
-        },
-        {
-            key: "I_360",
-            desc: "6 h"
-        },
-        {
-            key: "D",
-            desc: "Daily"
-        },
-        {
-            key: "W",
-            desc: "Weekly"
-        },
-        {
-            key: "M",
-            desc: "Monthly"
-        }
+        [
+            {
+                key: "I_1",
+                desc: "1m"
+            },
+            {
+                key: "I_2",
+                desc: "2m"
+            },
+            {
+                key: "I_3",
+                desc: "3m"
+            },
+            {
+                key: "I_5",
+                desc: "5m"
+            },
+            {
+                key: "I_15",
+                desc: "15m"
+            },
+            {
+                key: "I_30",
+                desc: "30 m"
+            },
+        ],
+        [
+            {
+                key: "I_60",
+                desc: "1 hr",
+            },
+            {
+                key: "I_120",
+                desc: "2H"
+            },
+            {
+                key: "I_240",
+                desc: "4H",
+            },
+            {
+                key: "I_360",
+                desc: "6H"
+            },
+        ], 
+        [
+            {
+                key: "D",
+                desc: "1D"
+            },
+            {
+                key: "W",
+                desc: "1W"
+            },
+            {
+                key: "M",
+                desc: "1M"
+            }
+        ]
     ],
     chartType:
         [
@@ -190,8 +196,8 @@ const config = {
         { key: "Drawings", desc: "Drawings", ModalVisibleMethodName: "setDrawingModalVisble", ico: "linechart" },
         { key: "Indicators", desc: "Indicators", ModalVisibleMethodName: "setIndicatorModalVisble", ico: "barschart" },
         { key: "Compare", desc: "Compare", ModalVisibleMethodName: "setCompareModalVisble", ico: "barschart" },
-        { key: "Alerts", desc: "Alerts", ModalVisibleMethodName: "setDrawingModalVisble", ico: "barschart" },
-        { key: "AddToWatchlist", desc: "AddToWatchlist", ModalVisibleMethodName: "setDrawingModalVisble", ico: "barschart" },
+        // { key: "Alerts", desc: "Alerts", ModalVisibleMethodName: "setDrawingModalVisble", ico: "barschart" },
+        // { key: "AddToWatchlist", desc: "AddToWatchlist", ModalVisibleMethodName: "setDrawingModalVisble", ico: "barschart" },
     ],
     mockSettingPannel:
 
