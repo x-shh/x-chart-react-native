@@ -2167,14 +2167,14 @@ infChart.settings = {
                     currentValue: {color: "#959595", opacity:1},
                     callBackMethod: "onTextColorChange"
                 },
-                {
-                    title: "Text",
-                    name: "lineTextChecked",
-                    input: "checkbox",
-                    style: undefined,
-                    currentValue: false,
-                    callBackMethod: "onToggleLineText"
-                },
+                // {
+                //     title: "Text",
+                //     name: "lineTextChecked",
+                //     input: "checkbox",
+                //     style: undefined,
+                //     currentValue: false,
+                //     callBackMethod: "onToggleLineText"
+                // },
                 {
                     name: "lineText",
                     input: "input",

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -35,6 +36,14 @@ export default function App() {
     //     <Tab.Screen name="WatchList" component={WatchList} />
     //   </Tab.Navigator>
     // </NavigationContainer>
-    <ChartScreen></ChartScreen>
+    <SafeAreaView style={styles.container}>
+      <ChartScreen></ChartScreen>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  }
+});
