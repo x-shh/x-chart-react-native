@@ -14886,11 +14886,11 @@ infChart.mobilelineDrawing.prototype.updateConfigFromSettings = function (drawin
                 break;
             case 'isStartPoint' :
                 option.callBackMethod = "onStartArrowHeadTypeChange";
-                option.currentValue = properties.settings.isStartPoint;
+                option.currentValue = properties.settings.isStartPoint ? "arrowHead" : "normalHead";
                 break;
             case 'isEndPoint':
                 option.callBackMethod = "onEndArrowHeadTypeChange";
-                option.currentValue = properties.settings.isEndPoint;
+                option.currentValue = properties.settings.isEndPoint ? "arrowHead" : "normalHead";
                 break;
             case 'lineText':
                 option.callBackMethod = "onLineTextChange";

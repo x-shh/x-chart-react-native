@@ -51,7 +51,7 @@ infChart.darkTheme = (function (infChart) {
             labels: {
                 style: {
                     fontFamily: "Montserrat",
-                    color: '#CED1E0;',
+                    color: '#000000;',
                     fontSize:'10px;',
                     fontWeight:'500;'
                 }
@@ -94,7 +94,7 @@ infChart.darkTheme = (function (infChart) {
             labels: {
                 style: {
                     fontFamily: "Montserrat",
-                    color: '#CED1E0;',
+                    color: '#000000;',
                     fontSize:'10px;',
                     fontWeight:'500;'
                 }

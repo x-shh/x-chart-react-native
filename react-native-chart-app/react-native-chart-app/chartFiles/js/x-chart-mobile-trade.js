@@ -3697,55 +3697,55 @@ infChart.tradeDataProvider.prototype.saveLastDefineQuantityForPair = function (s
             "ttl": 86700000,
             "columns": ["id", "clientId", "side", "type", "price", "qty", "status", "fillQty", "remainingQty", "orderTime", "tradeTime", "tif", "avgPrice", "symbol"],
             "rows": [
-                [1, "demo2@gmail.com", 1, 1, 140.0, 1880, 1, 1880, 0, "2017-07-14T04:23:52.138Z", "2017-07-14T04:24:19.988Z", 1, 122.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "RELIANCE",
-                    "currency": "INR"
-                }],
-                [2, "demo2@gmail.com", 2, 1, 180.0, 1880, 1, 1880, 0, "2017-07-14T04:28:45.744Z", "2017-07-14T04:29:25.035Z", 1, 122.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "RELIANCE",
-                    "currency": "INR"
-                }],
-                [3, "demo2@gmail.com", 2, 1, 226.0, 1800, 1, 1800, 0, "2017-07-14T10:38:57.399Z", "2017-07-14T10:39:30.836Z", 2, 126.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "HDFCBANK",
-                    "currency": "INR"
-                }],
-                [4, "demo2@gmail.com", 1, 2, 200.0, 800, 1, 800, 0, "2017-07-14T10:39:21.629Z", "2017-07-14T10:39:50.840Z", 3, 125.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "ONGC",
-                    "currency": "INR"
-                }],
-                [5, "demo2@gmail.com", 2, 3, 178.0, 8500, 2, 8500, 0, "2017-07-14T10:39:49.385Z", "2017-07-14T10:40:15.844Z", 4, 178.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "RCOM",
-                    "currency": "INR"
-                }],
-                [6, "demo2@gmail.com", 1, 4, 58.0, 500, 2, 500, 0, "2017-07-14T10:40:21.137Z", "2017-07-14T10:41:15.856Z", 5, 58.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "TCS",
-                    "currency": "INR"
-                }],
-                [7, "demo2@gmail.com", 7, 7, 38.0, 90, 2, 90, 0, "2017-07-14T10:40:55.338Z", "2017-07-14T10:41:15.856Z", 6, 38.0, {
-                    "provider": "SFT",
-                    "type": "EQU",
-                    "exchange": "NSE",
-                    "name": "SBIN",
-                    "currency": "INR"
-                }]
+                // [1, "demo2@gmail.com", 1, 1, 140.0, 1880, 1, 1880, 0, "2017-07-14T04:23:52.138Z", "2017-07-14T04:24:19.988Z", 1, 122.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "RELIANCE",
+                //     "currency": "INR"
+                // }],
+                // [2, "demo2@gmail.com", 2, 1, 180.0, 1880, 1, 1880, 0, "2017-07-14T04:28:45.744Z", "2017-07-14T04:29:25.035Z", 1, 122.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "RELIANCE",
+                //     "currency": "INR"
+                // }],
+                // [3, "demo2@gmail.com", 2, 1, 226.0, 1800, 1, 1800, 0, "2017-07-14T10:38:57.399Z", "2017-07-14T10:39:30.836Z", 2, 126.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "HDFCBANK",
+                //     "currency": "INR"
+                // }],
+                // [4, "demo2@gmail.com", 1, 2, 200.0, 800, 1, 800, 0, "2017-07-14T10:39:21.629Z", "2017-07-14T10:39:50.840Z", 3, 125.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "ONGC",
+                //     "currency": "INR"
+                // }],
+                // [5, "demo2@gmail.com", 2, 3, 178.0, 8500, 2, 8500, 0, "2017-07-14T10:39:49.385Z", "2017-07-14T10:40:15.844Z", 4, 178.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "RCOM",
+                //     "currency": "INR"
+                // }],
+                // [6, "demo2@gmail.com", 1, 4, 58.0, 500, 2, 500, 0, "2017-07-14T10:40:21.137Z", "2017-07-14T10:41:15.856Z", 5, 58.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "TCS",
+                //     "currency": "INR"
+                // }],
+                // [7, "demo2@gmail.com", 7, 7, 38.0, 90, 2, 90, 0, "2017-07-14T10:40:55.338Z", "2017-07-14T10:41:15.856Z", 6, 38.0, {
+                //     "provider": "SFT",
+                //     "type": "EQU",
+                //     "exchange": "NSE",
+                //     "name": "SBIN",
+                //     "currency": "INR"
+                // }]
             ],
             "errorCode": 0
         };

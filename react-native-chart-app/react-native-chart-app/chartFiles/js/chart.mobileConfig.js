@@ -560,7 +560,7 @@ infChart.settings = {
         indicators: [],
         compareSymbols: [],
         drawings: [],
-        navigator: true,
+        navigator: false,
         tooltip: false,
         news: false,
         alert: false,
@@ -2146,7 +2146,7 @@ infChart.settings = {
                     name: "isStartPoint",
                     input: "Button",
                     style: undefined,
-                    currentValue: false,
+                    currentValue: "normalHead",
                     values: ["normalHead", "arrowHead"],
                     callBackMethod: "onStartArrowHeadTypeChange"
                 },
@@ -2155,7 +2155,7 @@ infChart.settings = {
                     name: "isEndPoint",
                     input: "Button",
                     style: undefined,
-                    currentValue: false,
+                    currentValue: "normalHead",
                     values: ["normalHead", "arrowHead"],
                     callBackMethod: "onEndArrowHeadTypeChange"
                 },
@@ -2167,14 +2167,14 @@ infChart.settings = {
                     currentValue: {color: "#959595", opacity:1},
                     callBackMethod: "onTextColorChange"
                 },
-                {
-                    title: "Text",
-                    name: "lineTextChecked",
-                    input: "checkbox",
-                    style: undefined,
-                    currentValue: false,
-                    callBackMethod: "onToggleLineText"
-                },
+                // {
+                //     title: "Text",
+                //     name: "lineTextChecked",
+                //     input: "checkbox",
+                //     style: undefined,
+                //     currentValue: false,
+                //     callBackMethod: "onToggleLineText"
+                // },
                 {
                     name: "lineText",
                     input: "input",

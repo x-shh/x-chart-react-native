@@ -560,7 +560,7 @@ infChart.settings = {
         indicators: [],
         compareSymbols: [],
         drawings: [],
-        navigator: true,
+        navigator: false,
         tooltip: false,
         news: false,
         alert: false,
@@ -2318,7 +2318,7 @@ infChart.intradayChartConfig = {
             type: 'candlestick',
             name: "IntradaySeries",
             infType: "base",
-            showInNavigator: false,
+            showInNavigator: true,
             kdNow: true
         }
     ],
