@@ -122,7 +122,7 @@ export function ChartScreen() {
       case 'drawingSettingsPanel':
         setSettingPanelModalVisble(true);
         setSettingsObject(receivedData);
-        console.log("onmassage", receivedData)
+        console.log("onmassage", receivedData.config.options)
         break;
       case 'console':
         console.log("console from web view", receivedData.data)

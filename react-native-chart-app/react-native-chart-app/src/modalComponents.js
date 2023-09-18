@@ -37,20 +37,9 @@ export const IntervlModal = ({
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
-                        <View style={styles.dragHandle}>
-                            {/* <MaterialIcons name="drag-handle" size={24} color="black" /> */}
-                            <Octicons name="dash" size={35} color="gray" />
-                        </View>
-                        <View style={{ alignItems: 'flex-end' }}>
-                            <TouchableOpacity
-                                // key={value.key}
-                                onPress={() => {
-                                    setIntervalModalVisble(false)
-                                }}
-                                style={{ justifyContent: 'flex-end', }}>
-                                <AntDesign name="closecircleo" size={18} color="black" />
-                            </TouchableOpacity>
-                        </View>
+                        <CloseModal
+                            setModalVisible={setIntervalModalVisble}
+                        ></CloseModal>
                         <View style={[{}]}>
                             <Text style={styles.textHeaders}>Interval</Text>
                             <View style={[styles.row, { width: '100%', }]}>
@@ -113,19 +102,9 @@ export const ChartTypeModal = ({
                 <View style={styles.centeredView}
                     {...panResponder.panHandlers}>
                     <View style={styles.modalView}>
-                        <View style={styles.dragHandle}>
-                            <MaterialIcons name="drag-handle" size={24} color="black" />
-                        </View>
-                        <View style={{ alignItems: 'flex-end' }}>
-                            <TouchableOpacity
-                                // key={value.key}
-                                onPress={() => {
-                                    setchartTypeModalVisble(false)
-                                }}
-                                style={{ justifyContent: 'flex-end', }}>
-                                <AntDesign name="closecircleo" size={18} color="black" />
-                            </TouchableOpacity>
-                        </View>
+                        <CloseModal
+                            setModalVisible={setchartTypeModalVisble}
+                        ></CloseModal>
                         <View style={{}}>
                             <Text style={styles.textHeaders}>Chart Type</Text>
                             <View style={[styles.row, {}]}>
@@ -205,20 +184,10 @@ export const BasicModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={styles.modalView}>
-                    <View style={styles.dragHandle}>
-                        <MaterialIcons name="drag-handle" size={24} color="black" />
-                    </View>
-                    <View style={{ alignItems: 'flex-end' }}>
-                        <TouchableOpacity
-                            // key={value.key}
-                            onPress={() => {
-                                setBasicModalVisble(false)
-                            }}
-                            style={{ justifyContent: 'flex-end' }}>
-                            <AntDesign name="closecircleo" size={18} color="black" />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={{ paddingTop: 20 }}>
+                    <CloseModal
+                        setModalVisible={setBasicModalVisble}
+                    ></CloseModal>
+                    <View style={{ }}>
                         <Text style={styles.modalText}>Add</Text>
                         <View style={styles.row}>
                             {values.map(value => (
@@ -275,8 +244,10 @@ export const DrawingTypeModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={styles.modalView}>
-                    <MaterialIcons name="drag-handle" size={24} color="black" />
-                    <View style={{ paddingTop: 20 }}>
+                    <CloseModal
+                        setModalVisible={setDrawingModalVisble}
+                    ></CloseModal>
+                    <View style={{}}>
                         <Text style={styles.modalText}>Add</Text>
                         <View style={styles.row}>
                             {values.map(value => (
@@ -349,8 +320,10 @@ export const IndicatorModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={settingsStyles.modalView}>
-                    <MaterialIcons name="drag-handle" size={24} color="black" />
-                    <View style={{ paddingTop: 20 }}>
+                    <CloseModal
+                        setModalVisible={setIndicatorModalVisble}
+                    ></CloseModal>
+                    <View style={{}}>
                         <Text style={styles.modalText}>Add Indicator</Text>
                         <TextInput
                             style={{ height: 40 }}
@@ -422,7 +395,7 @@ export const SettingPanelModal = ({
         setCheckedItems(newCheckedItems);
 
         let data = {}
-        data["isChecked"] = newCheckedItems[index]
+        data[subcategories.name] = newCheckedItems[index]
         data = JSON.stringify(data)
 
         onPress(subcategories.callBackMethod, data);
@@ -442,19 +415,9 @@ export const SettingPanelModal = ({
             <View style={styles.centeredView}
                 {...panResponder.panHandlers}>
                 <View style={settingsStyles.modalView}>
-                    <View style={styles.dragHandle}>
-                        <MaterialIcons name="drag-handle" size={24} color="black" />
-                    </View>
-                    <View style={{ alignItems: 'flex-end' }}>
-                        <TouchableOpacity
-                            // key={value.key}
-                            onPress={() => {
-                                setSettingPanelModalVisble(false)
-                            }}
-                            style={{ justifyContent: 'flex-end', }}>
-                            <AntDesign name="closecircleo" size={18} color="black" />
-                        </TouchableOpacity>
-                    </View>
+                    <CloseModal
+                        setModalVisible={setSettingPanelModalVisble}
+                    ></CloseModal>
                     <View style={{}}>
 
                         <Text style={settingsStyles.settingHeader}>{values.title}</Text>
@@ -492,7 +455,8 @@ export const SettingPanelModal = ({
                                                             onPress(subcategories.callBackMethod, data);
                                                             setSettingPanelModalVisble(false);
                                                         }}
-                                                        style={[settingsStyles.button]}>
+                                                        style={[settingsStyles.button,
+                                                            value == subcategories.currentValue ? styles.selected : null]}>
                                                         {iconTagGenerator(value, subcategories.name)}
                                                     </TouchableOpacity>
                                                 ))}
@@ -530,3 +494,27 @@ export const SettingPanelModal = ({
     </View>
     )
 };
+
+export const CloseModal = ({
+    setModalVisible
+}) => {
+
+    return (
+        <>
+            <View style={styles.dragHandle}>
+                {/* <MaterialIcons name="drag-handle" size={24} color="black" /> */}
+                <Octicons name="dash" size={35} color="gray" />
+            </View>
+            <View style={{ alignItems: 'flex-end' }}>
+                <TouchableOpacity
+                    // key={value.key}
+                    onPress={() => {
+                        setModalVisible(false)
+                    }}
+                    style={{ justifyContent: 'flex-end', }}>
+                    <AntDesign name="closecircleo" size={18} color="black" />
+                </TouchableOpacity>
+            </View>
+        </>
+    )
+}

@@ -119,8 +119,8 @@ export const styles = StyleSheet.create({
       width: 0,
       height: -2, // Adjust for the desired shadow direction
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
     elevation: 5,
     // backgroundColor: 'red',
     // height: '100%',
@@ -176,7 +176,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     backgroundColor: 'whitesmoke',
-  }
+  },
+  selected: {
+    backgroundColor: 'lightblue',
+  },
 
 });
 
