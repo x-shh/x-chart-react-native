@@ -47,7 +47,7 @@ export const IntervlModal = ({
                                     <View style={[styles.row, {}]}>
                                         {intervals.map(value => (
                                             <TouchableOpacity
-                                                key={value.key}
+                                                // key={value.key}
                                                 onPress={() => {
                                                     changeInterval(value.key);
                                                     setIntervalModalVisble(false);
@@ -383,15 +383,25 @@ export const SettingPanelModal = ({
         })
     ).current;
 
-    const numberOfCheckBox = values.options.filter(
-        (option) => option.input === 'checkBox'
-    ).length;
-    const [checkedItems, setCheckedItems] = useState(Array(numberOfCheckBox).fill(false));
+    const checkBoxes = [];
+    values.options.forEach((option, index) => {
+        if(option.input == 'checkbox') {
+            checkBoxes[index] = option.currentValue
+        } else {
+            checkBoxes[index] = undefined;
+        }
+    });
 
+    console.log("checkBoxes", checkBoxes)
+
+    const [checkedItems, setCheckedItems] = useState(checkBoxes);
+
+ 
 
     const toggleCheckbox = (subcategories, index) => {
         const newCheckedItems = [...checkedItems];
         newCheckedItems[index] = !newCheckedItems[index];
+        console.log("newCheckedItems", newCheckedItems)
         setCheckedItems(newCheckedItems);
 
         let data = {}
@@ -399,7 +409,7 @@ export const SettingPanelModal = ({
         data = JSON.stringify(data)
 
         onPress(subcategories.callBackMethod, data);
-        setSettingPanelModalVisble(false);
+        // setSettingPanelModalVisble(false);
 
     };
 
@@ -428,6 +438,7 @@ export const SettingPanelModal = ({
                                     {values.options && values.options.map((subcategories, index) => (
                                         <>
                                             {subcategories.input === "checkbox" && (< View style={[{}]}>
+                                                
                                                 <CheckBox
                                                     checked={checkedItems[index]}
                                                     onPress={() => { toggleCheckbox(subcategories, index) }
@@ -449,11 +460,12 @@ export const SettingPanelModal = ({
                                                         // key={subcategories.title}
                                                         onPress={() => {
                                                             let data = {}
-                                                            data[subcategories.name] = value
-                                                            data = JSON.stringify(data)
+                                                            data[subcategories.name] = value;
+                                                            data = JSON.stringify(data);
                                                             console.log("data", data);
                                                             onPress(subcategories.callBackMethod, data);
-                                                            setSettingPanelModalVisble(false);
+                                                            subcategories.currentValue = value;
+                                                            // setSettingPanelModalVisble(false);
                                                         }}
                                                         style={[settingsStyles.button,
                                                             value == subcategories.currentValue ? styles.selected : null]}>

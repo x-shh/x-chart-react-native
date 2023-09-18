@@ -13,7 +13,7 @@ export function ChartScreen() {
 
   const webViewRef = useRef(null);
 
-  const [activeInterval, setActiveInterval] = useState('1m');
+  const [activeInterval, setActiveInterval] = useState('1D');
   const [activeCharttype, setActiveChartType] = useState('barschart');
   const [intervalModalVisibility, setIntervalModalVisble] = useState(false);
   const [drawingsModalVisibility, setDrawingModalVisble] = useState(false);
