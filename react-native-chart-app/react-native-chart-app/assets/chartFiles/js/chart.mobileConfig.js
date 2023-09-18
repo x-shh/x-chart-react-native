@@ -2146,7 +2146,7 @@ infChart.settings = {
                     name: "isStartPoint",
                     input: "Button",
                     style: undefined,
-                    currentValue: false,
+                    currentValue: "normalHead",
                     values: ["normalHead", "arrowHead"],
                     callBackMethod: "onStartArrowHeadTypeChange"
                 },
@@ -2155,7 +2155,7 @@ infChart.settings = {
                     name: "isEndPoint",
                     input: "Button",
                     style: undefined,
-                    currentValue: false,
+                    currentValue: "normalHead",
                     values: ["normalHead", "arrowHead"],
                     callBackMethod: "onEndArrowHeadTypeChange"
                 },
@@ -2318,7 +2318,7 @@ infChart.intradayChartConfig = {
             type: 'candlestick',
             name: "IntradaySeries",
             infType: "base",
-            showInNavigator: true,
+            showInNavigator: false,
             kdNow: true
         }
     ],
